@@ -3,4 +3,5 @@ work/
 outputs/
 outputs/*.xlsx
 outputs/*.ndjson
+.wrangler/
 outputs/*.csv
