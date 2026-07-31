@@ -1,0 +1,1729 @@
+{
+  "rows": 24,
+  "cols": 21,
+  "start": "K15",
+  "connects": {
+    "コネクト3": "K8",
+    "コネクト2": "D15",
+    "コネクト1": "K15",
+    "コネクト4": "R15"
+  },
+  "nodes": [
+    {
+      "id": "J1",
+      "row": 1,
+      "col": 10,
+      "color": "leader",
+      "text": "全員のスコアサポート効果3.0%",
+      "adjacent": [
+        "J2"
+      ]
+    },
+    {
+      "id": "L1",
+      "row": 1,
+      "col": 12,
+      "color": "leader",
+      "text": "全員の全パラ1.0%up",
+      "adjacent": [
+        "L2"
+      ]
+    },
+    {
+      "id": "I2",
+      "row": 2,
+      "col": 9,
+      "color": "leader",
+      "text": "ライブ関係なし",
+      "adjacent": [
+        "J2"
+      ]
+    },
+    {
+      "id": "J2",
+      "row": 2,
+      "col": 10,
+      "color": "leader",
+      "text": "全員のパフォーマンスが3.0%up",
+      "adjacent": [
+        "J1",
+        "J3",
+        "I2",
+        "K2"
+      ]
+    },
+    {
+      "id": "K2",
+      "row": 2,
+      "col": 11,
+      "color": "leader",
+      "text": "全員の全パラ3.0%up",
+      "adjacent": [
+        "K3",
+        "J2",
+        "L2"
+      ]
+    },
+    {
+      "id": "L2",
+      "row": 2,
+      "col": 12,
+      "color": "leader",
+      "text": "全員のセンスが3.0%up",
+      "adjacent": [
+        "L1",
+        "L3",
+        "K2",
+        "M2"
+      ]
+    },
+    {
+      "id": "M2",
+      "row": 2,
+      "col": 13,
+      "color": "leader",
+      "text": "ライブ関係なし",
+      "adjacent": [
+        "L2"
+      ]
+    },
+    {
+      "id": "J3",
+      "row": 3,
+      "col": 10,
+      "color": "leader",
+      "text": "全員の全パラ1.0%up",
+      "adjacent": [
+        "J2",
+        "K3"
+      ]
+    },
+    {
+      "id": "K3",
+      "row": 3,
+      "col": 11,
+      "color": "leader",
+      "text": "全員のテクニックが3.0%up",
+      "adjacent": [
+        "K2",
+        "K4",
+        "J3",
+        "L3"
+      ]
+    },
+    {
+      "id": "L3",
+      "row": 3,
+      "col": 12,
+      "color": "leader",
+      "text": "全員のスコアサポート効果3.0%",
+      "adjacent": [
+        "L2",
+        "K3"
+      ]
+    },
+    {
+      "id": "K4",
+      "row": 4,
+      "col": 11,
+      "color": "leader",
+      "text": "全員のスコアサポート効果4.0%",
+      "adjacent": [
+        "K3",
+        "K5"
+      ]
+    },
+    {
+      "id": "D5",
+      "row": 5,
+      "col": 4,
+      "color": "leader",
+      "text": "自分が楽曲歌唱者に含まれる時全員のセンス10.0%up",
+      "adjacent": [
+        "E5"
+      ]
+    },
+    {
+      "id": "E5",
+      "row": 5,
+      "col": 5,
+      "color": "leader",
+      "text": "全員のテクニック4.0%up",
+      "adjacent": [
+        "D5",
+        "F5"
+      ]
+    },
+    {
+      "id": "F5",
+      "row": 5,
+      "col": 6,
+      "color": "leader",
+      "text": "全員のテクニック150up",
+      "adjacent": [
+        "E5",
+        "G5"
+      ]
+    },
+    {
+      "id": "G5",
+      "row": 5,
+      "col": 7,
+      "color": "leader",
+      "text": "全員の全パラ70up",
+      "adjacent": [
+        "G6",
+        "F5"
+      ]
+    },
+    {
+      "id": "K5",
+      "row": 5,
+      "col": 11,
+      "color": "leader",
+      "text": "全員の全パラ1.0%up",
+      "adjacent": [
+        "K4",
+        "K6"
+      ]
+    },
+    {
+      "id": "N5",
+      "row": 5,
+      "col": 14,
+      "color": "leader",
+      "text": "ライブ関係なし",
+      "adjacent": [
+        "N6",
+        "O5"
+      ]
+    },
+    {
+      "id": "O5",
+      "row": 5,
+      "col": 15,
+      "color": "leader",
+      "text": "ライブ関係なし",
+      "adjacent": [
+        "N5",
+        "P5"
+      ]
+    },
+    {
+      "id": "P5",
+      "row": 5,
+      "col": 16,
+      "color": "leader",
+      "text": "ライブ関係なし",
+      "adjacent": [
+        "O5"
+      ]
+    },
+    {
+      "id": "G6",
+      "row": 6,
+      "col": 7,
+      "color": "leader",
+      "text": "全員のテクニック150up",
+      "adjacent": [
+        "G5",
+        "G7"
+      ]
+    },
+    {
+      "id": "K6",
+      "row": 6,
+      "col": 11,
+      "color": "leader",
+      "text": "全員のスコアサポート効果4.0%",
+      "adjacent": [
+        "K5",
+        "K7"
+      ]
+    },
+    {
+      "id": "N6",
+      "row": 6,
+      "col": 14,
+      "color": "leader",
+      "text": "ライブ関係なし",
+      "adjacent": [
+        "N5",
+        "N7"
+      ]
+    },
+    {
+      "id": "B7",
+      "row": 7,
+      "col": 2,
+      "color": "leader",
+      "text": "自分が楽曲歌唱者に含まれる時全員のパフォーマンス10.0%up",
+      "adjacent": [
+        "C7"
+      ]
+    },
+    {
+      "id": "C7",
+      "row": 7,
+      "col": 3,
+      "color": "leader",
+      "text": "全員のセンス4.0%up",
+      "adjacent": [
+        "B7",
+        "D7"
+      ]
+    },
+    {
+      "id": "D7",
+      "row": 7,
+      "col": 4,
+      "color": "leader",
+      "text": "全員のセンス150up",
+      "adjacent": [
+        "C7",
+        "E7"
+      ]
+    },
+    {
+      "id": "E7",
+      "row": 7,
+      "col": 5,
+      "color": "leader",
+      "text": "全員の全パラ70up",
+      "adjacent": [
+        "D7",
+        "F7"
+      ]
+    },
+    {
+      "id": "F7",
+      "row": 7,
+      "col": 6,
+      "color": "leader",
+      "text": "全員のセンス150up",
+      "adjacent": [
+        "E7",
+        "G7"
+      ]
+    },
+    {
+      "id": "G7",
+      "row": 7,
+      "col": 7,
+      "color": "leader",
+      "text": "全員の全パラ70up",
+      "adjacent": [
+        "G6",
+        "G8",
+        "F7",
+        "H7"
+      ]
+    },
+    {
+      "id": "H7",
+      "row": 7,
+      "col": 8,
+      "color": "leader",
+      "text": "全員のスコアサポート効果4.0%",
+      "adjacent": [
+        "G7",
+        "I7"
+      ]
+    },
+    {
+      "id": "I7",
+      "row": 7,
+      "col": 9,
+      "color": "leader",
+      "text": "全員の全パラ50up",
+      "adjacent": [
+        "I8",
+        "H7",
+        "J7"
+      ]
+    },
+    {
+      "id": "J7",
+      "row": 7,
+      "col": 10,
+      "color": "leader",
+      "text": "全員のスコアサポート効果2.0%",
+      "adjacent": [
+        "J8",
+        "I7",
+        "K7"
+      ]
+    },
+    {
+      "id": "K7",
+      "row": 7,
+      "col": 11,
+      "color": "leader",
+      "text": "全員のテクニック100up",
+      "adjacent": [
+        "K6",
+        "K8",
+        "J7",
+        "L7"
+      ]
+    },
+    {
+      "id": "L7",
+      "row": 7,
+      "col": 12,
+      "color": "leader",
+      "text": "全員の全パラ50up",
+      "adjacent": [
+        "L8",
+        "K7",
+        "M7"
+      ]
+    },
+    {
+      "id": "M7",
+      "row": 7,
+      "col": 13,
+      "color": "leader",
+      "text": "ライブ関係なし",
+      "adjacent": [
+        "M8",
+        "L7",
+        "N7"
+      ]
+    },
+    {
+      "id": "N7",
+      "row": 7,
+      "col": 14,
+      "color": "leader",
+      "text": "ライブ関係なし",
+      "adjacent": [
+        "N6",
+        "N8",
+        "M7",
+        "O7"
+      ]
+    },
+    {
+      "id": "O7",
+      "row": 7,
+      "col": 15,
+      "color": "leader",
+      "text": "ライブ関係なし",
+      "adjacent": [
+        "O8",
+        "N7",
+        "P7"
+      ]
+    },
+    {
+      "id": "P7",
+      "row": 7,
+      "col": 16,
+      "color": "leader",
+      "text": "ライブ関係なし",
+      "adjacent": [
+        "P8",
+        "O7",
+        "Q7"
+      ]
+    },
+    {
+      "id": "Q7",
+      "row": 7,
+      "col": 17,
+      "color": "leader",
+      "text": "ライブ関係なし",
+      "adjacent": [
+        "Q8",
+        "P7"
+      ]
+    },
+    {
+      "id": "G8",
+      "row": 8,
+      "col": 7,
+      "color": "leader",
+      "text": "全員のパフォーマンス150up",
+      "adjacent": [
+        "G7",
+        "G9"
+      ]
+    },
+    {
+      "id": "I8",
+      "row": 8,
+      "col": 9,
+      "color": "leader",
+      "text": "全員の全パラ50up",
+      "adjacent": [
+        "I7",
+        "J8"
+      ]
+    },
+    {
+      "id": "J8",
+      "row": 8,
+      "col": 10,
+      "color": "leader",
+      "text": "全員のパフォーマンス100up",
+      "adjacent": [
+        "J7",
+        "I8",
+        "K8"
+      ]
+    },
+    {
+      "id": "K8",
+      "row": 8,
+      "col": 11,
+      "color": "connect",
+      "text": "コネクト3",
+      "adjacent": [
+        "K7",
+        "K9",
+        "J8",
+        "L8"
+      ]
+    },
+    {
+      "id": "L8",
+      "row": 8,
+      "col": 12,
+      "color": "leader",
+      "text": "全員のセンス100up",
+      "adjacent": [
+        "L7",
+        "K8",
+        "M8"
+      ]
+    },
+    {
+      "id": "M8",
+      "row": 8,
+      "col": 13,
+      "color": "leader",
+      "text": "全員の全パラ50up",
+      "adjacent": [
+        "M7",
+        "L8",
+        "N8"
+      ]
+    },
+    {
+      "id": "N8",
+      "row": 8,
+      "col": 14,
+      "color": "leader",
+      "text": "ライブ関係なし",
+      "adjacent": [
+        "N7",
+        "N9",
+        "M8",
+        "O8"
+      ]
+    },
+    {
+      "id": "O8",
+      "row": 8,
+      "col": 15,
+      "color": "leader",
+      "text": "ライブ関係なし",
+      "adjacent": [
+        "O7",
+        "N8",
+        "P8"
+      ]
+    },
+    {
+      "id": "P8",
+      "row": 8,
+      "col": 16,
+      "color": "leader",
+      "text": "ライブ関係なし",
+      "adjacent": [
+        "P7",
+        "O8",
+        "Q8"
+      ]
+    },
+    {
+      "id": "Q8",
+      "row": 8,
+      "col": 17,
+      "color": "leader",
+      "text": "ライブ関係なし",
+      "adjacent": [
+        "Q7",
+        "P8"
+      ]
+    },
+    {
+      "id": "D9",
+      "row": 9,
+      "col": 4,
+      "color": "leader",
+      "text": "自分が楽曲歌唱者に含まれる時全員のテクニック10.0%up",
+      "adjacent": [
+        "E9"
+      ]
+    },
+    {
+      "id": "E9",
+      "row": 9,
+      "col": 5,
+      "color": "leader",
+      "text": "全員のパフォーマンス4.0%up",
+      "adjacent": [
+        "D9",
+        "F9"
+      ]
+    },
+    {
+      "id": "F9",
+      "row": 9,
+      "col": 6,
+      "color": "leader",
+      "text": "全員のパフォーマンス150up",
+      "adjacent": [
+        "E9",
+        "G9"
+      ]
+    },
+    {
+      "id": "G9",
+      "row": 9,
+      "col": 7,
+      "color": "leader",
+      "text": "全員の全パラ70up",
+      "adjacent": [
+        "G8",
+        "F9"
+      ]
+    },
+    {
+      "id": "K9",
+      "row": 9,
+      "col": 11,
+      "color": "leader",
+      "text": "全員のパフォーマンス100up",
+      "adjacent": [
+        "K8",
+        "K10"
+      ]
+    },
+    {
+      "id": "N9",
+      "row": 9,
+      "col": 14,
+      "color": "leader",
+      "text": "ライブ関係なし",
+      "adjacent": [
+        "N8",
+        "N10"
+      ]
+    },
+    {
+      "id": "K10",
+      "row": 10,
+      "col": 11,
+      "color": "leader",
+      "text": "全員のパフォーマンス100up",
+      "adjacent": [
+        "K9",
+        "K11"
+      ]
+    },
+    {
+      "id": "N10",
+      "row": 10,
+      "col": 14,
+      "color": "leader",
+      "text": "ライブ関係なし",
+      "adjacent": [
+        "N9",
+        "O10"
+      ]
+    },
+    {
+      "id": "O10",
+      "row": 10,
+      "col": 15,
+      "color": "leader",
+      "text": "ライブ関係なし",
+      "adjacent": [
+        "N10",
+        "P10"
+      ]
+    },
+    {
+      "id": "P10",
+      "row": 10,
+      "col": 16,
+      "color": "leader",
+      "text": "ライブ関係なし",
+      "adjacent": [
+        "O10"
+      ]
+    },
+    {
+      "id": "K11",
+      "row": 11,
+      "col": 11,
+      "color": "leader",
+      "text": "全員のパフォーマンス100up",
+      "adjacent": [
+        "K10",
+        "K12"
+      ]
+    },
+    {
+      "id": "B12",
+      "row": 12,
+      "col": 2,
+      "color": "song",
+      "text": "全体楽曲をプレイ時スコア0.5%up",
+      "adjacent": [
+        "C12"
+      ]
+    },
+    {
+      "id": "C12",
+      "row": 12,
+      "col": 3,
+      "color": "song",
+      "text": "ライブ関係なし",
+      "adjacent": [
+        "B12",
+        "D12"
+      ]
+    },
+    {
+      "id": "D12",
+      "row": 12,
+      "col": 4,
+      "color": "song",
+      "text": "全体楽曲をプレイ時スコア0.1%up",
+      "adjacent": [
+        "D13",
+        "C12",
+        "E12"
+      ]
+    },
+    {
+      "id": "E12",
+      "row": 12,
+      "col": 5,
+      "color": "song",
+      "text": "ライブ関係なし",
+      "adjacent": [
+        "D12",
+        "F12"
+      ]
+    },
+    {
+      "id": "F12",
+      "row": 12,
+      "col": 6,
+      "color": "song",
+      "text": "ライブ関係なし",
+      "adjacent": [
+        "E12"
+      ]
+    },
+    {
+      "id": "K12",
+      "row": 12,
+      "col": 11,
+      "color": "leader",
+      "text": "全員のテクニック100up",
+      "adjacent": [
+        "K11",
+        "K13"
+      ]
+    },
+    {
+      "id": "P12",
+      "row": 12,
+      "col": 16,
+      "color": "self",
+      "text": "自分のAスキル発動頻度が4.0%up",
+      "adjacent": [
+        "Q12"
+      ]
+    },
+    {
+      "id": "Q12",
+      "row": 12,
+      "col": 17,
+      "color": "self",
+      "text": "自分のAスキル発動率が3.0%up",
+      "adjacent": [
+        "P12",
+        "R12"
+      ]
+    },
+    {
+      "id": "R12",
+      "row": 12,
+      "col": 18,
+      "color": "self",
+      "text": "自分のセンス150up",
+      "adjacent": [
+        "R13",
+        "Q12",
+        "S12"
+      ]
+    },
+    {
+      "id": "S12",
+      "row": 12,
+      "col": 19,
+      "color": "self",
+      "text": "自分のAスキル発動率が3.0%up",
+      "adjacent": [
+        "R12",
+        "T12"
+      ]
+    },
+    {
+      "id": "T12",
+      "row": 12,
+      "col": 20,
+      "color": "self",
+      "text": "自分のセンス5.0%up",
+      "adjacent": [
+        "S12"
+      ]
+    },
+    {
+      "id": "A13",
+      "row": 13,
+      "col": 1,
+      "color": "song",
+      "text": "ライブ関係なし",
+      "adjacent": [
+        "A14"
+      ]
+    },
+    {
+      "id": "D13",
+      "row": 13,
+      "col": 4,
+      "color": "song",
+      "text": "ライブ関係なし",
+      "adjacent": [
+        "D12",
+        "D14"
+      ]
+    },
+    {
+      "id": "J13",
+      "row": 13,
+      "col": 10,
+      "color": "leader",
+      "text": "全員のパフォーマンス100up",
+      "adjacent": [
+        "K13"
+      ]
+    },
+    {
+      "id": "K13",
+      "row": 13,
+      "col": 11,
+      "color": "leader",
+      "text": "自分が楽曲歌唱者に含まれる時全員のスコアサポート効果10.0%",
+      "adjacent": [
+        "K12",
+        "K14",
+        "J13",
+        "L13"
+      ]
+    },
+    {
+      "id": "L13",
+      "row": 13,
+      "col": 12,
+      "color": "leader",
+      "text": "全員のセンス100up",
+      "adjacent": [
+        "K13"
+      ]
+    },
+    {
+      "id": "R13",
+      "row": 13,
+      "col": 18,
+      "color": "self",
+      "text": "自分のAスキル発動率が2.0%up",
+      "adjacent": [
+        "R12",
+        "R14"
+      ]
+    },
+    {
+      "id": "U13",
+      "row": 13,
+      "col": 21,
+      "color": "self",
+      "text": "自分のアクティブスキル発動頻度が4.0%up",
+      "adjacent": [
+        "U14"
+      ]
+    },
+    {
+      "id": "A14",
+      "row": 14,
+      "col": 1,
+      "color": "song",
+      "text": "ライブ関係なし",
+      "adjacent": [
+        "A13",
+        "A15"
+      ]
+    },
+    {
+      "id": "C14",
+      "row": 14,
+      "col": 3,
+      "color": "song",
+      "text": "自分が楽曲歌唱者のソロ楽曲をプレイ時スコアボーナス0.5%up",
+      "adjacent": [
+        "C15",
+        "D14"
+      ]
+    },
+    {
+      "id": "D14",
+      "row": 14,
+      "col": 4,
+      "color": "song",
+      "text": "自分が楽曲歌唱者のソロ楽曲をプレイ時スコアボーナス0.5%up",
+      "adjacent": [
+        "D13",
+        "D15",
+        "C14"
+      ]
+    },
+    {
+      "id": "I14",
+      "row": 14,
+      "col": 9,
+      "color": "song",
+      "text": "全体楽曲をプレイ時スコア0.1%up",
+      "adjacent": [
+        "I15"
+      ]
+    },
+    {
+      "id": "K14",
+      "row": 14,
+      "col": 11,
+      "color": "leader",
+      "text": "全員の全パラ50up",
+      "adjacent": [
+        "K13",
+        "K15"
+      ]
+    },
+    {
+      "id": "M14",
+      "row": 14,
+      "col": 13,
+      "color": "self",
+      "text": "自分のパフォーマンス100up",
+      "adjacent": [
+        "M15"
+      ]
+    },
+    {
+      "id": "R14",
+      "row": 14,
+      "col": 18,
+      "color": "self",
+      "text": "自分のセンス150up",
+      "adjacent": [
+        "R13",
+        "R15",
+        "S14"
+      ]
+    },
+    {
+      "id": "S14",
+      "row": 14,
+      "col": 19,
+      "color": "self",
+      "text": "自分の全パラ50%up",
+      "adjacent": [
+        "S15",
+        "R14"
+      ]
+    },
+    {
+      "id": "U14",
+      "row": 14,
+      "col": 21,
+      "color": "self",
+      "text": "自分のAスキル発動率が3.0%up",
+      "adjacent": [
+        "U13",
+        "U15"
+      ]
+    },
+    {
+      "id": "A15",
+      "row": 15,
+      "col": 1,
+      "color": "song",
+      "text": "自分が楽曲歌唱者のソロ楽曲をプレイ時スコアボーナス0.5%up",
+      "adjacent": [
+        "A14",
+        "A16",
+        "B15"
+      ]
+    },
+    {
+      "id": "B15",
+      "row": 15,
+      "col": 2,
+      "color": "song",
+      "text": "ライブ関係なし",
+      "adjacent": [
+        "A15",
+        "C15"
+      ]
+    },
+    {
+      "id": "C15",
+      "row": 15,
+      "col": 3,
+      "color": "song",
+      "text": "自分が楽曲歌唱者のソロ楽曲をプレイ時スコアボーナス0.5%up",
+      "adjacent": [
+        "C14",
+        "C16",
+        "B15",
+        "D15"
+      ]
+    },
+    {
+      "id": "D15",
+      "row": 15,
+      "col": 4,
+      "color": "connect",
+      "text": "コネクト2",
+      "adjacent": [
+        "D14",
+        "D16",
+        "C15",
+        "E15"
+      ]
+    },
+    {
+      "id": "E15",
+      "row": 15,
+      "col": 5,
+      "color": "song",
+      "text": "ライブ関係なし",
+      "adjacent": [
+        "D15",
+        "F15"
+      ]
+    },
+    {
+      "id": "F15",
+      "row": 15,
+      "col": 6,
+      "color": "song",
+      "text": "自分が楽曲歌唱者のソロ楽曲をプレイ時スコアボーナス0.5%up",
+      "adjacent": [
+        "E15",
+        "G15"
+      ]
+    },
+    {
+      "id": "G15",
+      "row": 15,
+      "col": 7,
+      "color": "song",
+      "text": "自分が楽曲歌唱者のソロ楽曲をプレイ時スコアボーナス0.5%up",
+      "adjacent": [
+        "F15",
+        "H15"
+      ]
+    },
+    {
+      "id": "H15",
+      "row": 15,
+      "col": 8,
+      "color": "song",
+      "text": "自分が楽曲歌唱者のソロ楽曲をプレイ時スコアボーナス0.5%up",
+      "adjacent": [
+        "G15",
+        "I15"
+      ]
+    },
+    {
+      "id": "I15",
+      "row": 15,
+      "col": 9,
+      "color": "song",
+      "text": "自分が楽曲歌唱者のソロ楽曲をプレイ時スコアボーナス0.5%up",
+      "adjacent": [
+        "I14",
+        "I16",
+        "H15",
+        "J15"
+      ]
+    },
+    {
+      "id": "J15",
+      "row": 15,
+      "col": 10,
+      "color": "song",
+      "text": "自分が楽曲歌唱者のソロ楽曲をプレイ時スコアボーナス0.5%up",
+      "adjacent": [
+        "I15",
+        "K15"
+      ]
+    },
+    {
+      "id": "K15",
+      "row": 15,
+      "col": 11,
+      "color": "connect",
+      "text": "コネクト1",
+      "adjacent": [
+        "K14",
+        "K16",
+        "J15",
+        "L15"
+      ]
+    },
+    {
+      "id": "L15",
+      "row": 15,
+      "col": 12,
+      "color": "self",
+      "text": "自分の全パラ50up",
+      "adjacent": [
+        "K15",
+        "M15"
+      ]
+    },
+    {
+      "id": "M15",
+      "row": 15,
+      "col": 13,
+      "color": "self",
+      "text": "自分のセンス100up",
+      "adjacent": [
+        "M14",
+        "M16",
+        "L15",
+        "N15"
+      ]
+    },
+    {
+      "id": "N15",
+      "row": 15,
+      "col": 14,
+      "color": "self",
+      "text": "自分の全パラ50up",
+      "adjacent": [
+        "M15",
+        "O15"
+      ]
+    },
+    {
+      "id": "O15",
+      "row": 15,
+      "col": 15,
+      "color": "self",
+      "text": "自分の全パラ50up",
+      "adjacent": [
+        "N15",
+        "P15"
+      ]
+    },
+    {
+      "id": "P15",
+      "row": 15,
+      "col": 16,
+      "color": "self",
+      "text": "自分のAスキル発動率が6.0%up",
+      "adjacent": [
+        "O15",
+        "Q15"
+      ]
+    },
+    {
+      "id": "Q15",
+      "row": 15,
+      "col": 17,
+      "color": "self",
+      "text": "自分の全パラ50up",
+      "adjacent": [
+        "P15",
+        "R15"
+      ]
+    },
+    {
+      "id": "R15",
+      "row": 15,
+      "col": 18,
+      "color": "connect",
+      "text": "コネクト4",
+      "adjacent": [
+        "R14",
+        "R16",
+        "Q15",
+        "S15"
+      ]
+    },
+    {
+      "id": "S15",
+      "row": 15,
+      "col": 19,
+      "color": "self",
+      "text": "自分のパフォーマンス150up",
+      "adjacent": [
+        "S14",
+        "S16",
+        "R15",
+        "T15"
+      ]
+    },
+    {
+      "id": "T15",
+      "row": 15,
+      "col": 20,
+      "color": "self",
+      "text": "自分のAスキル発動率が2.0%up",
+      "adjacent": [
+        "S15",
+        "U15"
+      ]
+    },
+    {
+      "id": "U15",
+      "row": 15,
+      "col": 21,
+      "color": "self",
+      "text": "自分のパフォーマンス150up",
+      "adjacent": [
+        "U14",
+        "U16",
+        "T15"
+      ]
+    },
+    {
+      "id": "A16",
+      "row": 16,
+      "col": 1,
+      "color": "song",
+      "text": "ライブ関係なし",
+      "adjacent": [
+        "A15",
+        "A17"
+      ]
+    },
+    {
+      "id": "C16",
+      "row": 16,
+      "col": 3,
+      "color": "song",
+      "text": "自分が楽曲歌唱者のソロ楽曲をプレイ時スコアボーナス0.5%up",
+      "adjacent": [
+        "C15",
+        "D16"
+      ]
+    },
+    {
+      "id": "D16",
+      "row": 16,
+      "col": 4,
+      "color": "song",
+      "text": "自分が楽曲歌唱者のソロ楽曲をプレイ時スコアボーナス0.5%up",
+      "adjacent": [
+        "D15",
+        "D17",
+        "C16"
+      ]
+    },
+    {
+      "id": "I16",
+      "row": 16,
+      "col": 9,
+      "color": "song",
+      "text": "自分が楽曲歌唱者のユニット楽曲をプレイ時スコアボーナス1.0%up",
+      "adjacent": [
+        "I15"
+      ]
+    },
+    {
+      "id": "K16",
+      "row": 16,
+      "col": 11,
+      "color": "global",
+      "text": "全員の全パラ5up",
+      "adjacent": [
+        "K15",
+        "K17"
+      ]
+    },
+    {
+      "id": "M16",
+      "row": 16,
+      "col": 13,
+      "color": "self",
+      "text": "自分のテクニック100up",
+      "adjacent": [
+        "M15"
+      ]
+    },
+    {
+      "id": "R16",
+      "row": 16,
+      "col": 18,
+      "color": "self",
+      "text": "自分のテクニック150up",
+      "adjacent": [
+        "R15",
+        "R17",
+        "S16"
+      ]
+    },
+    {
+      "id": "S16",
+      "row": 16,
+      "col": 19,
+      "color": "self",
+      "text": "自分の全パラ50up",
+      "adjacent": [
+        "S15",
+        "R16"
+      ]
+    },
+    {
+      "id": "U16",
+      "row": 16,
+      "col": 21,
+      "color": "self",
+      "text": "自分のAスキル発動率が3.0%up",
+      "adjacent": [
+        "U15",
+        "U17"
+      ]
+    },
+    {
+      "id": "A17",
+      "row": 17,
+      "col": 1,
+      "color": "song",
+      "text": "自分が楽曲歌唱者のソロ楽曲をプレイ時スコアボーナス2.0%up",
+      "adjacent": [
+        "A16"
+      ]
+    },
+    {
+      "id": "D17",
+      "row": 17,
+      "col": 4,
+      "color": "song",
+      "text": "ライブ関係なし",
+      "adjacent": [
+        "D16",
+        "D18"
+      ]
+    },
+    {
+      "id": "J17",
+      "row": 17,
+      "col": 10,
+      "color": "global",
+      "text": "全員のテクニックが5up",
+      "adjacent": [
+        "K17"
+      ]
+    },
+    {
+      "id": "K17",
+      "row": 17,
+      "col": 11,
+      "color": "global",
+      "text": "全員のセンスが5up",
+      "adjacent": [
+        "K16",
+        "K18",
+        "J17",
+        "L17"
+      ]
+    },
+    {
+      "id": "L17",
+      "row": 17,
+      "col": 12,
+      "color": "global",
+      "text": "全員のパフォーマンスが5up",
+      "adjacent": [
+        "K17"
+      ]
+    },
+    {
+      "id": "R17",
+      "row": 17,
+      "col": 18,
+      "color": "self",
+      "text": "自分のAスキル発動率が2.0%up",
+      "adjacent": [
+        "R16",
+        "R18"
+      ]
+    },
+    {
+      "id": "U17",
+      "row": 17,
+      "col": 21,
+      "color": "self",
+      "text": "自分のパフォーマンス5.0%up",
+      "adjacent": [
+        "U16"
+      ]
+    },
+    {
+      "id": "B18",
+      "row": 18,
+      "col": 2,
+      "color": "song",
+      "text": "自分が楽曲歌唱者のユニット楽曲をプレイ時スコアボーナス2.0%up",
+      "adjacent": [
+        "C18"
+      ]
+    },
+    {
+      "id": "C18",
+      "row": 18,
+      "col": 3,
+      "color": "song",
+      "text": "ライブ関係なし",
+      "adjacent": [
+        "B18",
+        "D18"
+      ]
+    },
+    {
+      "id": "D18",
+      "row": 18,
+      "col": 4,
+      "color": "song",
+      "text": "自分が楽曲歌唱者のソロ楽曲をプレイ時スコアボーナス1.0%up",
+      "adjacent": [
+        "D17",
+        "C18",
+        "E18"
+      ]
+    },
+    {
+      "id": "E18",
+      "row": 18,
+      "col": 5,
+      "color": "song",
+      "text": "ライブ関係なし",
+      "adjacent": [
+        "D18",
+        "F18"
+      ]
+    },
+    {
+      "id": "F18",
+      "row": 18,
+      "col": 6,
+      "color": "song",
+      "text": "ライブ関係なし",
+      "adjacent": [
+        "E18"
+      ]
+    },
+    {
+      "id": "K18",
+      "row": 18,
+      "col": 11,
+      "color": "global",
+      "text": "全員の全パラ5up",
+      "adjacent": [
+        "K17",
+        "K19"
+      ]
+    },
+    {
+      "id": "P18",
+      "row": 18,
+      "col": 16,
+      "color": "self",
+      "text": "自分のアクティブスキル発動頻度が4.0%up",
+      "adjacent": [
+        "Q18"
+      ]
+    },
+    {
+      "id": "Q18",
+      "row": 18,
+      "col": 17,
+      "color": "self",
+      "text": "自分のAスキル発動率が3.0%up",
+      "adjacent": [
+        "P18",
+        "R18"
+      ]
+    },
+    {
+      "id": "R18",
+      "row": 18,
+      "col": 18,
+      "color": "self",
+      "text": "自分のテクニック150up",
+      "adjacent": [
+        "R17",
+        "Q18",
+        "S18"
+      ]
+    },
+    {
+      "id": "S18",
+      "row": 18,
+      "col": 19,
+      "color": "self",
+      "text": "自分のAスキル発動率が3.0%up",
+      "adjacent": [
+        "R18",
+        "T18"
+      ]
+    },
+    {
+      "id": "T18",
+      "row": 18,
+      "col": 20,
+      "color": "self",
+      "text": "自分のテクニック5.0%up",
+      "adjacent": [
+        "S18"
+      ]
+    },
+    {
+      "id": "K19",
+      "row": 19,
+      "col": 11,
+      "color": "global",
+      "text": "全員の全パラ5up",
+      "adjacent": [
+        "K18",
+        "K20"
+      ]
+    },
+    {
+      "id": "K20",
+      "row": 20,
+      "col": 11,
+      "color": "global",
+      "text": "全員の全パラ5up",
+      "adjacent": [
+        "K19",
+        "K21"
+      ]
+    },
+    {
+      "id": "J21",
+      "row": 21,
+      "col": 10,
+      "color": "global",
+      "text": "全員のテクニックが5up",
+      "adjacent": [
+        "J22",
+        "K21"
+      ]
+    },
+    {
+      "id": "K21",
+      "row": 21,
+      "col": 11,
+      "color": "global",
+      "text": "自分と同期生の全パラ50up",
+      "adjacent": [
+        "K20",
+        "K22",
+        "J21",
+        "L21"
+      ]
+    },
+    {
+      "id": "L21",
+      "row": 21,
+      "col": 12,
+      "color": "global",
+      "text": "全員のパフォーマンスが5up",
+      "adjacent": [
+        "L22",
+        "K21"
+      ]
+    },
+    {
+      "id": "H22",
+      "row": 22,
+      "col": 8,
+      "color": "global",
+      "text": "ライブ関係なし",
+      "adjacent": [
+        "I22"
+      ]
+    },
+    {
+      "id": "I22",
+      "row": 22,
+      "col": 9,
+      "color": "global",
+      "text": "全員の全パラ5up",
+      "adjacent": [
+        "H22",
+        "J22"
+      ]
+    },
+    {
+      "id": "J22",
+      "row": 22,
+      "col": 10,
+      "color": "global",
+      "text": "全員の全パラ5up",
+      "adjacent": [
+        "J21",
+        "J23",
+        "I22",
+        "K22"
+      ]
+    },
+    {
+      "id": "K22",
+      "row": 22,
+      "col": 11,
+      "color": "global",
+      "text": "自分と同期生の全パラ150up",
+      "adjacent": [
+        "K21",
+        "K23",
+        "J22",
+        "L22"
+      ]
+    },
+    {
+      "id": "L22",
+      "row": 22,
+      "col": 12,
+      "color": "global",
+      "text": "全員の全パラ5up",
+      "adjacent": [
+        "L21",
+        "L23",
+        "K22",
+        "M22"
+      ]
+    },
+    {
+      "id": "M22",
+      "row": 22,
+      "col": 13,
+      "color": "global",
+      "text": "全員の全パラ5up",
+      "adjacent": [
+        "L22",
+        "N22"
+      ]
+    },
+    {
+      "id": "N22",
+      "row": 22,
+      "col": 14,
+      "color": "global",
+      "text": "ライブ関係なし",
+      "adjacent": [
+        "M22"
+      ]
+    },
+    {
+      "id": "J23",
+      "row": 23,
+      "col": 10,
+      "color": "global",
+      "text": "ライブ関係なし",
+      "adjacent": [
+        "J22",
+        "J24",
+        "K23"
+      ]
+    },
+    {
+      "id": "K23",
+      "row": 23,
+      "col": 11,
+      "color": "global",
+      "text": "全員のセンスが10up",
+      "adjacent": [
+        "K22",
+        "K24",
+        "J23",
+        "L23"
+      ]
+    },
+    {
+      "id": "L23",
+      "row": 23,
+      "col": 12,
+      "color": "global",
+      "text": "ライブ関係なし",
+      "adjacent": [
+        "L22",
+        "L24",
+        "K23"
+      ]
+    },
+    {
+      "id": "J24",
+      "row": 24,
+      "col": 10,
+      "color": "global",
+      "text": "ライブ関係なし",
+      "adjacent": [
+        "J23",
+        "K24"
+      ]
+    },
+    {
+      "id": "K24",
+      "row": 24,
+      "col": 11,
+      "color": "global",
+      "text": "自分と同期生の全パラ100up",
+      "adjacent": [
+        "K23",
+        "J24",
+        "L24"
+      ]
+    },
+    {
+      "id": "L24",
+      "row": 24,
+      "col": 12,
+      "color": "global",
+      "text": "ライブ関係なし",
+      "adjacent": [
+        "L23",
+        "K24"
+      ]
+    }
+  ],
+  "legend": {
+    "leader": "リーダー時に発動",
+    "self": "編成時に本人へ発動",
+    "global": "未編成でも全体・本人・同期生へ発動",
+    "song": "対象楽曲プレイ時に発動"
+  }
+}
