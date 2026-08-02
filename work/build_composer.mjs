@@ -28,7 +28,7 @@ const cardConnectKey = card => {
   const match = String(card.display || "").match(/^(.*?)｜(.*?)\s*\[★/);
   return match ? connectKey(`${match[1]}（${match[2]}）`) : "";
 };
-const data = JSON.stringify({...rawData, version: "0.2.0", leaders: rawData.leaders.map(l => ({...l, memberImage: holomenImages[l.member] || ""})), board: boardData, cards: rawData.cards.map((c,i) => {
+const data = JSON.stringify({...rawData, version: "0.3.0", leaders: rawData.leaders.map(l => ({...l, memberImage: holomenImages[l.member] || ""})), board: boardData, cards: rawData.cards.map((c,i) => {
   const connect = connectEffects.get(cardConnectKey(c)) || null;
   const promiseMember = c.member === "オーロ・クロニー" || c.member === "ハコス・ベールズ";
   const tags = c.member === "白上フブキ" ? ["1期生", "ゲーマーズ"] : promiseMember ? [c.attribute, "Promise"] : (Array.isArray(c.tags) ? c.tags : (c.tag ? [c.tag] : []));
@@ -41,7 +41,7 @@ const html = String.raw`<!doctype html>
 <style>
 *{box-sizing:border-box}body{margin:0;background:#f4f7fa;color:#182636;font-family:-apple-system,BlinkMacSystemFont,"Noto Sans JP",Meiryo,sans-serif}header{background:#17324d;color:#fff;padding:18px clamp(14px,4vw,44px)}h1{margin:0;font-size:clamp(22px,3vw,32px)}header p{margin:6px 0 0;color:#dceaf2;font-size:13px}main{max-width:1500px;margin:auto;padding:14px}.layout{display:grid;grid-template-columns:380px 1fr;gap:14px}.panel{background:#fff;border:1px solid #d7e1e8;border-radius:8px;padding:14px;margin-bottom:14px;box-shadow:0 3px 12px #17324d0b}h2{font-size:16px;margin:0 0 10px}.fixed{display:grid;grid-template-columns:46px 1fr 27px;gap:6px;align-items:center;margin:7px 0}.fixed b,.muted,.small{font-size:11px;color:#637789}select,input{font:inherit}select,input[type=number]{width:100%;padding:8px;border:1px solid #becbd4;border-radius:6px;background:#fff;color:#182636}button{border:0;border-radius:6px;padding:8px 11px;background:#1d789f;color:#fff;font-weight:700;cursor:pointer}.ghost{background:#eaf1f5;color:#1d789f}.actions{display:flex;gap:7px;margin-top:10px}.toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.toolbar label{font-size:11px;color:#637789}.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.stat{background:#f5f9fb;border:1px solid #d7e1e8;border-radius:7px;padding:8px}.stat b,.stat span{display:block}.stat span{font-size:10px;color:#637789}.stat b{font-size:15px;margin-top:3px}.chips{display:flex;gap:5px;flex-wrap:wrap}.chip{display:inline-block;border-radius:99px;padding:5px 8px;font-size:11px;background:#e8eef2}.cute{background:#fde8ec;color:#a92e49}.pure{background:#e9ebff;color:#4650a8}.happy{background:#fff0d1;color:#945907}.slot{border:1px solid #d7e1e8;border-radius:7px;padding:9px;margin:7px 0}.slot h3{font-size:12px;margin:0 0 5px}.ok{color:#147553}.warn{color:#8d5b00;background:#fff7e7;border-radius:6px;padding:7px;font-size:11px;line-height:1.5}.condition{display:grid;grid-template-columns:1fr auto auto;gap:6px;align-items:center;border-bottom:1px solid #edf1f4;padding:6px 0;font-size:11px}.condition:last-child{border-bottom:0}.badge{font-size:10px;border-radius:99px;padding:3px 6px;background:#eaf1f5;color:#637789}.badge.ok{background:#e4f4ec}.badge.ng{background:#fff0d8;color:#8d5b00}.recommend{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;border-bottom:1px solid #edf1f4;padding:8px 0}.recommend:last-child{border-bottom:0}.recname{font-size:12px;font-weight:700}.reason{font-size:10px;color:#637789;margin-top:3px;line-height:1.45}.timeline{position:relative}.timeline canvas{display:block;width:100%;height:390px;border:1px solid #d7e1e8;border-radius:7px}.events{max-height:260px;overflow:auto;font-size:11px}.event{display:grid;grid-template-columns:62px 100px 1fr;gap:6px;padding:5px 0;border-bottom:1px solid #edf1f4}.event b{color:#1d789f}.legend{display:flex;gap:10px;flex-wrap:wrap;font-size:10px;color:#637789;margin:8px 0}.dot{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:3px;vertical-align:-1px}.spdot{background:#d66b31}.actdot{background:#2e9b75}.line{background:#17324d}.help{font-size:11px;color:#637789;line-height:1.55}@media(max-width:900px){.layout{grid-template-columns:1fr}}@media(max-width:560px){main{padding:8px}.summary{grid-template-columns:repeat(2,1fr)}.event{grid-template-columns:50px 82px 1fr}}
 </style><style>.cardgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:9px}.cardtile{position:relative;border:1px solid #d7e1e8;border-radius:8px;overflow:hidden;background:#fff}.cardtile.selected{outline:3px solid #1d789f}.cardart{width:100%;aspect-ratio:1.65;object-fit:cover;background:#eaf1f5;display:block}.cardfallback{width:100%;aspect-ratio:1.65;display:grid;place-items:center;background:#17324d;color:#fff;font-size:24px;font-weight:700}.cardcaption{padding:7px;font-size:11px;line-height:1.4}.cardcaption b{display:block}.cardbuttons{display:flex;gap:5px;padding:0 7px 7px}.cardbuttons button{font-size:10px;padding:5px 6px}.detailbox{background:#f5f9fb;border:1px solid #d7e1e8;border-radius:8px;padding:11px;font-size:11px;line-height:1.55}.detailbox h3{margin:0 0 6px;font-size:14px}.detailbox pre{white-space:pre-wrap;margin:5px 0 0;font:inherit}.slotgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.slotbox{min-height:48px;border:1px dashed #b9cbd5;border-radius:6px;padding:6px;font-size:10px}.slotbox b{display:block;color:#637789}.slotbox button{padding:2px 5px;font-size:10px;float:right}.detailbox{position:fixed;z-index:30;max-width:min(360px,calc(100vw - 20px));box-shadow:0 12px 30px #17324d33}</style></head><body>
-<header><h1>ホロドリ構成シミュレーター <span class="version">v0.2.0</span></h1><p>リーダーと5枚のサブを組みながら、条件・適応先・1曲分のスキル発動を確認します。</p></header>
+<header><h1>ホロドリ構成シミュレーター <span class="version">v0.3.0</span></h1><p>リーダーと5枚のサブを組みながら、条件・適応先・1曲分のスキル発動を確認します。</p></header>
 <main><div class="layout"><aside>
 <section class="panel"><h2>構成</h2><div class="fixed"><b>リーダー</b><select id="leader"></select><span id="leaderName" class="leader-name"></span><span id="leaderPortrait"></span></div><div id="slots"></div><div id="deck" class="chips" style="margin-top:10px"></div><div id="summary" class="summary" style="margin-top:10px"></div><div class="actions"><button id="reset" class="ghost">リセット</button><div class="relation-legend" aria-label="構成カード外周の説明"><span><i class="legend-ring condition-source"></i>条件元</span><span><i class="legend-ring condition-target"></i>条件先</span><span><i class="legend-ring effect-source"></i>適応元</span><span><i class="legend-ring effect-target"></i>適応先</span></div></div><p class="help">リーダーは衣装効果だけを提供します。サブに入れたカードだけが、基礎値・SP・アクティブ・パッシブを使います。</p></section>
 <section class="panel"><h2>曲シミュレーション</h2><div class="toolbar"><label>曲時間 <input id="song" type="number" value="120" min="1" style="width:78px"> 秒</label><label>低 <input id="low" type="number" value="10" style="width:55px">%</label><label>中 <input id="mid" type="number" value="25" style="width:55px">%</label><label>高 <input id="high" type="number" value="50" style="width:55px">%</label></div><p class="help">発動率は低・中・高を基準にし、SP中の発動率補正を掛けます。同時に有効なスコアUPは最大値だけを表示します。</p></section><section class="panel"><h2>条件と適応先</h2><div id="conditions"></div></section>
@@ -740,10 +740,143 @@ const eventVisualOutput18=eventVisualOutput17.replace('</head>',`<style>
     filter:none!important;
   }
 </style></head>`);
+const comparisonRuntime=String.raw`
+const compareState={selected:new Set(),initialized:false,settings:{song:120,low:10,mid:25,high:50,measureTotal:0,spMeasures:"",songKind:"",songSingers:""}};
+function compareMetrics(entry){
+  const previous={leader:S.leader,leaderCard:S.leaderCard,slots:[...S.slots]};
+  const state=cleanDeckState(entry.state);
+  if(!state)return null;
+  const oldInputs={song:$("song")?.value,low:$("low")?.value,mid:$("mid")?.value,high:$("high")?.value,measureTotal:$("measureTotal")?.value,spMeasures:$("spMeasures")?.value,songKind:$("songKind")?.value,songSingers:$("songSingers")?.value};
+  if($("song"))$("song").value=compareState.settings.song;if($("low"))$("low").value=compareState.settings.low;if($("mid"))$("mid").value=compareState.settings.mid;if($("high"))$("high").value=compareState.settings.high;
+  if($("measureTotal"))$("measureTotal").value=compareState.settings.measureTotal;if($("spMeasures"))$("spMeasures").value=compareState.settings.spMeasures;if($("songKind"))$("songKind").value=compareState.settings.songKind;if($("songSingers"))$("songSingers").value=compareState.settings.songSingers;
+  S.leader=state.leader;S.leaderCard=state.leaderCard;S.slots=[...state.slots];
+  const deck=chosen(),leader=lead(),sim=simulate(deck),fx=sim.effects||effectiveEffects(deck),missing=obligations(deck),base=deck.reduce((n,c)=>n+c.p+c.t+c.s,0),line=sim.line||[],activeSeconds=Array.from({length:sim.song||0},(_,sec)=>sim.bars?.some(b=>b.kind==="A"&&sec>=b.start&&sec<b.end)).filter(Boolean).length;
+  const result={name:entry.name,leader:leader?.member||"未指定",cards:deck.map(cardTitle),p:deck.reduce((n,c)=>n+c.p,0),t:deck.reduce((n,c)=>n+c.t,0),s:deck.reduce((n,c)=>n+c.s,0),base,boosted:fx.boostedParameter??base,ratio:fx.baseParameter?fx.boostedParameter/fx.baseParameter:1,expected:sim.expectedTotal??0,peak:line.length?Math.max(...line.map(x=>x.v)):0,averageUplift:line.length?line.reduce((n,x)=>n+x.v,0)/line.length:0,activeCoverage:sim.song?activeSeconds/sim.song:0,conditionCount:missing.filter(x=>x.type!=="target").length,targetCount:missing.filter(x=>x.type==="target").length,complete:missing.length===0,timeline:line,song:sim.song};
+  if($("song"))$("song").value=oldInputs.song;if($("low"))$("low").value=oldInputs.low;if($("mid"))$("mid").value=oldInputs.mid;if($("high"))$("high").value=oldInputs.high;
+  if($("measureTotal"))$("measureTotal").value=oldInputs.measureTotal;if($("spMeasures"))$("spMeasures").value=oldInputs.spMeasures;if($("songKind"))$("songKind").value=oldInputs.songKind;if($("songSingers"))$("songSingers").value=oldInputs.songSingers;
+  S.leader=previous.leader;S.leaderCard=previous.leaderCard;S.slots=previous.slots;
+  return result;
+}
+function renderCompareCharts(rows){
+  const box=$("compareChart");if(!box)return;
+  if(!rows.length){box.innerHTML="<p class='muted'>比較する構成を選択してください。</p>";return}
+  const metrics=[
+    ["P合計","p",x=>Math.round(x).toLocaleString()],
+    ["T合計","t",x=>Math.round(x).toLocaleString()],
+    ["S合計","s",x=>Math.round(x).toLocaleString()],
+    ["期待値合計スコア","expected",x=>x.toFixed(1)+" pt"],
+    ["補正後パラメータ合計","boosted",x=>Math.round(x).toLocaleString()],
+    ["パラメータ実質倍率","ratio",x=>x.toFixed(3)+"倍"],
+    ["期待スコアUP平均","averageUplift",x=>x.toFixed(2)+"%"],
+    ["期待スコアUPピーク","peak",x=>x.toFixed(2)+"%"],
+    ["Aスキル稼働率","activeCoverage",x=>(x*100).toFixed(1)+"%"],
+    ["条件成立率","conditionRate",x=>(x*100).toFixed(0)+"%"]
+  ];
+  box.innerHTML="<div class='compare-chart-grid'>"+metrics.map(([label,key,fmt])=>{const values=rows.map(x=>key==="conditionRate"?(x.conditionCount+x.targetCount===0?1:0):x[key]||0),max=Math.max(1,...values);return "<section class='compare-chart-card'><h3>"+label+"</h3>"+rows.map((x,i)=>{const value=values[i],width=Math.max(2,value/max*100);return "<div class='compare-bar-row'><span title='"+escBoard(x.name)+"'>"+escBoard(x.name)+"</span><div class='compare-bar-track'><i style='width:"+width.toFixed(2)+"%;background:hsl("+(198+i*42)+" 67% 43%)'></i></div><b>"+fmt(value)+"</b></div>"}).join("")+"</section>"}).join("")+"</div>";
+}
+function renderCompareTimeline(rows){
+  const cv=$("compareTimeline");if(!cv)return;const W=cv.clientWidth||900,H=330,ctx=cv.getContext("2d");cv.width=W*2;cv.height=H*2;ctx.scale(2,2);ctx.clearRect(0,0,W,H);if(!rows.length)return;
+  const song=Math.max(1,...rows.map(x=>x.song||compareState.settings.song)),left=56,right=16,top=50,bottom=36,w=W-left-right,h=H-top-bottom,max=Math.max(10,...rows.flatMap(x=>(x.timeline||[]).map(y=>y.v)))*1.12,scale=t=>left+w*t/song;
+  ctx.fillStyle="#17324d";ctx.font="bold 12px sans-serif";ctx.fillText("期待スコアUPの時間軸比較",8,18);ctx.font="10px sans-serif";ctx.strokeStyle="#d6e5ea";ctx.lineWidth=1;for(let t=0;t<=song;t+=10){const x=scale(t);ctx.beginPath();ctx.moveTo(x,top);ctx.lineTo(x,top+h);ctx.stroke();ctx.fillStyle="#637789";ctx.textAlign="center";ctx.fillText(t+"秒",x,top+h+17)}for(let i=0;i<=4;i++){const y=top+h*i/4;ctx.beginPath();ctx.moveTo(left,y);ctx.lineTo(left+w,y);ctx.stroke();ctx.textAlign="right";ctx.fillStyle="#637789";ctx.fillText((max*(1-i/4)).toFixed(0)+"%",left-7,y+3)}
+  rows.forEach((row,i)=>{const points=row.timeline||[];ctx.strokeStyle="hsl("+(198+i*42)+" 67% 43%)";ctx.lineWidth=2.5;ctx.beginPath();points.forEach((z,t)=>{const x=scale(t),y=top+h-(z.v/max*h);if(t)ctx.lineTo(x,y);else ctx.moveTo(x,y)});ctx.stroke();ctx.fillStyle=ctx.strokeStyle;ctx.fillRect(left+8+i*150,28,10,3);ctx.textAlign="left";ctx.font="10px sans-serif";ctx.fillText(row.name,left+22+i*150,32)});
+}
+function renderComparePage(){
+  const picker=$("compareDeckPicker"),table=$("compareTable");if(!picker||!table)return;
+  const saved=loadNamedDecks();
+  for(const id of [...compareState.selected])if(!saved.some(x=>x.id===id))compareState.selected.delete(id);
+  if(!compareState.initialized){saved.slice(0,3).forEach(x=>compareState.selected.add(x.id));compareState.initialized=true}
+  picker.innerHTML=saved.length?saved.map(x=>"<label class='compare-pick'><input type='checkbox' data-compare-id='"+escBoard(x.id)+"' "+(compareState.selected.has(x.id)?"checked":"")+"><span><b>"+escBoard(x.name)+"</b><small>"+new Date(x.savedAt||Date.now()).toLocaleString("ja-JP")+"</small></span></label>").join(""):"<p class='muted'>保存済みの構成がありません。編成作成ページで構成を保存してください。</p>";
+  if(!saved.length){table.innerHTML="";return}
+  const rows=saved.filter(x=>compareState.selected.has(x.id)).map(compareMetrics).filter(Boolean);
+  renderCompareCharts(rows);
+  renderCompareTimeline(rows);
+  table.innerHTML=rows.length?"<div class='compare-table-scroll'><table class='compare-table'><thead><tr><th>項目</th>"+rows.map(x=>"<th>"+escBoard(x.name)+"</th>").join("")+"</tr></thead><tbody>"+[
+    ["リーダー",x=>x.leader],["サブ編成",x=>x.cards.join("<br>")],["補正前パラメータ合計",x=>Math.round(x.base).toLocaleString()],["補正後パラメータ合計",x=>Math.round(x.boosted).toLocaleString()],["パラメータ実質倍率",x=>x.ratio.toFixed(3)+"倍"],["期待値合計スコア",x=>x.expected.toFixed(2)+" pt"],["不足条件",x=>x.conditionCount+"件"],["不足適応先",x=>x.targetCount+"件"],["状態",x=>x.complete?"全条件成立":"取りこぼしあり"]
+  ].map(([label,fn])=>"<tr><th>"+label+"</th>"+rows.map(x=>"<td>"+fn(x)+"</td>").join("")+"</tr>").join("")+"</tbody></table></div>":"<p class='muted'>比較する構成を選択してください。</p>";
+}
+function orderPermutations(items){const out=[];const walk=(rest,used)=>{if(!rest.length){out.push(used);return}for(let i=0;i<rest.length;i++)walk(rest.slice(0,i).concat(rest.slice(i+1)),used.concat(rest[i]))};walk(items,[]);return out}
+function applyDeckOrder(mode){
+  const deck=chosen();if(deck.length!==5||S._ordering)return;
+  S._ordering=true;const original=[...S.slots],perms=orderPermutations(original),leaderBefore=S.leader;let best=null;
+  for(const ids of perms){S.slots=ids;const sim=simulate(chosen()),line=sim.line||[],expected=sim.expectedTotal||0,values=line.map(x=>x.v),peak=values.length?Math.max(...values):0,min=values.length?Math.min(...values):0,mean=values.length?values.reduce((n,x)=>n+x,0)/values.length:0,sd=values.length?Math.sqrt(values.reduce((n,x)=>n+(x-mean)**2,0)/values.length):0;const score=mode==="stable"?min+mean*.2-sd*.45:mode==="upside"?peak*.75+expected*.25:expected;if(!best||score>best.score)best={ids:[...ids],score,expected,peak,min,sd}}
+  S.slots=best?.ids||original;S.leader=leaderBefore;S._ordering=false;fill();render();
+}
+function renderOrderTools(){
+  const panel=document.querySelector(".composition-area .panel"),actions=panel?.querySelector(".actions");if(!panel||!actions)return;
+  let box=$("deckOrderTools");if(!box){actions.insertAdjacentHTML("beforeend","<div id='deckOrderTools' class='order-tools'><span>並び替え</span><select id='orderMode'><option value='expected'>期待値重視</option><option value='stable'>安定重視</option><option value='upside'>上振れ重視</option></select><button type='button' class='ghost' data-order-apply>適用</button></div>");box=$("deckOrderTools");box.querySelector("[data-order-apply]").onclick=()=>{applyDeckOrder($("orderMode").value);fill();render();renderOrderTools()}}
+  const full=chosen().length===5;box.classList.toggle("is-ready",full);box.querySelector("[data-order-apply]").disabled=!full;
+}
+function ensureComparePage(){
+  if($("comparePage"))return;
+  const header=document.querySelector("header"),main=document.querySelector("main");
+  header?.insertAdjacentHTML("beforeend","<nav class='app-tabs' aria-label='画面切替'><button type='button' class='app-tab is-active' data-app-tab='build'>編成作成</button><button type='button' class='app-tab' data-app-tab='compare'>編成比較</button></nav>");
+  const page=document.createElement("section");page.id="comparePage";page.className="compare-page";page.hidden=true;page.innerHTML="<div class='compare-shell'><section class='panel'><div class='compare-title'><div><h2>編成比較</h2><p class='small'>保存した構成を複数選び、同じ条件で数値を比較できます。</p></div><button type='button' class='ghost' id='compareRefresh'>保存一覧を更新</button></div><div class='compare-song-settings'><b>比較条件</b><label>曲時間 <input id='compareSong' type='number' min='1' value='120'>秒</label><label>曲種別 <select id='compareSongKind'><option value=''>未指定</option><option value='solo'>ソロ</option><option value='unit'>ユニット</option><option value='all'>全体</option></select></label><label>歌唱者 <input id='compareSongSingers' type='text' placeholder='例: 兎田ぺこら, 宝鐘マリン'></label><label>全体小節数 <input id='compareMeasureTotal' type='number' min='0' value='0'>小節</label><label>SP小節 <input id='compareSpMeasures' type='text' placeholder='例: 8,24,40,56,72'></label><label>低 <input id='compareLow' type='number' value='10'>%</label><label>中 <input id='compareMid' type='number' value='25'>%</label><label>高 <input id='compareHigh' type='number' value='50'>%</label></div><div id='compareDeckPicker' class='compare-picker'></div></section><section class='panel'><canvas id='compareTimeline' class='compare-timeline' width='900' height='330'></canvas></section><section class='panel'><div id='compareChart'></div></section><section class='panel'><div id='compareTable'></div></section></div>";main?.insertAdjacentElement("afterend",page);
+  document.addEventListener("click",e=>{const tab=e.target.closest("[data-app-tab]");if(!tab)return;const compare=tab.dataset.appTab==="compare";document.body.classList.toggle("compare-mode",compare);document.querySelectorAll("[data-app-tab]").forEach(x=>x.classList.toggle("is-active",x===tab));if($("comparePage"))$("comparePage").hidden=!compare;if(main)main.hidden=compare;if(compare)renderComparePage()});
+  $("compareRefresh").onclick=()=>{compareState.initialized=false;renderComparePage()};
+  ["compareSong","compareLow","compareMid","compareHigh"].forEach(id=>$(id).addEventListener("input",e=>{const key=id.replace("compare","").toLowerCase();compareState.settings[key]=Math.max(0,+e.target.value||0);renderComparePage()}));
+  $("compareMeasureTotal").addEventListener("input",e=>{compareState.settings.measureTotal=Math.max(0,+e.target.value||0);renderComparePage()});
+  $("compareSpMeasures").addEventListener("input",e=>{compareState.settings.spMeasures=e.target.value;renderComparePage()});
+  $("compareSongKind").addEventListener("change",e=>{compareState.settings.songKind=e.target.value;renderComparePage()});
+  $("compareSongSingers").addEventListener("input",e=>{compareState.settings.songSingers=e.target.value;renderComparePage()});
+  $("compareDeckPicker").addEventListener("change",e=>{const input=e.target.closest("[data-compare-id]");if(!input)return;if(input.checked)compareState.selected.add(input.dataset.compareId);else compareState.selected.delete(input.dataset.compareId);renderComparePage()});
+  renderComparePage();
+}
+ensureComparePage();
+const renderBeforeOrderTools=render;
+render=function(){renderBeforeOrderTools();renderOrderTools()};
+renderOrderTools();
+`;
 const finalComposerOutput=eventVisualOutput18.replace('</head>',`<style>
   header{padding:7px clamp(10px,2vw,24px)!important}
   header h1{font-size:18px!important;line-height:1.15}
   header p{margin:2px 0 0!important;font-size:10px!important;line-height:1.2}
+  .app-tabs{display:flex;gap:4px;margin-top:6px}
+  .app-tab{padding:4px 10px!important;border:1px solid #6e9ab0;background:#234b66;color:#dceaf2;font-size:10px!important;line-height:1.2}
+  .app-tab.is-active{background:#fff;color:#17324d;border-color:#fff}
+  .compare-page{max-width:1500px;margin:auto;padding:14px}
+  .compare-shell{max-width:1500px;margin:auto}
+  .compare-title{display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .compare-title h2{margin:0 0 3px}
+  .compare-title p{margin:0}
+  .compare-picker{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+  .compare-song-settings{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:10px;padding:7px 9px;border:1px solid #d7e1e8;border-radius:6px;background:#f7fafb;font-size:10px;color:#637789}
+  .compare-song-settings b{color:#445b6d}
+  .compare-song-settings label{display:flex;align-items:center;gap:3px}
+  .compare-song-settings input{width:58px;padding:4px 5px;font-size:10px}
+  .compare-song-settings input[type=text]{width:190px}
+  .compare-song-settings select{width:auto;padding:4px 18px 4px 5px;font-size:10px}
+  .compare-timeline{display:block;width:100%;height:330px;border:1px solid #d7e1e8;border-radius:7px;background:#fbfdfe}
+  .compare-pick{display:flex;align-items:center;gap:6px;min-width:180px;padding:7px 9px;border:1px solid #d7e1e8;border-radius:6px;background:#f7fafb;cursor:pointer}
+  .compare-pick:has(input:checked){border-color:#1d789f;background:#eaf5f8;box-shadow:0 0 0 2px #d4edf2}
+  .compare-pick input{width:auto}
+  .compare-pick span{display:grid;gap:2px;min-width:0}
+  .compare-pick b{font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .compare-pick small{font-size:9px;color:#637789}
+  .compare-table-scroll{overflow:auto}
+  .compare-table{width:100%;min-width:620px;border-collapse:separate;border-spacing:0;font-size:11px}
+  .compare-table th,.compare-table td{padding:8px 9px;border-bottom:1px solid #e4ebef;border-right:1px solid #e4ebef;text-align:left;vertical-align:top}
+  .compare-table thead th{background:#17324d;color:#fff;font-size:11px;white-space:nowrap}
+  .compare-table thead th:first-child{border-top-left-radius:6px}
+  .compare-table thead th:last-child{border-top-right-radius:6px}
+  .compare-table tbody th{width:160px;background:#f3f8fa;color:#445b6d;white-space:nowrap}
+  .compare-table tbody td{background:#fff;line-height:1.55}
+  .compare-chart-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px}
+  .compare-chart-card{padding:9px;border:1px solid #d7e1e8;border-radius:7px;background:#f8fbfc}
+  .compare-chart-card h3{margin:0 0 8px;font-size:11px;color:#445b6d}
+  .compare-bar-row{display:grid;grid-template-columns:minmax(70px,110px) 1fr auto;gap:6px;align-items:center;margin:5px 0;font-size:9px}
+  .compare-bar-row>span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#445b6d}
+  .compare-bar-row>b{font-size:9px;color:#17324d;white-space:nowrap}
+  .compare-bar-track{height:9px;border-radius:99px;background:#e1ebef;overflow:hidden}
+  .compare-bar-track i{display:block;height:100%;border-radius:99px;min-width:2px}
+  .order-tools{display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin-top:6px;padding-top:6px;border-top:1px solid #edf1f4;color:#637789;font-size:10px}
+  .event-mode select{width:112px!important;min-width:112px!important;padding:4px 18px 4px 5px!important;font-size:9px!important}
+  .order-tools{display:flex;align-items:center;gap:4px;flex:0 1 auto;flex-wrap:nowrap;margin:0;padding:0 0 0 5px;border:0;border-left:1px solid #d7e1e8;white-space:nowrap}
+  .order-tools select,.order-tools button{height:24px;padding:3px 7px!important;font-size:10px!important;width:auto}
+  .order-tools label{display:flex;align-items:center;gap:3px;margin-left:3px}
+  .order-tools input{width:auto}
+  .order-tools:not(.is-ready){opacity:.7}
+  .compare-mode main{display:none}
+  @media(max-width:700px){.compare-page{padding:8px}.compare-title{align-items:flex-start;flex-direction:column}.compare-pick{min-width:calc(50% - 3px);flex:1}.compare-table{min-width:560px}}
   .composition-area .panel{position:relative}
   .composition-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 10px}
   .composition-heading h2{margin:0!important}
@@ -783,5 +916,5 @@ const finalComposerOutput=eventVisualOutput18.replace('</head>',`<style>
   .deck-storage-popover p{margin:8px 0 0;color:#637789;font-size:9px;line-height:1.4}
   @media(max-width:620px){.deck-storage-popover{top:34px;right:5px;width:calc(100% - 10px)}}
 </style></head>`);
-await fs.writeFile(path.join(out, "holodori_team_builder.html"), finalComposerOutput.replace("})();</script>", ";"+hoverDetailRuntime+hoverDetailBindRuntime+boardImageAccessRuntime+eventBonusRuntime+deckPersistenceRuntime+";})();</script>"), "utf8");
+await fs.writeFile(path.join(out, "holodori_team_builder.html"), finalComposerOutput.replace("})();</script>", ";"+hoverDetailRuntime+hoverDetailBindRuntime+boardImageAccessRuntime+eventBonusRuntime+deckPersistenceRuntime+comparisonRuntime+";})();</script>"), "utf8");
 console.log("wrote composer", JSON.parse(data).cards.length, "cards");
