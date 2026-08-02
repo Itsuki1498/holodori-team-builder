@@ -28,7 +28,7 @@ const cardConnectKey = card => {
   const match = String(card.display || "").match(/^(.*?)｜(.*?)\s*\[★/);
   return match ? connectKey(`${match[1]}（${match[2]}）`) : "";
 };
-const data = JSON.stringify({...rawData, version: "0.1.2", leaders: rawData.leaders.map(l => ({...l, memberImage: holomenImages[l.member] || ""})), board: boardData, cards: rawData.cards.map((c,i) => {
+const data = JSON.stringify({...rawData, version: "0.2.0", leaders: rawData.leaders.map(l => ({...l, memberImage: holomenImages[l.member] || ""})), board: boardData, cards: rawData.cards.map((c,i) => {
   const connect = connectEffects.get(cardConnectKey(c)) || null;
   const promiseMember = c.member === "オーロ・クロニー" || c.member === "ハコス・ベールズ";
   const tags = c.member === "白上フブキ" ? ["1期生", "ゲーマーズ"] : promiseMember ? [c.attribute, "Promise"] : (Array.isArray(c.tags) ? c.tags : (c.tag ? [c.tag] : []));
@@ -41,7 +41,7 @@ const html = String.raw`<!doctype html>
 <style>
 *{box-sizing:border-box}body{margin:0;background:#f4f7fa;color:#182636;font-family:-apple-system,BlinkMacSystemFont,"Noto Sans JP",Meiryo,sans-serif}header{background:#17324d;color:#fff;padding:18px clamp(14px,4vw,44px)}h1{margin:0;font-size:clamp(22px,3vw,32px)}header p{margin:6px 0 0;color:#dceaf2;font-size:13px}main{max-width:1500px;margin:auto;padding:14px}.layout{display:grid;grid-template-columns:380px 1fr;gap:14px}.panel{background:#fff;border:1px solid #d7e1e8;border-radius:8px;padding:14px;margin-bottom:14px;box-shadow:0 3px 12px #17324d0b}h2{font-size:16px;margin:0 0 10px}.fixed{display:grid;grid-template-columns:46px 1fr 27px;gap:6px;align-items:center;margin:7px 0}.fixed b,.muted,.small{font-size:11px;color:#637789}select,input{font:inherit}select,input[type=number]{width:100%;padding:8px;border:1px solid #becbd4;border-radius:6px;background:#fff;color:#182636}button{border:0;border-radius:6px;padding:8px 11px;background:#1d789f;color:#fff;font-weight:700;cursor:pointer}.ghost{background:#eaf1f5;color:#1d789f}.actions{display:flex;gap:7px;margin-top:10px}.toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.toolbar label{font-size:11px;color:#637789}.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.stat{background:#f5f9fb;border:1px solid #d7e1e8;border-radius:7px;padding:8px}.stat b,.stat span{display:block}.stat span{font-size:10px;color:#637789}.stat b{font-size:15px;margin-top:3px}.chips{display:flex;gap:5px;flex-wrap:wrap}.chip{display:inline-block;border-radius:99px;padding:5px 8px;font-size:11px;background:#e8eef2}.cute{background:#fde8ec;color:#a92e49}.pure{background:#e9ebff;color:#4650a8}.happy{background:#fff0d1;color:#945907}.slot{border:1px solid #d7e1e8;border-radius:7px;padding:9px;margin:7px 0}.slot h3{font-size:12px;margin:0 0 5px}.ok{color:#147553}.warn{color:#8d5b00;background:#fff7e7;border-radius:6px;padding:7px;font-size:11px;line-height:1.5}.condition{display:grid;grid-template-columns:1fr auto auto;gap:6px;align-items:center;border-bottom:1px solid #edf1f4;padding:6px 0;font-size:11px}.condition:last-child{border-bottom:0}.badge{font-size:10px;border-radius:99px;padding:3px 6px;background:#eaf1f5;color:#637789}.badge.ok{background:#e4f4ec}.badge.ng{background:#fff0d8;color:#8d5b00}.recommend{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;border-bottom:1px solid #edf1f4;padding:8px 0}.recommend:last-child{border-bottom:0}.recname{font-size:12px;font-weight:700}.reason{font-size:10px;color:#637789;margin-top:3px;line-height:1.45}.timeline{position:relative}.timeline canvas{display:block;width:100%;height:390px;border:1px solid #d7e1e8;border-radius:7px}.events{max-height:260px;overflow:auto;font-size:11px}.event{display:grid;grid-template-columns:62px 100px 1fr;gap:6px;padding:5px 0;border-bottom:1px solid #edf1f4}.event b{color:#1d789f}.legend{display:flex;gap:10px;flex-wrap:wrap;font-size:10px;color:#637789;margin:8px 0}.dot{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:3px;vertical-align:-1px}.spdot{background:#d66b31}.actdot{background:#2e9b75}.line{background:#17324d}.help{font-size:11px;color:#637789;line-height:1.55}@media(max-width:900px){.layout{grid-template-columns:1fr}}@media(max-width:560px){main{padding:8px}.summary{grid-template-columns:repeat(2,1fr)}.event{grid-template-columns:50px 82px 1fr}}
 </style><style>.cardgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:9px}.cardtile{position:relative;border:1px solid #d7e1e8;border-radius:8px;overflow:hidden;background:#fff}.cardtile.selected{outline:3px solid #1d789f}.cardart{width:100%;aspect-ratio:1.65;object-fit:cover;background:#eaf1f5;display:block}.cardfallback{width:100%;aspect-ratio:1.65;display:grid;place-items:center;background:#17324d;color:#fff;font-size:24px;font-weight:700}.cardcaption{padding:7px;font-size:11px;line-height:1.4}.cardcaption b{display:block}.cardbuttons{display:flex;gap:5px;padding:0 7px 7px}.cardbuttons button{font-size:10px;padding:5px 6px}.detailbox{background:#f5f9fb;border:1px solid #d7e1e8;border-radius:8px;padding:11px;font-size:11px;line-height:1.55}.detailbox h3{margin:0 0 6px;font-size:14px}.detailbox pre{white-space:pre-wrap;margin:5px 0 0;font:inherit}.slotgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.slotbox{min-height:48px;border:1px dashed #b9cbd5;border-radius:6px;padding:6px;font-size:10px}.slotbox b{display:block;color:#637789}.slotbox button{padding:2px 5px;font-size:10px;float:right}.detailbox{position:fixed;z-index:30;max-width:min(360px,calc(100vw - 20px));box-shadow:0 12px 30px #17324d33}</style></head><body>
-<header><h1>ホロドリ構成シミュレーター <span class="version">v0.1.2</span></h1><p>リーダーと5枚のサブを組みながら、条件・適応先・1曲分のスキル発動を確認します。</p></header>
+<header><h1>ホロドリ構成シミュレーター <span class="version">v0.2.0</span></h1><p>リーダーと5枚のサブを組みながら、条件・適応先・1曲分のスキル発動を確認します。</p></header>
 <main><div class="layout"><aside>
 <section class="panel"><h2>構成</h2><div class="fixed"><b>リーダー</b><select id="leader"></select><span id="leaderName" class="leader-name"></span><span id="leaderPortrait"></span></div><div id="slots"></div><div id="deck" class="chips" style="margin-top:10px"></div><div id="summary" class="summary" style="margin-top:10px"></div><div class="actions"><button id="reset" class="ghost">リセット</button><div class="relation-legend" aria-label="構成カード外周の説明"><span><i class="legend-ring condition-source"></i>条件元</span><span><i class="legend-ring condition-target"></i>条件先</span><span><i class="legend-ring effect-source"></i>適応元</span><span><i class="legend-ring effect-target"></i>適応先</span></div></div><p class="help">リーダーは衣装効果だけを提供します。サブに入れたカードだけが、基礎値・SP・アクティブ・パッシブを使います。</p></section>
 <section class="panel"><h2>曲シミュレーション</h2><div class="toolbar"><label>曲時間 <input id="song" type="number" value="120" min="1" style="width:78px"> 秒</label><label>低 <input id="low" type="number" value="10" style="width:55px">%</label><label>中 <input id="mid" type="number" value="25" style="width:55px">%</label><label>高 <input id="high" type="number" value="50" style="width:55px">%</label></div><p class="help">発動率は低・中・高を基準にし、SP中の発動率補正を掛けます。同時に有効なスコアUPは最大値だけを表示します。</p></section><section class="panel"><h2>条件と適応先</h2><div id="conditions"></div></section>
@@ -132,7 +132,13 @@ const inlineLegend='<div class="borderlegend inline-legend"><span class="legendf
 const legendStart=cardsControls.indexOf('<span class="legendframe conditionframe">');
 const normalizedCardsControls=legendStart>=0?cardsControls.slice(0,legendStart):cardsControls;
 const cardListSectionWithLegend=cardListSection.replace('<span class="small">編成済みは一覧から非表示</span>','<span class="small">編成済みは一覧から非表示</span>'+inlineLegend);
-const cardListWithSettings=cardListSectionWithLegend.replace('<div id="cardGrid"','<div class="card-list-settings">'+normalizedCardsControls+'</div><div id="cardGrid"');
+const cardListWithSettings=cardListSectionWithLegend
+  .replace('<div id="cardGrid"','<div class="card-list-settings">'+normalizedCardsControls+'</div><div id="cardGrid"')
+  .replace(
+    '<div class="toolbar" style="justify-content:space-between"><h2 style="margin:0">カードを選んで編成</h2><span class="small">編成済みは一覧から非表示</span>'+inlineLegend+'</div><div class="card-list-settings">',
+    '<div class="card-list-topline"><h2 style="margin:0">カードを選んで編成</h2><span class="small">編成済みは一覧から非表示</span>'+inlineLegend+'<div class="card-list-settings">'
+  )
+  .replace('<div class="card-list-settings">'+normalizedCardsControls+'</div><div id="cardGrid"','<div class="card-list-settings">'+normalizedCardsControls+'</div></div><div id="cardGrid"');
 const layoutOutput=reorderedOutput.replace(/<main>[\s\S]*?<\/main>/,'<main><div class="layout"><section class="top-composer"><div class="composition-area">'+compositionSectionWithBoard+'</div><aside class="condition-area">'+conditionSection+'</aside></section><section class="cards-full">'+cardListWithSettings+'</section><section class="workspace-bottom">'+timelineSection+simulationSectionWithSingers+'</section></div></main>');
 const compactOutput=layoutOutput.replace(/<p class="help">[\s\S]*?<\/p>/g,'').replace('<header><h1>ホロドリ構成シミュレーター</h1><p>リーダーと5枚のサブを組みながら、条件・適応先・1曲分のスキル発動を確認します。</p></header>','<header><h1>ホロドリ構成シミュレーター</h1></header>');
 const summaryOutput=compactOutput.replace('[["サブ枚数",deck.length+" / 5"],["基礎パラ",Math.round(base).toLocaleString()],["不足条件",missing.filter(x=>x.type!=="target").length],["不足適応先",missing.filter(x=>x.type==="target").length]]','[["総合",Math.round(base).toLocaleString()],["P合計",Math.round(deck.reduce((n,c)=>n+c.p,0)).toLocaleString()],["T合計",Math.round(deck.reduce((n,c)=>n+c.t,0)).toLocaleString()],["S合計",Math.round(deck.reduce((n,c)=>n+c.s,0)).toLocaleString()]]');
@@ -232,7 +238,7 @@ const sortFunction=String.raw`function sortCards(list){const rarity={"★5":0,"�
 const sortFunction2=sortFunction;
 const checkboxOutput=slotClickOutput.replace("$(\"cardSort\").onchange=e=>{S.sort=e.target.value;renderCards(chosen())};", "$(\"cardSort\").onchange=e=>{S.sort=e.target.value;renderCards(chosen())};$(\"sortChecks\").onclick=e=>{const input=e.target.dataset.sort?e.target:null;if(!input)return;Array.from($(\"sortChecks\").querySelectorAll(\"input[data-sort]\")).forEach(x=>x.checked=x===input);S.sort=input.dataset.sort;$(\"cardSort\").value=S.sort;renderCards(chosen())};").replace(">レアリティ → 期生</label>", ">レアリティ</label>");
 const controlsRuntimeOutput=slotClickOutput.replace(`$("cardSort").onchange=e=>{S.sort=e.target.value;renderCards(chosen())};`,`$("cardSort").onchange=e=>{S.sort=e.target.value;renderCards(chosen())};$("cardOrder").onchange=e=>{S.sort=e.target.value;$("cardSort").value=S.sort;renderCards(chosen())};$("filterChecks").onclick=e=>{const input=e.target.dataset.filter?e.target:null;if(!input)return;const f=S.filters||(S.filters={owned:false,event:false,rarity:[],type:[],main:[],generation:[],condition:false,target:false}),k=input.dataset.filter;if(k==="owned"||k==="event"||k==="condition"||k==="target")f[k]=input.checked;else{f[k]=Array.from($("filterChecks").querySelectorAll("input[data-filter]")).filter(x=>x.dataset.filter===k&&x.checked).map(x=>x.value)}renderCards(chosen())};$("clearOwned").onclick=()=>{S.owned=[];try{localStorage.removeItem("holodoriOwned")}catch{};renderCards(chosen())};`).replace(">レアリティ → 期生</label>", ">レアリティ</label>");
-const controlsRuntimeOutput2=controlsRuntimeOutput.replace('$("clearOwned").onclick=()=>{','$("filterToggle").onclick=e=>{e.stopPropagation();$("filterPopover").hidden=!$("filterPopover").hidden};$("filterPopover").onclick=e=>e.stopPropagation();document.addEventListener("click",e=>{const p=$("filterPopover");if(p&&!e.target.closest("#filterPopover")&&!e.target.closest("#filterToggle"))p.hidden=true});$("clearOwned").onclick=()=>{');
+const controlsRuntimeOutput2=controlsRuntimeOutput.replace('$("clearOwned").onclick=()=>{','$("filterToggle").onclick=e=>{e.stopPropagation();const p=$("filterPopover");p.hidden=!p.hidden;if(!p.hidden){const r=e.currentTarget.getBoundingClientRect();p.style.setProperty("left",Math.max(8,r.left)+"px","important");p.style.setProperty("top",(r.bottom+8)+"px","important");requestAnimationFrame(()=>{const w=p.offsetWidth,h=p.offsetHeight,left=Math.max(8,Math.min(window.innerWidth-w-8,r.left));let top=r.bottom+8;if(top+h>window.innerHeight-8)top=Math.max(8,r.top-h-8);p.style.setProperty("left",left+"px","important");p.style.setProperty("top",top+"px","important")})}};$("filterPopover").onclick=e=>e.stopPropagation();document.addEventListener("click",e=>{const p=$("filterPopover");if(p&&!e.target.closest("#filterPopover")&&!e.target.closest("#filterToggle"))p.hidden=true});$("clearOwned").onclick=()=>{');
 const conditionFunction2=conditionFunction.replace("+\"\">\"+(x.ok?", "+\"'>\"+(x.ok?");
 const conditionFunction3=conditionFunction2.replace('const body=rows.length?rows.map(', 'const pending=rows.filter(x=>!x.ok);const body=pending.length?pending.map(').replace(":\"<p class='muted'>条件なし</p>\"",":\"<p class='ok'>すべての条件・適応先が成立しています</p>\"");
 const graphFunctions3=graphFunctions2.replace('x0=62,w=W-78','x0=Math.min(150,Math.max(88,W*.18)),w=W-x0-16').replace('ctx.strokeStyle="#17324d";ctx.lineWidth=2;','ctx.strokeStyle="#0d789d";ctx.lineWidth=3;ctx.shadowColor="#0d789933";ctx.shadowBlur=6;').replace('ctx.fillStyle="#637789";ctx.fillText("0秒",x0,gy+gh+15);ctx.fillText(sim.song+"秒",x0+w-30,gy+gh+15);','ctx.save();ctx.fillStyle="#dcecf1";ctx.fillRect(x0,gy,w,gh);ctx.strokeStyle="#c5dbe3";ctx.lineWidth=1;ctx.textAlign="right";for(let yi=0;yi<=5;yi++){const py=gy+gh*yi/5;ctx.beginPath();ctx.moveTo(x0,py);ctx.lineTo(x0+w,py);ctx.stroke();ctx.fillStyle="#637789";ctx.fillText((max*(1-yi/5)).toFixed(1)+"%",x0-8,py+3)}const tick=10;ctx.textAlign="center";for(let t=0;t<=sim.song;t+=tick){const px=scale(t);ctx.beginPath();ctx.moveTo(px,30);ctx.lineTo(px,gy+gh);ctx.stroke();ctx.fillStyle="#637789";ctx.fillText(t+"秒",px,gy+gh+15)}ctx.restore();ctx.shadowBlur=0;').replace('text:c.active.text,value,prob','text:c.active.text,passiveText:deck.filter(o=>o.passive?.targetGroup&&o.passive.condition&&condOK(deck,o.passive.condition)).map(o=>o.member+" → "+o.passive.targetGroup+(o.passive.targetStat?" / "+o.passive.targetStat:"")).join(" / "),value,prob').replace('<div>"+b.text+"</div>','<div>"+b.text+"</div><div>パッシブ適応: "+(b.passiveText||"なし")+"</div>');
@@ -368,6 +374,136 @@ renderCards=function(deck){renderCardsBeforeEvent(deck);document.querySelectorAl
 const renderBoardEffectsSummaryBeforeEvent=renderBoardEffectsSummary;
 renderBoardEffectsSummary=function(){renderBoardEffectsSummaryBeforeEvent();const anchor=$("boardResetAll")||$("reset");if(!anchor)return;$("eventModeWrap")?.remove();anchor.insertAdjacentHTML("afterend","<label class='event-mode' id='eventModeWrap'>イベント<select id='eventMode'><option value='normal'>通常</option><option value='brandNewSummer'>ハロー！BrandNewSummer！</option></select></label>");const select=$("eventMode");select.value=selectedEvent()===EVENT_DEFINITIONS.brandNewSummer?"brandNewSummer":"normal";select.onchange=e=>{S.eventMode=e.target.value;try{localStorage.setItem("holodoriEventMode",S.eventMode)}catch{}render()}};
 renderCoverage=function(sim){const box=$("coverageSummary");if(!box)return;let noActive=0,spNoActive=0,spSeconds=0;for(let sec=0;sec<sim.song;sec++){const hasActive=sim.bars.some(b=>b.kind==="A"&&sec>=b.start&&sec<b.end),hasSP=sim.bars.some(b=>b.kind==="SP"&&sec>=b.start&&sec<b.end);if(!hasActive)noActive++;if(hasSP){spSeconds++;if(!hasActive)spNoActive++}}const pct=(value,total)=>total?((value/total)*100).toFixed(1)+"%":"-",fx=sim.effects||{},scoreNote=fx.eventScoreBonus?"<small>イベントスコア +"+fx.eventScoreBonus+"%</small>":"",rewardNote=fx.eventRewardPercent?"<small>Pt・バッジ +"+fx.eventRewardPercent+"%</small>":"<small>通常</small>";box.innerHTML="<div class='coverage-grid coverage-grid-event'><div class='coverage-stat'><span>Aスキルなし</span><b>"+noActive+"秒 / "+pct(noActive,sim.song)+"</b></div><div class='coverage-stat'><span>SP中にAスキルなし</span><b>"+spNoActive+"秒 / "+pct(spNoActive,spSeconds)+"</b></div><div class='coverage-stat'><span>実質スコア倍率</span><b>"+(sim.finalScoreMultiplier||1).toFixed(3)+"倍</b>"+scoreNote+"</div><div class='coverage-stat event-reward'><span>報酬倍率</span><b>×"+(fx.eventRewardMultiplier||1).toFixed(2)+"</b>"+rewardNote+"</div><div class='coverage-stat'><span>期待値合計スコア</span><b>"+(sim.expectedTotal||0).toFixed(2)+" pt</b></div></div>"};
+render();
+`;
+const deckPersistenceRuntime=String.raw`
+const deckStateStorageKey="holodoriCompositionStateV1";
+const namedDeckStorageKey="holodoriNamedCompositionsV1";
+let deckRestoreComplete=false;
+function cleanDeckState(raw){
+  if(!raw||typeof raw!=="object")return null;
+  const leader=L.some(x=>x.id===raw.leader)?raw.leader:"";
+  const leaderEntry=L.find(x=>x.id===leader);
+  const selectedLeaderCard=byId(raw.leaderCard);
+  const leaderCard=leaderEntry&&selectedLeaderCard?.member===leaderEntry.member?selectedLeaderCard.id:"";
+  const usedMembers=new Set();
+  const slots=Array.from({length:5},(_,i)=>{
+    const card=byId(raw.slots?.[i]);
+    if(!card||usedMembers.has(card.member))return "";
+    usedMembers.add(card.member);
+    return card.id;
+  });
+  const name=typeof raw.name==="string"?raw.name.trim().slice(0,40):"";
+  return {leader,leaderCard,slots,name,settings:raw.settings&&typeof raw.settings==="object"?raw.settings:{}};
+}
+function currentDeckState(){
+  const read=id=>$(id)?.value??"";
+  return {leader:S.leader,leaderCard:S.leaderCard,slots:[...S.slots],name:S.compositionName||"",settings:{song:read("song"),low:read("low"),mid:read("mid"),high:read("high"),measureTotal:read("measureTotal"),spMeasures:read("spMeasures"),songKind:read("songKind"),songSingers:read("songSingers"),eventMode:S.eventMode||"normal"}};
+}
+function applyDeckState(raw){
+  const state=cleanDeckState(raw);
+  if(!state)return false;
+  S.leader=state.leader;
+  S.leaderCard=state.leaderCard;
+  S.slots=state.slots;
+  S.compositionName=state.name;
+  const settings=state.settings||{};
+  for(const id of ["song","low","mid","high","measureTotal","spMeasures","songKind","songSingers"]){
+    if(settings[id]!==undefined&&$(id))$(id).value=settings[id];
+  }
+  if(typeof settings.eventMode==="string")S.eventMode=settings.eventMode;
+  return true;
+}
+function loadNamedDecks(){
+  try{
+    const saved=JSON.parse(localStorage.getItem(namedDeckStorageKey)||"[]");
+    return Array.isArray(saved)?saved.filter(x=>x&&typeof x.name==="string"&&cleanDeckState(x.state)):[];
+  }catch{return []}
+}
+function writeNamedDecks(decks){
+  try{localStorage.setItem(namedDeckStorageKey,JSON.stringify(decks))}catch{}
+}
+function saveCurrentDeckState(){
+  if(!deckRestoreComplete)return;
+  try{localStorage.setItem(deckStateStorageKey,JSON.stringify(currentDeckState()))}catch{}
+}
+function closeDeckPopover(){$("deckStoragePopover")?.remove()}
+function openDeckPopover(mode,anchor){
+  closeDeckPopover();
+  const saved=loadNamedDecks(),options=saved.map(x=>"<option value='"+escBoard(x.id)+"'>"+escBoard(x.name)+"</option>").join("");
+  const isSave=mode==="save",title=isSave?"編成を保存":"保存済み編成をロード";
+  const content=isSave
+    ?"<label>編成名<input id='deckName' maxlength='40' placeholder='例: ぺこら・スコア重視'></label><button type='button' id='deckSaveNamed'>保存</button>"
+    :"<label>保存済み編成<select id='deckSavedSelect'><option value=''>選択してください</option>"+options+"</select></label><div class='deck-popover-actions'><button type='button' id='deckLoadNamed'>ロード</button><button type='button' class='ghost' id='deckDeleteNamed'>削除</button></div>";
+  const panel=document.createElement("section");
+  panel.id="deckStoragePopover";
+  panel.className="deck-storage-popover";
+  panel.innerHTML="<div class='deck-popover-head'><b>"+title+"</b><button type='button' class='ghost' id='deckPopoverClose' aria-label='閉じる'>×</button></div><div class='deck-popover-body'>"+content+"</div><p>現在の構成は自動保存済みです。Cookieや外部送信は使わず、この端末内にのみ保存します。</p>";
+  const host=document.querySelector(".composition-area .panel");
+  host?.append(panel);
+  $("deckPopoverClose").onclick=closeDeckPopover;
+  if(isSave){
+    $("deckSaveNamed").onclick=()=>{
+      const name=$("deckName").value.trim();
+      if(!name){$("deckName").focus();return}
+      S.compositionName=name;
+      const decks=loadNamedDecks().filter(x=>x.name!==name);
+      decks.unshift({id:String(Date.now()),name,state:currentDeckState(),savedAt:new Date().toISOString()});
+      writeNamedDecks(decks);
+      closeDeckPopover();
+      fill();
+      render();
+    };
+    setTimeout(()=>$("deckName")?.focus(),0);
+  }else{
+    $("deckLoadNamed").onclick=()=>{
+      const entry=loadNamedDecks().find(x=>x.id===$("deckSavedSelect").value);
+      if(!entry)return;
+      applyDeckState(entry.state);
+      S.compositionName=entry.name;
+      closeDeckPopover();
+      fill();
+      render();
+    };
+    $("deckDeleteNamed").onclick=()=>{
+      const id=$("deckSavedSelect").value,entry=loadNamedDecks().find(x=>x.id===id);
+      if(!entry||!window.confirm("「"+entry.name+"」を削除しますか？"))return;
+      writeNamedDecks(loadNamedDecks().filter(x=>x.id!==id));
+      openDeckPopover("load",anchor);
+    };
+  }
+}
+function renderDeckStorage(){
+  $("deckStorage")?.remove();
+  $("deckSaveOpen")?.remove();
+  const eventWrap=$("eventModeWrap"),eventAnchor=eventWrap||document.querySelector(".composition-area .actions");
+  if(eventAnchor){
+    eventAnchor.insertAdjacentHTML("beforebegin","<button type='button' class='ghost deck-action-button' id='deckSaveOpen'>編成を保存</button>");
+    $("deckSaveOpen").onclick=e=>openDeckPopover("save",e.currentTarget);
+  }
+  const panel=document.querySelector(".composition-area .panel"),title=panel?.querySelector("h2");
+  if(!panel||!title)return;
+  let heading=panel.querySelector(".composition-heading");
+  if(!heading){
+    heading=document.createElement("div");
+    heading.className="composition-heading";
+    title.parentNode.insertBefore(heading,title);
+    heading.append(title);
+  }
+  heading.querySelector("#deckLoadOpen")?.remove();
+  heading.querySelector("#compositionDeckName")?.remove();
+  heading.insertAdjacentHTML("beforeend","<button type='button' class='ghost deck-action-button' id='deckLoadOpen'>ロード</button>");
+  $("deckLoadOpen").onclick=e=>openDeckPopover("load",e.currentTarget);
+  if(S.compositionName)$("deckLoadOpen").insertAdjacentHTML("beforebegin","<span id='compositionDeckName' class='composition-deck-name'>"+escBoard(S.compositionName)+"</span>");
+}
+document.addEventListener("click",e=>{const pop=$("deckStoragePopover");if(pop&&!e.target.closest("#deckStoragePopover")&&!e.target.closest("#deckSaveOpen")&&!e.target.closest("#deckLoadOpen"))closeDeckPopover()});
+try{applyDeckState(JSON.parse(localStorage.getItem(deckStateStorageKey)||"null"))}catch{}
+deckRestoreComplete=true;
+const renderBeforeDeckPersistence=render;
+render=function(){renderBeforeDeckPersistence();saveCurrentDeckState();renderDeckStorage()};
+const resetBeforeDeckName=$("reset")?.onclick;
+if(resetBeforeDeckName)$("reset").onclick=e=>{S.compositionName="";resetBeforeDeckName(e)};
+fill();
 render();
 `;
 const hoverDetailOutput=boardOutput14.replace('</head>','<style>.relation-frame,.relation-legend,.slotbox.has-relation .relation-frame{display:none!important}.slotbox.hover-cond-source,.slotbox.hover-cond-target,.slotbox.hover-effect-source,.slotbox.hover-effect-target{box-shadow:none!important}.cardbuttons [data-detail],.slot-detail,[data-leader-detail]{display:none!important}.cardbuttons{display:grid!important;grid-template-columns:minmax(57px,1.16fr) minmax(38px,.90fr) minmax(38px,.90fr)!important;gap:3px!important}.cardbuttons button{padding:3px 1px!important;font-size:9px!important}.cardbuttons .leader-action{order:-2;background:#176b95;color:#fff;border-color:#176b95}.cardbuttons [data-add]{order:-1;background:#187a55;color:#fff;border-color:#187a55}.cardbuttons [data-owned]{background:#f6efe0;color:#79591b;border-color:#d8bc7b}.leader-row{display:none!important}.cardart,.slotart{cursor:help}.selected-card-effect{margin-top:10px;padding-top:8px;border-top:1px solid #d7e1e8}.selected-card-effect h3{margin:0 0 5px;font-size:11px;color:#445b6d}.selected-card-effect>div{font-size:10px;line-height:1.5;color:#182636}.selected-card-effect h3+div h3{margin:0 0 4px;color:#17324d;font-size:12px}.selected-card-effect pre{margin:5px 0 0;white-space:pre-wrap;font:inherit;color:#445b6d}.selected-card-empty{color:#637789!important}.event-mode{display:inline-flex;align-items:center;gap:4px;margin-left:6px;font-size:10px;font-weight:700;color:#445b6d}.event-mode select{width:auto;min-width:132px;padding:4px 21px 4px 6px;font-size:10px;border-color:#7dceda;background:#f4fcfd}.cardtile.event-bonus-member{border:2px solid #22cfe1;box-shadow:0 0 0 2px #ff54c9,0 0 8px #22cfe1}.cardtile.event-bonus-card .cardbuttons{border-top:1px solid #22cfe1;background:linear-gradient(105deg,#ff54c9,#22cfe1,#c6ef36,#22cfe1,#ff54c9);background-size:260% 100%;animation:event-controls 2.4s linear infinite}.cardtile.event-bonus-card .cardbuttons button{box-shadow:0 0 0 1px #ffffffaa,0 0 5px #22cfe1}@keyframes event-controls{0%{background-position:0% 50%}100%{background-position:260% 50%}}.coverage-grid-event{grid-template-columns:repeat(5,minmax(0,1fr))!important}.coverage-stat small{display:block;margin-top:2px;font-size:8px;color:#637789;font-weight:600}.event-reward{background:#f4fcfd!important;border-color:#7dceda!important}.event-reward b{color:#087a8b}@media(max-width:880px){.coverage-grid-event{grid-template-columns:repeat(2,minmax(0,1fr))!important}.event-mode{margin:5px 0 0 6px}}</style></head>').replace('</script>','</script>');
@@ -604,5 +740,48 @@ const eventVisualOutput18=eventVisualOutput17.replace('</head>',`<style>
     filter:none!important;
   }
 </style></head>`);
-await fs.writeFile(path.join(out, "holodori_team_builder.html"), eventVisualOutput18.replace("})();</script>", ";"+hoverDetailRuntime+hoverDetailBindRuntime+boardImageAccessRuntime+eventBonusRuntime+";})();</script>"), "utf8");
+const finalComposerOutput=eventVisualOutput18.replace('</head>',`<style>
+  header{padding:7px clamp(10px,2vw,24px)!important}
+  header h1{font-size:18px!important;line-height:1.15}
+  header p{margin:2px 0 0!important;font-size:10px!important;line-height:1.2}
+  .composition-area .panel{position:relative}
+  .composition-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 10px}
+  .composition-heading h2{margin:0!important}
+  .composition-deck-name{min-width:0;padding:3px 6px;border-left:3px solid #1d789f;background:#f4fafc;color:#17324d;font-size:10px;font-weight:700;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .composition-heading #deckLoadOpen{margin-left:auto}
+  .deck-action-button,#reset,.board-reset-all{box-sizing:border-box;height:25px;padding:4px 7px!important;font-size:10px!important;line-height:1.2;white-space:nowrap}
+  .card-list-topline{display:flex;align-items:center;gap:6px;min-width:0;overflow-x:auto;overflow-y:visible;white-space:nowrap;padding:2px 0 6px}
+  .card-list-topline>h2{flex:0 0 auto}
+  .card-list-topline>.small{flex:0 0 auto}
+  .card-list-topline .inline-legend{display:flex!important;align-items:center;gap:4px;flex:0 0 auto;margin:0!important}
+  .card-list-topline .card-list-settings{display:flex;align-items:center;flex:0 0 auto;min-width:0;margin:0 0 0 auto!important}
+  .card-list-topline .cardcontrols{display:flex!important;align-items:center;flex-wrap:nowrap!important;gap:5px;margin:0!important;white-space:nowrap}
+  .card-list-topline .cardcontrols .filter-popover{white-space:normal}
+  .card-list-topline .cardcontrols>.filterchecks{display:none!important}
+  .card-list-topline .cardcontrols>.filter-popover .filterchecks{display:flex!important}
+  .card-list-topline .cardcontrols>.filter-popover{position:fixed!important;top:auto!important;left:auto!important;right:auto!important;transform:none!important;width:min(720px,calc(100vw - 24px));max-height:calc(100vh - 84px);overflow:auto;z-index:10000!important}
+  .card-list-topline .cardcontrols button,
+  .card-list-topline .cardcontrols select{box-sizing:border-box;height:25px;padding:4px 7px!important;font-size:10px!important;line-height:1.2;white-space:nowrap}
+  .card-list-topline .cardcontrols #filterToggle,
+  .card-list-topline .cardcontrols #clearOwned{min-width:58px}
+  .card-list-topline .cardcontrols #cardOrder{min-width:78px}
+  .card-list-topline .cardcontrols .small{flex:0 0 auto}
+  .card-list-topline .cardcontrols label{margin:0}
+  .card-list-topline{gap:4px;padding:0 0 2px;line-height:1}
+  .card-list-topline>h2{font-size:14px!important;line-height:1.15}
+  .card-list-topline>.small{font-size:9px!important;line-height:1.15}
+  .card-list-topline .inline-legend .legendframe{padding:1px 3px!important;line-height:1.1}
+  .card-list-topline .cardcontrols{gap:4px}
+  .deck-storage-popover{position:absolute;z-index:100;top:38px;right:10px;width:min(330px,calc(100% - 20px));padding:9px;border:1px solid #b9cbd5;border-radius:7px;background:#fff;box-shadow:0 10px 28px #17324d33}
+  .deck-popover-head{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:11px;color:#445b6d}
+  .deck-popover-head button{padding:2px 6px!important;font-size:12px!important}
+  .deck-popover-body{display:grid;gap:7px;margin-top:8px}
+  .deck-popover-body label{display:grid;gap:3px;color:#637789;font-size:10px}
+  .deck-popover-body input,.deck-popover-body select{width:100%;padding:5px 7px;font-size:11px}
+  .deck-popover-body button{padding:5px 8px;font-size:10px}
+  .deck-popover-actions{display:flex;justify-content:flex-end;gap:5px}
+  .deck-storage-popover p{margin:8px 0 0;color:#637789;font-size:9px;line-height:1.4}
+  @media(max-width:620px){.deck-storage-popover{top:34px;right:5px;width:calc(100% - 10px)}}
+</style></head>`);
+await fs.writeFile(path.join(out, "holodori_team_builder.html"), finalComposerOutput.replace("})();</script>", ";"+hoverDetailRuntime+hoverDetailBindRuntime+boardImageAccessRuntime+eventBonusRuntime+deckPersistenceRuntime+";})();</script>"), "utf8");
 console.log("wrote composer", JSON.parse(data).cards.length, "cards");
