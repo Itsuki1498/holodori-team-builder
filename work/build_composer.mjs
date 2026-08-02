@@ -930,5 +930,28 @@ const finalComposerOutput=eventVisualOutput18.replace('</head>',`<style>
   .deck-storage-popover p{margin:8px 0 0;color:#637789;font-size:9px;line-height:1.4}
   @media(max-width:620px){.deck-storage-popover{top:34px;right:5px;width:calc(100% - 10px)}}
 </style></head>`);
-await fs.writeFile(path.join(out, "holodori_team_builder.html"), finalComposerOutput.replace("})();</script>", ";"+hoverDetailRuntime+hoverDetailBindRuntime+boardImageAccessRuntime+eventBonusRuntime+deckPersistenceRuntime+comparisonRuntime+";})();</script>"), "utf8");
+const kiribanMarkup = `<div id="kiriban" class="kiriban" aria-live="polite" hidden><span class="kiriban-count"></span><span class="kiriban-message"></span><button type="button" class="kiriban-close" aria-label="閉じる">×</button></div>`;
+const kiribanStyle = `<style>
+.kiriban{position:fixed;right:16px;bottom:16px;z-index:12000;display:flex;align-items:center;gap:9px;max-width:min(420px,calc(100vw - 32px));padding:10px 12px;border:2px solid #f0b44d;border-radius:8px;background:linear-gradient(135deg,#fff8dc,#fff,#e8f5ff);color:#17324d;box-shadow:0 10px 28px #17324d35;font-size:12px;line-height:1.4;animation:kiriban-in .25s ease-out}.kiriban[hidden]{display:none}.kiriban-count{font-size:18px;font-weight:800;color:#c46c1a;white-space:nowrap}.kiriban-message{font-weight:700}.kiriban-close{margin-left:auto;padding:2px 6px;background:transparent;color:#637789;font-size:16px;line-height:1}.kiriban-close:hover{background:#edf3f6;color:#17324d}@keyframes kiriban-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.visitor-count{display:inline-flex;align-items:center;gap:4px;margin-left:9px;padding:2px 7px;border:1px solid #6e9ab0;border-radius:99px;color:#dceaf2;font-size:10px;vertical-align:middle}.visitor-count b{color:#fff;font-variant-numeric:tabular-nums}
+</style>`;
+const kiribanOutput = finalComposerOutput.replace('</head>', kiribanStyle+'</head>').replace('<header>', '<header>'+kiribanMarkup);
+const kiribanRuntime = `
+const kiriban=(function(){
+  const panel=document.getElementById("kiriban");
+  if(!panel)return null;
+  const count=document.createElement("span"); count.className="visitor-count"; count.innerHTML="来場 <b>---</b>";
+  const header=document.querySelector("header h1"); if(header)header.appendChild(count);
+  const totalNode=count.querySelector("b");
+  const message=panel.querySelector(".kiriban-message"), number=panel.querySelector(".kiriban-count");
+  panel.querySelector(".kiriban-close")?.addEventListener("click",()=>panel.hidden=true);
+  const show=n=>{number.textContent=n+"番";message.textContent="キリ番おめでとうございます！";panel.hidden=false;window.setTimeout(()=>{panel.hidden=true},9000)};
+  fetch("/api/visitor",{method:"POST",headers:{"accept":"application/json"}}).then(r=>r.ok?r.json():null).then(data=>{
+    if(!data||!Number.isFinite(data.total))return;
+    totalNode.textContent=Number(data.total).toLocaleString();
+    if(data.kiriban)show(data.kiriban);
+  }).catch(()=>{});
+  return true;
+})();`;
+await fs.writeFile(path.join(out, "holodori_team_builder.html"), kiribanOutput.replace("})();</script>", ";"+hoverDetailRuntime+hoverDetailBindRuntime+boardImageAccessRuntime+eventBonusRuntime+deckPersistenceRuntime+comparisonRuntime+kiribanRuntime+";})();</script>"), "utf8");
 console.log("wrote composer", JSON.parse(data).cards.length, "cards");

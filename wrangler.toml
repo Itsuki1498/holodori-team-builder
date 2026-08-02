@@ -1,0 +1,7 @@
+name = "holodori-team-builder"
+compatibility_date = "2026-08-02"
+pages_build_output_dir = "."
+
+[[kv_namespaces]]
+binding = "KIRIBAN"
+id = "c2bc3d4822e54236ba8b97943df4a402"
