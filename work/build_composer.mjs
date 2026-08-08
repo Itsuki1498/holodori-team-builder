@@ -416,7 +416,7 @@ const boardOutput13=boardOutput12.replace('</head>','<style>.leader-slot-head{di
 const boardOutput14=boardOutput13.replace('</head>','<style>.parameter-stat{cursor:help;position:relative}.parameter-tooltip{position:fixed;z-index:10000;max-width:min(560px,calc(100vw - 24px));max-height:70vh;overflow:auto;padding:10px 12px;background:#17324d;color:#fff;border-radius:7px;box-shadow:0 10px 26px #17324d55;font-size:10px;line-height:1.5;pointer-events:none}.parameter-tooltip b{font-size:11px}.parameter-tooltip span{color:#dceaf2}.parameter-tooltip hr{border:0;border-top:1px solid #6d899b;margin:7px 0}</style></head>');
 const hoverDetailRuntime=String.raw`const detailTextForCard=card=>{if(!card)return"";const leader=L.find(x=>x.id==="L:"+card.id)||L.find(x=>x.member===card.member);const safe=s=>typeof escBoard==="function"?escBoard(s):String(s??"");return"<h3>"+safe(cardTitle(card))+"</h3><pre>リーダースキル: "+safe(leader?.leaderRaw||card.leaderRaw||"なし")+"\nパッシブ: "+safe(card.passive?.text||"なし")+"\nアクティブ: "+safe(card.active?.text||"なし")+"\nスペシャル: "+safe(card.special?.text||"なし")+"</pre>"};const stripDetailButtons=()=>document.querySelectorAll("[data-detail],[data-slot-detail],[data-leader-detail]").forEach(x=>x.remove());stripDetailButtons();new MutationObserver(stripDetailButtons).observe(document.body,{childList:true,subtree:true});const cardFromImage=img=>{const direct=img?.dataset?.board||img?.closest?.(".cardtile")?.dataset?.add;if(direct)return byId(direct);const box=img?.closest?.(".slotbox");if(!box)return null;if(box.dataset.leaderSlot!==undefined){const l=lead();return l?C.find(c=>c.id===S.leaderCard)||C.find(c=>c.member===l.member):null}const boxes=[...document.querySelectorAll("#slots .slotbox:not([data-leader-slot])")],i=boxes.indexOf(box);return i>=0?byId(S.slots[i]):null};const closeHoverDetail=()=>{};const showHoverDetail=img=>{const card=cardFromImage(img),area=$("selectedCardEffect");if(card&&area)area.innerHTML=detailTextForCard(card)};document.addEventListener("pointerover",e=>{const img=e.target?.closest?.(".cardart,.slotart");if(img)showHoverDetail(img)},true);`;
 const hoverDetailBindRuntime=String.raw`const removeCardHoverTip=()=>{};`;
-const boardImageAccessRuntime=String.raw`document.addEventListener("click",e=>{const image=e.target?.closest?.("#cardGrid .cardart,#slots .slotart");if(!image)return;if(manualOrderMode&&image.closest("#slots"))return;const card=cardFromImage(image),box=$("detailPanel");if(!card||!box)return;e.preventDefault();e.stopImmediatePropagation();removeCardHoverTip();box.dataset.boardOrigin=image.closest("[data-leader-slot]")?"leader":"card";renderBoard(card,box,image.getBoundingClientRect())},true);`;
+const boardImageAccessRuntime=String.raw`document.addEventListener("dragstart",e=>{if(e.target?.closest?.("#slots .slotart"))e.preventDefault()},true);document.addEventListener("contextmenu",e=>{if(e.target?.closest?.("#slots .slotart"))e.preventDefault()},true);document.addEventListener("click",e=>{const image=e.target?.closest?.("#cardGrid .cardart,#slots .slotart");if(!image)return;const card=cardFromImage(image),box=$("detailPanel");if(!card||!box)return;e.preventDefault();e.stopImmediatePropagation();removeCardHoverTip();box.dataset.boardOrigin=image.closest("[data-leader-slot]")?"leader":"card";renderBoard(card,box,image.getBoundingClientRect())},true);`;
 const eventBonusRuntime=String.raw`
 const EVENT_DEFINITIONS={
   normal:{name:"通常",cardIds:[],members:[],cardRewardPercent:0,memberRewardPercent:0,scoreBonusPercent:0},
@@ -954,15 +954,13 @@ function renderComparePage(){
   ].map(([label,fn])=>"<tr><th>"+label+"</th>"+rows.map(x=>"<td>"+fn(x)+"</td>").join("")+"</tr>").join("")+"</tbody></table></div>":"<p class='muted'>比較する構成を選択してください。</p>";
 }
 let manualOrderPick=-1;
-let manualOrderMode=false;
 function clearManualOrderPick(){manualOrderPick=-1;document.querySelectorAll("#slots .manual-order-picked").forEach(x=>x.classList.remove("manual-order-picked"))}
 function manualOrderSlotIndex(box){const boxes=[...document.querySelectorAll("#slots .slotbox:not([data-leader-slot])")];return boxes.indexOf(box)}
 function bindManualOrder(){
   const slots=$("slots");if(!slots||slots.dataset.manualOrderBound)return;
   slots.dataset.manualOrderBound="1";
   slots.addEventListener("click",e=>{
-    if(!manualOrderMode)return;
-    if(e.target.closest("button,#cardGrid [data-board],.slot-owned,.slot-detail,.slot-clear,[data-clear],[data-leader-slot]"))return;
+    if(e.target.closest("button,.slot-owned,.slot-detail,.slot-clear,[data-clear],[data-leader-slot],.slotart"))return;
     const box=e.target.closest("#slots .slotbox:not([data-leader-slot])"),index=manualOrderSlotIndex(box);
     if(!box||index<0||!S.slots[index])return;
     e.preventDefault();e.stopPropagation();
@@ -980,9 +978,9 @@ function applyDeckOrder(mode){
 }
 function renderOrderTools(){
   const panel=document.querySelector(".composition-area .panel"),actions=panel?.querySelector(".actions");if(!panel||!actions)return;
-  let box=$("deckOrderTools");if(!box){actions.insertAdjacentHTML("beforeend","<div id='deckOrderTools' class='order-tools'><span>並べ替え</span><select id='orderMode'><option value='expected'>期待値重視</option><option value='stable'>安定重視</option><option value='upside'>上振れ重視</option></select><button type='button' class='ghost' data-order-apply>適用</button><button type='button' class='manual-order-toggle ghost' data-manual-toggle aria-pressed='false'>手動OFF</button><span class='manual-order-hint' hidden>サブを2枚クリックして入れ替え</span></div>");box=$("deckOrderTools");box.querySelector("[data-order-apply]").onclick=()=>{applyDeckOrder($("orderMode").value);fill();render();renderOrderTools()};box.querySelector("#orderMode").onchange=()=>{clearManualOrderPick();renderOrderTools()};box.querySelector("[data-manual-toggle]").onclick=()=>{manualOrderMode=!manualOrderMode;clearManualOrderPick();renderOrderTools()}}
+  let box=$("deckOrderTools");if(!box){actions.insertAdjacentHTML("beforeend","<div id='deckOrderTools' class='order-tools'><span>並べ替え</span><select id='orderMode'><option value='expected'>期待値重視</option><option value='stable'>安定重視</option><option value='upside'>上振れ重視</option></select><button type='button' class='ghost' data-order-apply>適用</button><span class='manual-order-hint'>手動: サブを2枚クリックして入れ替え</span></div>");box=$("deckOrderTools");box.querySelector("[data-order-apply]").onclick=()=>{applyDeckOrder($("orderMode").value);fill();render();renderOrderTools()};box.querySelector("#orderMode").onchange=()=>{clearManualOrderPick();renderOrderTools()}}
   bindManualOrder();
-  const full=chosen().length===5,apply=box.querySelector("[data-order-apply]"),manualToggle=box.querySelector("[data-manual-toggle]"),hint=box.querySelector(".manual-order-hint");box.classList.toggle("is-ready",full);box.classList.toggle("is-manual",manualOrderMode);apply.disabled=!full||manualOrderMode;$("orderMode").disabled=manualOrderMode;manualToggle.classList.toggle("is-on",manualOrderMode);manualToggle.setAttribute("aria-pressed",manualOrderMode?"true":"false");manualToggle.textContent=manualOrderMode?"手動ON":"手動OFF";hint.hidden=!manualOrderMode||chosen().length<2;
+  const full=chosen().length===5,apply=box.querySelector("[data-order-apply]");box.classList.toggle("is-ready",full);apply.disabled=!full;
   if(manualOrderPick>=0){const boxes=[...document.querySelectorAll("#slots .slotbox:not([data-leader-slot])")];boxes[manualOrderPick]?.classList.add("manual-order-picked")}
 }
 function ensureComparePage(){
@@ -1062,7 +1060,7 @@ const finalComposerOutput=eventVisualOutput18.replace('</head>',`<style>
   .order-tools input{width:auto}
   .order-tools:not(.is-ready){opacity:.7}
   .order-tools .manual-order-hint{color:#1d789f;font-size:9px;font-weight:700}
-  .order-tools .manual-order-toggle.is-on{background:#1d789f;color:#fff;box-shadow:inset 0 0 0 1px #0e5875}
+  #slots .slotart{-webkit-user-drag:none;user-select:none;touch-action:manipulation}
   #slots .manual-order-picked{outline:3px solid #1d789f!important;outline-offset:2px;box-shadow:0 0 0 5px #dcecf1!important}
   .compare-mode main{display:none}
   @media(max-width:700px){.compare-page{padding:8px}.compare-title{align-items:flex-start;flex-direction:column}.compare-pick{min-width:calc(50% - 3px);flex:1}.compare-table{min-width:560px}}
