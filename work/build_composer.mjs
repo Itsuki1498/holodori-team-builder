@@ -416,7 +416,7 @@ const boardOutput13=boardOutput12.replace('</head>','<style>.leader-slot-head{di
 const boardOutput14=boardOutput13.replace('</head>','<style>.parameter-stat{cursor:help;position:relative}.parameter-tooltip{position:fixed;z-index:10000;max-width:min(560px,calc(100vw - 24px));max-height:70vh;overflow:auto;padding:10px 12px;background:#17324d;color:#fff;border-radius:7px;box-shadow:0 10px 26px #17324d55;font-size:10px;line-height:1.5;pointer-events:none}.parameter-tooltip b{font-size:11px}.parameter-tooltip span{color:#dceaf2}.parameter-tooltip hr{border:0;border-top:1px solid #6d899b;margin:7px 0}</style></head>');
 const hoverDetailRuntime=String.raw`const detailTextForCard=card=>{if(!card)return"";const leader=L.find(x=>x.id==="L:"+card.id)||L.find(x=>x.member===card.member);const safe=s=>typeof escBoard==="function"?escBoard(s):String(s??"");return"<h3>"+safe(cardTitle(card))+"</h3><pre>リーダースキル: "+safe(leader?.leaderRaw||card.leaderRaw||"なし")+"\nパッシブ: "+safe(card.passive?.text||"なし")+"\nアクティブ: "+safe(card.active?.text||"なし")+"\nスペシャル: "+safe(card.special?.text||"なし")+"</pre>"};const stripDetailButtons=()=>document.querySelectorAll("[data-detail],[data-slot-detail],[data-leader-detail]").forEach(x=>x.remove());stripDetailButtons();new MutationObserver(stripDetailButtons).observe(document.body,{childList:true,subtree:true});const cardFromImage=img=>{const direct=img?.dataset?.board||img?.closest?.(".cardtile")?.dataset?.add;if(direct)return byId(direct);const box=img?.closest?.(".slotbox");if(!box)return null;if(box.dataset.leaderSlot!==undefined){const l=lead();return l?C.find(c=>c.id===S.leaderCard)||C.find(c=>c.member===l.member):null}const boxes=[...document.querySelectorAll("#slots .slotbox:not([data-leader-slot])")],i=boxes.indexOf(box);return i>=0?byId(S.slots[i]):null};const closeHoverDetail=()=>{};const showHoverDetail=img=>{const card=cardFromImage(img),area=$("selectedCardEffect");if(card&&area)area.innerHTML=detailTextForCard(card)};document.addEventListener("pointerover",e=>{const img=e.target?.closest?.(".cardart,.slotart");if(img)showHoverDetail(img)},true);`;
 const hoverDetailBindRuntime=String.raw`const removeCardHoverTip=()=>{};`;
-const boardImageAccessRuntime=String.raw`document.addEventListener("dragstart",e=>{if(e.target?.closest?.("#slots .slotart"))e.preventDefault()},true);document.addEventListener("contextmenu",e=>{if(e.target?.closest?.("#slots .slotart"))e.preventDefault()},true);document.addEventListener("click",e=>{const image=e.target?.closest?.("#cardGrid .cardart,#slots .slotart");if(!image)return;const card=cardFromImage(image),box=$("detailPanel");if(!card||!box)return;e.preventDefault();e.stopImmediatePropagation();removeCardHoverTip();box.dataset.boardOrigin=image.closest("[data-leader-slot]")?"leader":"card";renderBoard(card,box,image.getBoundingClientRect())},true);`;
+const boardImageAccessRuntime=String.raw`document.addEventListener("dragstart",e=>{if(e.target?.closest?.("#slots .slotart"))e.preventDefault()},true);document.addEventListener("contextmenu",e=>{if(e.target?.closest?.("#slots .slotart"))e.preventDefault()},true);document.addEventListener("click",e=>{const image=e.target?.closest?.("#cardGrid .cardart,#slots .slotart");if(!image)return;if(Date.now()<suppressSlotImageClickUntil){e.preventDefault();e.stopImmediatePropagation();return}const card=cardFromImage(image),box=$("detailPanel");if(!card||!box)return;e.preventDefault();e.stopImmediatePropagation();removeCardHoverTip();box.dataset.boardOrigin=image.closest("[data-leader-slot]")?"leader":"card";renderBoard(card,box,image.getBoundingClientRect())},true);`;
 const eventBonusRuntime=String.raw`
 const EVENT_DEFINITIONS={
   normal:{name:"通常",cardIds:[],members:[],cardRewardPercent:0,memberRewardPercent:0,scoreBonusPercent:0},
@@ -953,21 +953,24 @@ function renderComparePage(){
     ["リーダー",x=>x.leader],["サブ編成",x=>x.cards.join("<br>")],["補正前パラメータ合計",x=>Math.round(x.base).toLocaleString()],["補正後パラメータ合計",x=>Math.round(x.boosted).toLocaleString()],["パラメータ実質倍率",x=>x.ratio.toFixed(3)+"倍"],["期待値合計スコア",x=>x.expected.toFixed(2)+" pt"],["不足条件",x=>x.conditionCount+"件"],["不足適応先",x=>x.targetCount+"件"],["状態",x=>x.complete?"全条件成立":"取りこぼしあり"]
   ].map(([label,fn])=>"<tr><th>"+label+"</th>"+rows.map(x=>"<td>"+fn(x)+"</td>").join("")+"</tr>").join("")+"</tbody></table></div>":"<p class='muted'>比較する構成を選択してください。</p>";
 }
-let manualOrderPick=-1;
-function clearManualOrderPick(){manualOrderPick=-1;document.querySelectorAll("#slots .manual-order-picked").forEach(x=>x.classList.remove("manual-order-picked"))}
 function manualOrderSlotIndex(box){const boxes=[...document.querySelectorAll("#slots .slotbox:not([data-leader-slot])")];return boxes.indexOf(box)}
+let orderDragSource=-1;
+let orderDragPointer=null;
+let suppressSlotImageClickUntil=0;
+function clearOrderDragState(){orderDragSource=-1;orderDragPointer=null;document.querySelectorAll("#slots .order-dragging,#slots .order-drag-over").forEach(x=>x.classList.remove("order-dragging","order-drag-over"))}
+function syncOrderDragSlots(){document.querySelectorAll("#slots .slotbox:not([data-leader-slot])").forEach((box,index)=>{box.draggable=!!S.slots[index];box.classList.toggle("order-draggable",!!S.slots[index])})}
+function swapOrderSlots(targetIndex){if(orderDragSource<0||targetIndex<0||orderDragSource===targetIndex||!S.slots[orderDragSource]||!S.slots[targetIndex]){clearOrderDragState();return}const first=orderDragSource;[S.slots[first],S.slots[targetIndex]]=[S.slots[targetIndex],S.slots[first]];suppressSlotImageClickUntil=Date.now()+450;clearOrderDragState();fill();render()}
 function bindManualOrder(){
   const slots=$("slots");if(!slots||slots.dataset.manualOrderBound)return;
   slots.dataset.manualOrderBound="1";
-  slots.addEventListener("click",e=>{
-    if(e.target.closest("button,.slot-owned,.slot-detail,.slot-clear,[data-clear],[data-leader-slot],.slotart"))return;
-    const box=e.target.closest("#slots .slotbox:not([data-leader-slot])"),index=manualOrderSlotIndex(box);
-    if(!box||index<0||!S.slots[index])return;
-    e.preventDefault();e.stopPropagation();
-    if(manualOrderPick<0){manualOrderPick=index;box.classList.add("manual-order-picked");return}
-    if(manualOrderPick===index){clearManualOrderPick();return}
-    const first=manualOrderPick;[S.slots[first],S.slots[index]]=[S.slots[index],S.slots[first]];clearManualOrderPick();fill();render();
-  },true);
+  slots.addEventListener("dragstart",e=>{const box=e.target.closest("#slots .slotbox:not([data-leader-slot])"),index=manualOrderSlotIndex(box);if(!box||index<0||!S.slots[index])return;orderDragSource=index;box.classList.add("order-dragging");e.dataTransfer?.setData("text/plain",String(index));if(e.dataTransfer)e.dataTransfer.effectAllowed="move"},true);
+  slots.addEventListener("dragover",e=>{const box=e.target.closest("#slots .slotbox:not([data-leader-slot])"),index=manualOrderSlotIndex(box);if(orderDragSource<0||!box||index<0||!S.slots[index]||index===orderDragSource)return;e.preventDefault();document.querySelectorAll("#slots .order-drag-over").forEach(x=>x.classList.remove("order-drag-over"));box.classList.add("order-drag-over");if(e.dataTransfer)e.dataTransfer.dropEffect="move"},true);
+  slots.addEventListener("drop",e=>{const box=e.target.closest("#slots .slotbox:not([data-leader-slot])"),index=manualOrderSlotIndex(box);if(orderDragSource<0||!box||index<0)return;e.preventDefault();e.stopPropagation();swapOrderSlots(index)},true);
+  slots.addEventListener("dragend",()=>clearOrderDragState(),true);
+  slots.addEventListener("pointerdown",e=>{const box=e.target.closest("#slots .slotbox:not([data-leader-slot])"),index=manualOrderSlotIndex(box);if(!box||index<0||!S.slots[index]||e.target.closest("button"))return;orderDragPointer={id:e.pointerId,source:index,startX:e.clientX,startY:e.clientY,active:false}},true);
+  slots.addEventListener("pointermove",e=>{const p=orderDragPointer;if(!p||p.id!==e.pointerId)return;const dx=e.clientX-p.startX,dy=e.clientY-p.startY;if(!p.active&&Math.hypot(dx,dy)<8)return;const source=document.querySelectorAll("#slots .slotbox:not([data-leader-slot])")[p.source];if(!source)return;if(!p.active){p.active=true;orderDragSource=p.source;source.classList.add("order-dragging");source.setPointerCapture?.(e.pointerId)}e.preventDefault();const target=document.elementFromPoint(e.clientX,e.clientY)?.closest?.("#slots .slotbox:not([data-leader-slot])"),index=manualOrderSlotIndex(target);document.querySelectorAll("#slots .order-drag-over").forEach(x=>x.classList.remove("order-drag-over"));if(target&&index>=0&&index!==p.source&&S.slots[index])target.classList.add("order-drag-over")},true);
+  slots.addEventListener("pointerup",e=>{const p=orderDragPointer;if(!p||p.id!==e.pointerId)return;const active=p.active,target=document.elementFromPoint(e.clientX,e.clientY)?.closest?.("#slots .slotbox:not([data-leader-slot])"),index=manualOrderSlotIndex(target);if(active){e.preventDefault();swapOrderSlots(index)}else clearOrderDragState();orderDragPointer=null},true);
+  slots.addEventListener("pointercancel",()=>clearOrderDragState(),true);
 }
 function orderPermutations(items){const out=[];const walk=(rest,used)=>{if(!rest.length){out.push(used);return}for(let i=0;i<rest.length;i++)walk(rest.slice(0,i).concat(rest.slice(i+1)),used.concat(rest[i]))};walk(items,[]);return out}
 function applyDeckOrder(mode){
@@ -978,10 +981,9 @@ function applyDeckOrder(mode){
 }
 function renderOrderTools(){
   const panel=document.querySelector(".composition-area .panel"),actions=panel?.querySelector(".actions");if(!panel||!actions)return;
-  let box=$("deckOrderTools");if(!box){actions.insertAdjacentHTML("beforeend","<div id='deckOrderTools' class='order-tools'><span>並べ替え</span><select id='orderMode'><option value='expected'>期待値重視</option><option value='stable'>安定重視</option><option value='upside'>上振れ重視</option></select><button type='button' class='ghost' data-order-apply>適用</button><span class='manual-order-hint'>手動: サブを2枚クリックして入れ替え</span></div>");box=$("deckOrderTools");box.querySelector("[data-order-apply]").onclick=()=>{applyDeckOrder($("orderMode").value);fill();render();renderOrderTools()};box.querySelector("#orderMode").onchange=()=>{clearManualOrderPick();renderOrderTools()}}
+  let box=$("deckOrderTools");if(!box){actions.insertAdjacentHTML("beforeend","<div id='deckOrderTools' class='order-tools'><span>並べ替え</span><select id='orderMode'><option value='expected'>期待値重視</option><option value='stable'>安定重視</option><option value='upside'>上振れ重視</option></select><button type='button' class='ghost' data-order-apply>適用</button></div>");box=$("deckOrderTools");box.querySelector("[data-order-apply]").onclick=()=>{applyDeckOrder($("orderMode").value);fill();render();renderOrderTools()};box.querySelector("#orderMode").onchange=()=>{clearOrderDragState();renderOrderTools()}}
   bindManualOrder();
-  const full=chosen().length===5,apply=box.querySelector("[data-order-apply]");box.classList.toggle("is-ready",full);apply.disabled=!full;
-  if(manualOrderPick>=0){const boxes=[...document.querySelectorAll("#slots .slotbox:not([data-leader-slot])")];boxes[manualOrderPick]?.classList.add("manual-order-picked")}
+  const full=chosen().length===5,apply=box.querySelector("[data-order-apply]");box.classList.toggle("is-ready",full);apply.disabled=!full;syncOrderDragSlots();
 }
 function ensureComparePage(){
   if($("comparePage"))return;
@@ -1059,9 +1061,10 @@ const finalComposerOutput=eventVisualOutput18.replace('</head>',`<style>
   .order-tools label{display:flex;align-items:center;gap:3px;margin-left:3px}
   .order-tools input{width:auto}
   .order-tools:not(.is-ready){opacity:.7}
-  .order-tools .manual-order-hint{color:#1d789f;font-size:9px;font-weight:700}
   #slots .slotart{-webkit-user-drag:none;user-select:none;touch-action:manipulation}
-  #slots .manual-order-picked{outline:3px solid #1d789f!important;outline-offset:2px;box-shadow:0 0 0 5px #dcecf1!important}
+  #slots .order-draggable{cursor:grab}
+  #slots .order-dragging{opacity:.62;cursor:grabbing;outline:2px solid #1d789f!important;outline-offset:2px}
+  #slots .order-drag-over{outline:3px dashed #1d789f!important;outline-offset:2px;background-color:#e4f3f8!important}
   .compare-mode main{display:none}
   @media(max-width:700px){.compare-page{padding:8px}.compare-title{align-items:flex-start;flex-direction:column}.compare-pick{min-width:calc(50% - 3px);flex:1}.compare-table{min-width:560px}}
   .composition-area .panel{position:relative}
