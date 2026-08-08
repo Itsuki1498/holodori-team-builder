@@ -958,18 +958,13 @@ let orderDragSource=-1;
 let orderDragPointer=null;
 let suppressSlotImageClickUntil=0;
 function clearOrderDragState(){orderDragSource=-1;orderDragPointer=null;document.querySelectorAll("#slots .order-dragging,#slots .order-drag-over").forEach(x=>x.classList.remove("order-dragging","order-drag-over"))}
-function syncOrderDragSlots(){document.querySelectorAll("#slots .slotbox:not([data-leader-slot])").forEach((box,index)=>{box.draggable=!!S.slots[index];box.querySelectorAll(".slotart").forEach(image=>{image.draggable=false});box.classList.toggle("order-draggable",!!S.slots[index])})}
+function syncOrderDragSlots(){document.querySelectorAll("#slots .slotbox:not([data-leader-slot])").forEach((box,index)=>{box.draggable=false;box.querySelectorAll(".slotart").forEach(image=>{image.draggable=false});box.classList.toggle("order-draggable",!!S.slots[index])})}
 function swapOrderSlots(targetIndex){if(orderDragSource<0||targetIndex<0||orderDragSource===targetIndex||!S.slots[orderDragSource]){clearOrderDragState();return}const first=orderDragSource;if(S.slots[targetIndex]){[S.slots[first],S.slots[targetIndex]]=[S.slots[targetIndex],S.slots[first]]}else{S.slots[targetIndex]=S.slots[first];S.slots[first]=""}suppressSlotImageClickUntil=Date.now()+450;clearOrderDragState();fill();render()}
 function bindManualOrder(){
   const slots=$("slots");if(!slots||slots.dataset.manualOrderBound)return;
   slots.dataset.manualOrderBound="1";
-  slots.addEventListener("dragstart",e=>{const box=e.target.closest("#slots .slotbox:not([data-leader-slot])"),index=manualOrderSlotIndex(box);if(!box||index<0||!S.slots[index])return;orderDragSource=index;box.classList.add("order-dragging");e.dataTransfer?.setData("text/plain",String(index));if(e.dataTransfer)e.dataTransfer.effectAllowed="move"},true);
-  slots.addEventListener("dragenter",e=>{const box=e.target.closest("#slots .slotbox:not([data-leader-slot])"),index=manualOrderSlotIndex(box);if(orderDragSource<0||!box||index<0||index===orderDragSource)return;e.preventDefault();box.classList.add("order-drag-over")},true);
-  slots.addEventListener("dragover",e=>{const box=e.target.closest("#slots .slotbox:not([data-leader-slot])"),index=manualOrderSlotIndex(box);if(orderDragSource<0||!box||index<0||index===orderDragSource)return;e.preventDefault();document.querySelectorAll("#slots .order-drag-over").forEach(x=>x.classList.remove("order-drag-over"));box.classList.add("order-drag-over");if(e.dataTransfer)e.dataTransfer.dropEffect="move"},true);
-  slots.addEventListener("drop",e=>{const box=e.target.closest("#slots .slotbox:not([data-leader-slot])"),index=manualOrderSlotIndex(box);if(orderDragSource<0||!box||index<0)return;e.preventDefault();e.stopPropagation();swapOrderSlots(index)},true);
-  slots.addEventListener("dragend",()=>clearOrderDragState(),true);
   slots.addEventListener("pointerdown",e=>{const box=e.target.closest("#slots .slotbox:not([data-leader-slot])"),index=manualOrderSlotIndex(box);if(!box||index<0||!S.slots[index]||e.target.closest("button"))return;orderDragPointer={id:e.pointerId,source:index,startX:e.clientX,startY:e.clientY,active:false}},true);
-  slots.addEventListener("pointermove",e=>{const p=orderDragPointer;if(!p||p.id!==e.pointerId)return;const dx=e.clientX-p.startX,dy=e.clientY-p.startY;if(!p.active&&Math.hypot(dx,dy)<8)return;const source=document.querySelectorAll("#slots .slotbox:not([data-leader-slot])")[p.source];if(!source)return;if(!p.active){p.active=true;orderDragSource=p.source;source.classList.add("order-dragging");source.setPointerCapture?.(e.pointerId)}e.preventDefault();const target=document.elementFromPoint(e.clientX,e.clientY)?.closest?.("#slots .slotbox:not([data-leader-slot])"),index=manualOrderSlotIndex(target);document.querySelectorAll("#slots .order-drag-over").forEach(x=>x.classList.remove("order-drag-over"));if(target&&index>=0&&index!==p.source)target.classList.add("order-drag-over")},true);
+  slots.addEventListener("pointermove",e=>{const p=orderDragPointer;if(!p||p.id!==e.pointerId)return;const dx=e.clientX-p.startX,dy=e.clientY-p.startY;if(!p.active&&Math.hypot(dx,dy)<8)return;const source=document.querySelectorAll("#slots .slotbox:not([data-leader-slot])")[p.source];if(!source)return;if(!p.active){p.active=true;orderDragSource=p.source;source.classList.add("order-dragging")}e.preventDefault();const target=document.elementFromPoint(e.clientX,e.clientY)?.closest?.("#slots .slotbox:not([data-leader-slot])"),index=manualOrderSlotIndex(target);document.querySelectorAll("#slots .order-drag-over").forEach(x=>x.classList.remove("order-drag-over"));if(target&&index>=0&&index!==p.source)target.classList.add("order-drag-over")},true);
   slots.addEventListener("pointerup",e=>{const p=orderDragPointer;if(!p||p.id!==e.pointerId)return;const active=p.active,target=document.elementFromPoint(e.clientX,e.clientY)?.closest?.("#slots .slotbox:not([data-leader-slot])"),index=manualOrderSlotIndex(target);if(active){e.preventDefault();swapOrderSlots(index)}else clearOrderDragState();orderDragPointer=null},true);
   slots.addEventListener("pointercancel",()=>clearOrderDragState(),true);
 }
@@ -1064,8 +1059,8 @@ const finalComposerOutput=eventVisualOutput18.replace('</head>',`<style>
   .order-tools:not(.is-ready){opacity:.7}
   #slots .slotart{-webkit-user-drag:none;-webkit-touch-callout:none;user-select:none;touch-action:manipulation}
   #slots .order-draggable{cursor:grab}
-  #slots .order-dragging{opacity:.62;cursor:grabbing;outline:2px solid #1d789f!important;outline-offset:2px}
-  #slots .order-drag-over{outline:3px dashed #1d789f!important;outline-offset:2px;background-color:#e4f3f8!important}
+  #slots .order-dragging{opacity:.62;cursor:grabbing;outline:2px solid #1d789f!important;outline-offset:2px;touch-action:none}
+  #slots .order-drag-over{outline:3px solid #f08a24!important;outline-offset:3px;box-shadow:0 0 0 2px #fff,0 0 0 6px #f08a24!important;background-color:#e4f3f8!important;z-index:9}
   .compare-mode main{display:none}
   @media(max-width:700px){.compare-page{padding:8px}.compare-title{align-items:flex-start;flex-direction:column}.compare-pick{min-width:calc(50% - 3px);flex:1}.compare-table{min-width:560px}}
   .composition-area .panel{position:relative}
