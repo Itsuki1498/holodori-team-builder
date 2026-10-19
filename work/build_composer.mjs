@@ -34,10 +34,14 @@ if (summerKanade) {
     text
   }];
 }
+const chaoticPowerfulRat = rawData.cards.find(c => c.id === "c23" || /Chaotic Powerful Rat/.test(c.display || ""));
+if (chaoticPowerfulRat) {
+  chaoticPowerfulRat.leaderRaw = "ピュアタイプ2人以上で全員のパフォーマンスが130%UP";
+  chaoticPowerfulRat.leaderEffects = [{kind: "stat", stat: "パフォーマンス", value: 130, mode: "multiply", condition: {group: "ピュア", count: 2, text: "ピュアタイプ2人以上"}, text: "ピュアタイプ2人以上で全員のパフォーマンスが130%UP"}];
+}
 const addedCards = [
   {
     id: "c167", member: "さくらみこ", display: "さくらみこ｜ビーチで弾ける、光彩ショット！  [★5]", rarity: "★5", attribute: "ピュア", tag: "0期生", tags: ["ピュア", "0期生"],
-    // Wiki currently shows '-' for these three values; use the standard ★5 provisional profile.
     p: 11145, t: 7828, s: 6947, main: "パフォーマンス",
     passive: {condition: {group: "ピュア", count: 2, text: "ピュアタイプ2人以上"}, targetGroup: "ピュア", targetCount: 2, targetStat: "パフォーマンス", scope: "対象人数", value: 43, mode: "multiply", text: "ピュアタイプ2人以上でピュアタイプ2人のパフォーマンスが43%UP"},
     active: {interval: 27, probability: "中確率", duration: 10, score: 115, maxScore: 115, condition: null, text: "27秒毎に中確率で10秒間スコアが115%UP"},
@@ -51,7 +55,6 @@ const addedCards = [
   },
   {
     id: "c168", member: "星街すいせい", display: "星街すいせい｜夏に一閃！水鉄砲のアルペジオ  [★5]", rarity: "★5", attribute: "キュート", tag: "0期生", tags: ["キュート", "0期生"],
-    // Wiki currently shows '-' for these three values; use the standard ★5 provisional profile.
     p: 7872, t: 6947, s: 11145, main: "センス",
     passive: {condition: {group: "0期生", count: 2, text: "0期生が2人以上"}, targetGroup: "0期生", targetCount: 2, targetStat: "", scope: "対象人数", value: 12, mode: "add", text: "0期生が2人以上で0期生2人のスコアサポート効果12%"},
     active: {interval: 23, probability: "中確率", duration: 8, score: 120, maxScore: 120, condition: null, text: "23秒毎に中確率で8秒間スコアが120%UP"},
@@ -71,7 +74,7 @@ const addedCards = [
       {kind: "stat", stat: "センス", value: 80, mode: "multiply", condition: {group: "キュート", count: 2, text: "キュートタイプ2人以上"}, text: "キュートタイプ2人以上で全員のセンスが80%UP"},
       {kind: "scoreSupport", value: 25, mode: "add", condition: {group: "キュート", count: 2, text: "キュートタイプ2人以上"}, text: "キュートタイプ2人以上で全員のスコアサポート効果25%UP"}
     ],
-    source: "https://gamerch.com/hololive-dreams/", image: "assets/ultimate-summer/mori-calliope.jpg", connect: {cells: 6, multiplier: 160, range: "ultimate-mori", offsets: [[-1,0],[-1,1],[0,-1],[0,1],[1,0],[1,1]]}, displayTag: "Myth"
+    source: "https://gamerch.com/hololive-dreams/1005594", image: "https://cdn.gamerch.com/contents/wiki/6026/entry/FlK8d5v7.png", connect: {cells: 6, multiplier: 160, range: "ultimate-mori", offsets: [[-1,0],[-1,1],[0,-1],[0,1],[1,0],[1,1]]}, displayTag: "Myth"
   },
   {
     id: "c170", member: "百鬼あやめ", display: "百鬼あやめ｜鬼神流・ぷかぷかリゾート  [★5]", rarity: "★5", attribute: "ハッピー", tag: "2期生", tags: ["ハッピー", "2期生"],
@@ -81,7 +84,7 @@ const addedCards = [
     special: {support: 120, rateBonus: 45, duration: 12, condition: {group: "2期生", count: 2, text: "2期生が2人以上"}, text: "12秒間スコアサポート効果120%\n2期生が2人以上でスキル発動率が45%UP"},
     leaderRaw: "2期生が2人以上で全員のテクニックが135%UP",
     leaderEffects: [{kind: "stat", stat: "テクニック", value: 135, mode: "multiply", condition: {group: "2期生", count: 2, text: "2期生が2人以上"}, text: "2期生が2人以上で全員のテクニックが135%UP"}],
-    source: "https://gamerch.com/hololive-dreams/", image: "assets/ultimate-summer/nakiri-ayame.jpg", connect: {cells: 6, multiplier: 160, range: "ultimate-ayame", offsets: [[-1,-1],[-1,0],[0,-1],[0,1],[1,-1],[1,0]]}, displayTag: "2期生"
+    source: "https://gamerch.com/hololive-dreams/1005595", image: "https://cdn.gamerch.com/contents/wiki/6026/entry/H0K9AdE8.png", connect: {cells: 6, multiplier: 160, range: "ultimate-ayame", offsets: [[-1,-1],[-1,0],[0,-1],[0,1],[1,-1],[1,0]]}, displayTag: "2期生"
   },
   {
     id: "c171", member: "クレイジー・オリー", display: "クレイジー・オリー｜常夏のCrazy Dive  [★5]", rarity: "★5", attribute: "ハッピー", tag: "ID2期生", tags: ["ハッピー", "ID2期生"],
@@ -94,7 +97,7 @@ const addedCards = [
       {kind: "stat", stat: "センス", value: 80, mode: "multiply", condition: {group: "ハッピー", count: 2, text: "ハッピータイプ2人以上"}, text: "ハッピータイプ2人以上で全員のセンスが80%UP"},
       {kind: "scoreSupport", value: 25, mode: "add", condition: {group: "ハッピー", count: 2, text: "ハッピータイプ2人以上"}, text: "ハッピータイプ2人以上で全員のスコアサポート効果25%UP"}
     ],
-    source: "https://gamerch.com/hololive-dreams/", image: "assets/ultimate-summer/kureiji-ollie.jpg", connect: {cells: 4, multiplier: 200, range: "ultimate-ollie", offsets: [[-2,0],[-1,0],[0,-2],[0,-1]]}, displayTag: "ID2期生"
+    source: "https://gamerch.com/hololive-dreams/1005596", image: "https://cdn.gamerch.com/contents/wiki/6026/entry/FdjRStXh.png", connect: {cells: 4, multiplier: 200, range: "ultimate-ollie", offsets: [[-2,0],[-1,0],[0,-2],[0,-1]]}, displayTag: "ID2期生"
   },
   {
     id: "c172", member: "姫森ルーナ", display: "姫森ルーナ｜のんびり姫のおねだりビーチ  [★5]", rarity: "★5", attribute: "ピュア", tag: "4期生", tags: ["ピュア", "4期生"],
@@ -104,7 +107,7 @@ const addedCards = [
     special: {support: 130, rateBonus: 50, duration: 11, condition: {group: "4期生", count: 2, text: "4期生が2人以上"}, text: "11秒間スコアサポート効果130%\n4期生が2人以上でスキル発動率が50%UP"},
     leaderRaw: "4期生が2人以上で全員のパフォーマンスが135%UP",
     leaderEffects: [{kind: "stat", stat: "パフォーマンス", value: 135, mode: "multiply", condition: {group: "4期生", count: 2, text: "4期生が2人以上"}, text: "4期生が2人以上で全員のパフォーマンスが135%UP"}],
-    source: "https://gamerch.com/hololive-dreams/", image: "assets/ultimate-summer/himemori-luna.jpg", connect: {cells: 5, multiplier: 200, range: "ultimate-luna", offsets: [[1,0],[2,-1],[2,0],[2,1],[3,0]]}, displayTag: "4期生"
+    source: "https://gamerch.com/hololive-dreams/1005597", image: "https://cdn.gamerch.com/contents/wiki/6026/entry/Nnmrny2l.png", connect: {cells: 5, multiplier: 200, range: "ultimate-luna", offsets: [[1,0],[2,-1],[2,0],[2,1],[3,0]]}, displayTag: "4期生"
   },
   {
     id: "c173", member: "一伊那尓栖", display: "一伊那尓栖｜潮騒の記憶をたどって  [★5]", rarity: "★5", attribute: "ハッピー", tag: "Myth", tags: ["ハッピー", "Myth"],
@@ -114,7 +117,243 @@ const addedCards = [
     special: {support: 120, rateBonus: 45, duration: 12, condition: {group: "Myth", count: 2, text: "Mythが2人以上"}, text: "12秒間スコアサポート効果120%\nMythが2人以上でスキル発動率が45%UP"},
     leaderRaw: "Mythが2人以上で全員のセンスが135%UP",
     leaderEffects: [{kind: "stat", stat: "センス", value: 135, mode: "multiply", condition: {group: "Myth", count: 2, text: "Mythが2人以上"}, text: "Mythが2人以上で全員のセンスが135%UP"}],
-    source: "https://gamerch.com/hololive-dreams/", image: "assets/ultimate-summer/ninomae-inanis.jpg", connect: {cells: 7, multiplier: 150, range: "ultimate-ina", offsets: [[-2,0],[-1,0],[-1,1],[0,1],[1,0],[1,1],[2,0]]}, displayTag: "Myth"
+    source: "https://gamerch.com/hololive-dreams/1005600", image: "https://cdn.gamerch.com/contents/wiki/6026/entry/MXevTGTX.png", connect: {cells: 7, multiplier: 150, range: "ultimate-ina", offsets: [[-2,0],[-1,0],[-1,1],[0,1],[1,0],[1,1],[2,0]]}, displayTag: "Myth"
+  },
+  {
+    id: "c174", member: "白上フブキ", display: "白上フブキ｜渚で魅せるtwinkle  [★5]", rarity: "★5", attribute: "キュート", tag: "1期生", tags: ["キュート", "1期生", "ゲーマーズ"],
+    p: 7844, t: 7221, s: 10909, main: "センス",
+    passive: {condition: {group: "キュート", count: 2, text: "キュートタイプ2人以上"}, targetGroup: "キュート", targetCount: 2, targetStat: "", scope: "対象人数", value: 11, mode: "add", text: "キュートタイプ2人以上でキュートタイプ2人のスコアサポート効果11%"},
+    active: {interval: 35, probability: "中確率", duration: 13, score: 115, maxScore: 115, condition: null, text: "35秒毎に中確率で13秒間スコアが115%UP"},
+    special: {support: 135, rateBonus: 0, duration: 12, condition: null, text: "12秒間スコアサポート効果135%"},
+    leaderRaw: "キュートタイプ2人以上で全員のセンスが130%UP",
+    leaderEffects: [{kind: "stat", stat: "センス", value: 130, mode: "multiply", condition: {group: "キュート", count: 2, text: "キュートタイプ2人以上"}, text: "キュートタイプ2人以上で全員のセンスが130%UP"}],
+    source: "https://gamerch.com/hololive-dreams/1007408", image: "https://cdn.gamerch.com/contents/wiki/6026/entry/wQiwIXAk.jpg", connect: null, displayTag: "1期生"
+  },
+  {
+    id: "c175", member: "大神ミオ", display: "大神ミオ｜夏にまどろむWolf Heart  [★5]", rarity: "★5", attribute: "ピュア", tag: "ゲーマーズ", tags: ["ピュア", "ゲーマーズ"],
+    p: 7682, t: 11380, s: 6803, main: "テクニック",
+    passive: {condition: {group: "ピュア", count: 2, text: "ピュアタイプ2人以上"}, targetGroup: "ピュア", targetCount: 2, targetStat: "テクニック", scope: "対象人数", value: 43, mode: "multiply", text: "ピュアタイプ2人以上でピュアタイプ2人のテクニックが43%UP"},
+    active: {interval: 23, probability: "中確率", duration: 8, score: 120, maxScore: 120, condition: null, text: "23秒毎に中確率で8秒間スコアが120%UP"},
+    special: {support: 135, rateBonus: 0, duration: 12, condition: null, text: "12秒間スコアサポート効果135%"},
+    leaderRaw: "ピュアタイプ2人以上で全員のテクニックが130%UP",
+    leaderEffects: [{kind: "stat", stat: "テクニック", value: 130, mode: "multiply", condition: {group: "ピュア", count: 2, text: "ピュアタイプ2人以上"}, text: "ピュアタイプ2人以上で全員のテクニックが130%UP"}],
+    source: "https://gamerch.com/hololive-dreams/1007405", image: "https://cdn.gamerch.com/contents/wiki/6026/entry/wTCNw7GS.jpg", connect: null, displayTag: "ゲーマーズ"
+  },
+  {
+    id: "c176", member: "猫又おかゆ", display: "猫又おかゆ｜パラソル下のリバティキャット  [★5]", rarity: "★5", attribute: "ハッピー", tag: "ゲーマーズ", tags: ["ハッピー", "ゲーマーズ"],
+    p: 11380, t: 6803, s: 7682, main: "パフォーマンス",
+    passive: {condition: {group: "ゲーマーズ", count: 2, text: "ゲーマーズ2人以上"}, targetGroup: "ゲーマーズ", targetCount: 2, targetStat: "パフォーマンス", scope: "対象人数", value: 43, mode: "multiply", text: "ゲーマーズ2人のパフォーマンスが43%UP"},
+    active: {interval: 28, probability: "高確率", duration: 10, score: 110, maxScore: 110, condition: null, text: "28秒毎に高確率で10秒間スコアが110%UP"},
+    special: {support: 130, rateBonus: 50, duration: 11, condition: {group: "ゲーマーズ", count: 2, text: "ゲーマーズが2人以上"}, text: "11秒間スコアサポート効果130%\nゲーマーズが2人以上でスキル発動率が50%UP"},
+    leaderRaw: "ゲーマーズが2人以上で全員のパフォーマンスが135%UP",
+    leaderEffects: [{kind: "stat", stat: "パフォーマンス", value: 135, mode: "multiply", condition: {group: "ゲーマーズ", count: 2, text: "ゲーマーズが2人以上"}, text: "ゲーマーズが2人以上で全員のパフォーマンスが135%UP"}],
+    source: "https://gamerch.com/hololive-dreams/1007403", image: "https://cdn.gamerch.com/contents/wiki/6026/entry/QPSycSWq.jpg", connect: null, displayTag: "ゲーマーズ"
+  },
+  {
+    id: "c177", member: "戌神ころね", display: "戌神ころね｜密林を舞うワイルドサマー！  [★5]", rarity: "★5", attribute: "ピュア", tag: "ゲーマーズ", tags: ["ピュア", "ゲーマーズ"],
+    p: 7682, t: 11380, s: 6803, main: "テクニック",
+    passive: {condition: {group: "ピュア", count: 2, text: "ピュアタイプ2人以上"}, targetGroup: "ピュア", targetCount: 2, targetStat: "", scope: "対象人数", value: 11, mode: "add", text: "ピュアタイプ2人のスコアサポート効果11%"},
+    active: {interval: 32, probability: "高確率", duration: 11, score: 60, maxScore: 120, condition: {group: "ピュア", count: 2, text: "ピュアタイプ2人以上でスコアが120%UP"}, text: "32秒毎に高確率で11秒間スコアが60%UP\nピュアタイプ2人以上でスコアが120%UP"},
+    special: {support: 120, rateBonus: 40, duration: 12, condition: null, text: "12秒間スコアサポート効果120%\nスキル発動率が40%UP"},
+    leaderRaw: "ピュアタイプ2人以上で全員のテクニックが80%UP\nピュアタイプ2人以上で全員のスコアサポート効果25%UP",
+    leaderEffects: [
+      {kind: "stat", stat: "テクニック", value: 80, mode: "multiply", condition: {group: "ピュア", count: 2, text: "ピュアタイプ2人以上"}, text: "ピュアタイプ2人以上で全員のテクニックが80%UP"},
+      {kind: "scoreSupport", value: 25, mode: "add", condition: {group: "ピュア", count: 2, text: "ピュアタイプ2人以上"}, text: "ピュアタイプ2人以上で全員のスコアサポート効果25%UP"}
+    ],
+    source: "https://gamerch.com/hololive-dreams/1007404", image: "https://cdn.gamerch.com/contents/wiki/6026/entry/ISQfZOiS.jpg", connect: null, displayTag: "ゲーマーズ"
+  },
+  {
+    id: "c178", member: "鷹嶺ルイ", display: "鷹嶺ルイ｜波音に安らぐ、しごでき幹部  [★5]", rarity: "★5", attribute: "ハッピー", tag: "holoX", tags: ["ハッピー", "holoX"],
+    p: 6947, t: 7828, s: 11145, main: "センス",
+    passive: {condition: {group: "holoX", count: 2, text: "holoXが2人以上"}, targetGroup: "holoX", targetCount: 2, targetStat: "", scope: "対象人数", value: 12, mode: "add", text: "holoXが2人以上でholoX2人のスコアサポート効果12%"},
+    active: {interval: 28, probability: "高確率", duration: 9, score: 125, maxScore: 125, condition: null, text: "28秒毎に高確率で9秒間スコアが125%UP"},
+    special: {support: 130, rateBonus: 50, duration: 11, condition: {group: "holoX", count: 2, text: "holoXが2人以上"}, text: "11秒間スコアサポート効果130%\nholoXが2人以上でスキル発動率が50%UP"},
+    leaderRaw: "holoXが2人以上で全員のセンスが135%UP",
+    leaderEffects: [{kind: "stat", stat: "センス", value: 135, mode: "multiply", condition: {group: "holoX", count: 2, text: "holoXが2人以上"}, text: "holoXが2人以上で全員のセンスが135%UP"}],
+    source: "https://gamerch.com/hololive-dreams/1011335", image: "https://cdn.gamerch.com/contents/wiki/6026/entry/n5SUy4nw.png", connect: {cells: 4, multiplier: 200, range: "secret-vacation-lui", offsets: [[1,0],[1,1],[2,0],[3,0]]}, displayTag: "holoX"
+  },
+  {
+    id: "c179", member: "フワワ・アビスガード", display: "フワワ・アビスガード｜フワワのFlowing Summer  [★5]", rarity: "★5", attribute: "ピュア", tag: "Advent", tags: ["ピュア", "Advent"],
+    p: 10672, t: 7366, s: 7991, main: "パフォーマンス",
+    passive: {condition: {group: "ピュア", count: 2, text: "ピュアタイプ2人以上"}, targetGroup: "", targetCount: 0, targetStat: "", scope: "本人", value: 32, mode: "multiply", text: "ピュアタイプ2人以上で自身の全パラメータが32%UP"},
+    active: {interval: 35, probability: "高確率", duration: 12, score: 60, maxScore: 120, condition: {group: "ピュア", count: 2, text: "ピュアタイプ2人以上"}, text: "35秒毎に高確率で12秒間スコアが60%UP\nピュアタイプ2人以上でスコアが120%UP"},
+    special: {support: 120, rateBonus: 40, duration: 12, condition: null, text: "12秒間スコアサポート効果120%\nスキル発動率が40%UP"},
+    leaderRaw: "ピュアタイプ2人以上で全員の全パラメータが30%UP\nピュアタイプ2人以上で全員のスコアサポート効果25%",
+    leaderEffects: [{kind: "allParam", value: 30, mode: "multiply", condition: {group: "ピュア", count: 2, text: "ピュアタイプ2人以上"}, text: "ピュアタイプ2人以上で全員の全パラメータが30%UP"}, {kind: "scoreSupport", value: 25, mode: "add", condition: {group: "ピュア", count: 2, text: "ピュアタイプ2人以上"}, text: "ピュアタイプ2人以上で全員のスコアサポート効果25%"}],
+    source: "https://gamerch.com/hololive-dreams/1011334", image: "https://cdn.gamerch.com/contents/wiki/6026/entry/LwEFK9SY.png", connect: {cells: 3, multiplier: 250, range: "secret-vacation-fuwawa", offsets: [[1,0],[2,0],[3,0]]}, displayTag: "Advent"
+  },
+  {
+    id: "c180", member: "モココ・アビスガード", display: "モココ・アビスガード｜モココのBreezy Summer  [★5]", rarity: "★5", attribute: "ピュア", tag: "Advent", tags: ["ピュア", "Advent"],
+    p: 11145, t: 6947, s: 7828, main: "パフォーマンス",
+    passive: {condition: {group: "ピュア", count: 2, text: "ピュアタイプ2人以上"}, targetGroup: "ピュア", targetCount: 2, targetStat: "", scope: "対象人数", value: 11, mode: "add", text: "ピュアタイプ2人のスコアサポート効果11%"},
+    active: {interval: 22, probability: "中確率", duration: 8, score: 60, maxScore: 120, condition: {group: "ピュア", count: 2, text: "ピュアタイプ2人以上"}, text: "22秒毎に中確率で8秒間スコアが60%UP\nピュアタイプ2人以上でスコアが120%UP"},
+    special: {support: 145, rateBonus: 50, duration: 10, condition: null, text: "10秒間スコアサポート効果145%\nスキル発動率が50%UP"},
+    leaderRaw: "ピュアタイプ2人以上で全員のパフォーマンスが80%UP\nピュアタイプ2人以上で全員のスコアサポート効果25%",
+    leaderEffects: [{kind: "stat", stat: "パフォーマンス", value: 80, mode: "multiply", condition: {group: "ピュア", count: 2, text: "ピュアタイプ2人以上"}, text: "ピュアタイプ2人以上で全員のパフォーマンスが80%UP"}, {kind: "scoreSupport", value: 25, mode: "add", condition: {group: "ピュア", count: 2, text: "ピュアタイプ2人以上"}, text: "ピュアタイプ2人以上で全員のスコアサポート効果25%"}],
+    source: "https://gamerch.com/hololive-dreams/1011333", image: "https://cdn.gamerch.com/contents/wiki/6026/entry/NucxmFa9.png", connect: {cells: 3, multiplier: 250, range: "secret-vacation-mococo", offsets: [[0,-3],[0,-2],[0,-1]]}, displayTag: "Advent"
+  },
+  {
+    id: "c181", member: "アキ・ローゼンタール", display: "アキ・ローゼンタール｜陽だまりのミスティカルスイング  [★5]", rarity: "★5", attribute: "ハッピー", tag: "1期生", tags: ["ハッピー", "1期生"],
+    p: 6947, t: 11145, s: 7828, main: "テクニック",
+    passive: {condition: {group: "1期生", count: 2, text: "1期生が2人以上"}, targetGroup: "1期生", targetCount: 2, targetStat: "テクニック", scope: "対象人数", value: 43, mode: "multiply", text: "1期生2人のテクニックが43%UP"},
+    active: {interval: 24, probability: "高確率", duration: 9, score: 105, maxScore: 105, condition: null, text: "24秒毎に高確率で9秒間スコアが105%UP"},
+    special: {support: 120, rateBonus: 45, duration: 12, condition: {group: "1期生", count: 2, text: "1期生が2人以上"}, text: "12秒間スコアサポート効果120%\n1期生が2人以上でスキル発動率が45%UP"},
+    leaderRaw: "1期生が2人以上で全員のテクニックが135%UP",
+    leaderEffects: [{kind: "stat", stat: "テクニック", value: 135, mode: "multiply", condition: {group: "1期生", count: 2, text: "1期生が2人以上"}, text: "1期生が2人以上で全員のテクニックが135%UP"}],
+    source: "https://appmedia.jp/hololive-dreams/80409217", image: "https://appmedia.jp/wp-content/uploads/2026/09/181617_zny7g.webp", connect: {cells: 3, multiplier: 250, range: "summer-escape-aki", offsets: [[0,1],[0,2],[0,3]]}, displayTag: "1期生"
+  },
+  {
+    id: "c182", member: "シオリ・ノヴェラ", display: "シオリ・ノヴェラ｜知を潤すナイトプール  [★5]", rarity: "★5", attribute: "キュート", tag: "Advent", tags: ["キュート", "Advent"],
+    p: 6803, t: 7682, s: 11380, main: "センス",
+    passive: {condition: {group: "キュート", count: 2, text: "キュートタイプ2人以上"}, targetGroup: "", targetCount: 0, targetStat: "", scope: "本人", value: 32, mode: "multiply", text: "キュートタイプ2人以上で自身の全パラメータが32%UP"},
+    active: {interval: 29, probability: "中確率", duration: 11, score: 60, maxScore: 115, condition: {group: "キュート", count: 2, text: "キュートタイプ2人以上でスコアが115%UP"}, text: "29秒毎に中確率で11秒間スコアが60%UP\nキュートタイプ2人以上でスコアが115%UP"},
+    special: {support: 120, rateBonus: 40, duration: 12, condition: null, text: "12秒間スコアサポート効果120%\nスキル発動率が40%UP"},
+    leaderRaw: "キュートタイプ2人以上で全員の全パラメータが30%UP\nキュートタイプ2人以上で全員のスコアサポート効果25%",
+    leaderEffects: [{kind: "allParam", value: 30, mode: "multiply", condition: {group: "キュート", count: 2, text: "キュートタイプ2人以上"}, text: "キュートタイプ2人以上で全員の全パラメータが30%UP"}, {kind: "scoreSupport", value: 25, mode: "add", condition: {group: "キュート", count: 2, text: "キュートタイプ2人以上"}, text: "キュートタイプ2人以上で全員のスコアサポート効果25%"}],
+    source: "https://appmedia.jp/hololive-dreams/80409475", image: "https://appmedia.jp/wp-content/uploads/2026/09/182643_1c32y.webp", connect: {cells: 6, multiplier: 160, range: "summer-escape-shiori", offsets: [[-1,-1],[-1,0],[0,-1],[0,1],[1,-1],[1,0]]}, displayTag: "Advent"
+  },
+  {
+    id: "c183", member: "ラプラス・ダークネス", display: "ラプラス・ダークネス｜総帥専用！シークレットプール  [★5]", rarity: "★5", attribute: "キュート", tag: "holoX", tags: ["キュート", "holoX"],
+    p: 11380, t: 6803, s: 7682, main: "パフォーマンス",
+    passive: {condition: {group: "キュート", count: 2, text: "キュートタイプ2人以上"}, targetGroup: "キュート", targetCount: 2, targetStat: "", scope: "対象人数", value: 11, mode: "add", text: "キュートタイプ2人のスコアサポート効果11%"},
+    active: {interval: 32, probability: "高確率", duration: 11, score: 60, maxScore: 120, condition: {group: "キュート", count: 2, text: "キュートタイプ2人以上でスコアが120%UP"}, text: "32秒毎に高確率で11秒間スコアが60%UP\nキュートタイプ2人以上でスコアが120%UP"},
+    special: {support: 95, rateBonus: 35, duration: 15, condition: null, text: "15秒間スコアサポート効果95%\nスキル発動率が35%UP"},
+    leaderRaw: "キュートタイプ2人以上で全員のパフォーマンスが80%UP\nキュートタイプ2人以上で全員のスコアサポート効果25%",
+    leaderEffects: [{kind: "stat", stat: "パフォーマンス", value: 80, mode: "multiply", condition: {group: "キュート", count: 2, text: "キュートタイプ2人以上"}, text: "キュートタイプ2人以上で全員のパフォーマンスが80%UP"}, {kind: "scoreSupport", value: 25, mode: "add", condition: {group: "キュート", count: 2, text: "キュートタイプ2人以上"}, text: "キュートタイプ2人以上で全員のスコアサポート効果25%"}],
+    source: "https://appmedia.jp/hololive-dreams/80409559", image: "https://appmedia.jp/wp-content/uploads/2026/09/184956_5lwhm.webp", connect: {cells: 5, multiplier: 200, range: "summer-escape-laplus", offsets: [[1,0],[2,-1],[2,0],[2,1],[3,0]]}, displayTag: "holoX"
+  },
+  {
+    id: "c184", member: "アーニャ・メルフィッサ", display: "アーニャ・メルフィッサ｜まったりサニーホリデイ  [★5]", rarity: "★5", attribute: "ピュア", tag: "ID2期生", tags: ["ピュア", "ID2期生"],
+    p: 10672, t: 7366, s: 7991, main: "パフォーマンス",
+    passive: {condition: {group: "ピュア", count: 2, text: "ピュアタイプ2人以上"}, targetGroup: "ピュア", targetCount: 2, targetStat: "パフォーマンス", scope: "対象人数", value: 43, mode: "multiply", text: "ピュアタイプ2人以上でピュアタイプ2人のパフォーマンスが43%UP"},
+    active: {interval: 19, probability: "高確率", duration: 7, score: 110, maxScore: 110, condition: null, text: "19秒毎に高確率で7秒間スコアが110%UP"},
+    special: {support: 160, rateBonus: 0, duration: 10, condition: null, text: "10秒間スコアサポート効果160%"},
+    leaderRaw: "ピュアタイプ2人以上で全員のパフォーマンスが130%UP",
+    leaderEffects: [{kind: "stat", stat: "パフォーマンス", value: 130, mode: "multiply", condition: {group: "ピュア", count: 2, text: "ピュアタイプ2人以上"}, text: "ピュアタイプ2人以上で全員のパフォーマンスが130%UP"}],
+    source: "https://appmedia.jp/hololive-dreams/80409709", image: "https://appmedia.jp/wp-content/uploads/2026/09/185906_i8cqh.webp", connect: {cells: 7, multiplier: 150, range: "summer-escape-anya", offsets: [[-2,0],[-1,0],[-1,1],[0,1],[1,0],[1,1],[2,0]]}, displayTag: "ID2期生"
+  },
+  {
+    id: "c185", member: "宝鐘マリン", display: "宝鐘マリン｜お宝独占♡ウォーターキャノン  [★5]", rarity: "★5", attribute: "ピュア", tag: "3期生", tags: ["ピュア", "3期生"],
+    p: 7828, t: 6947, s: 11145, main: "センス",
+    passive: {condition: {group: "ピュア", count: 2, text: "ピュアタイプ2人以上"}, targetGroup: "ピュア", targetCount: 2, targetStat: "センス", scope: "対象人数", value: 43, mode: "multiply", text: "ピュアタイプ2人以上でピュアタイプ2人のセンスが43%UP"},
+    active: {interval: 34, probability: "中確率", duration: 12, score: 120, maxScore: 120, condition: null, text: "34秒毎に中確率で12秒間スコアが120%UP"},
+    special: {support: 115, rateBonus: 0, duration: 14, condition: null, text: "14秒間スコアサポート効果115%"},
+    leaderRaw: "ピュアタイプ2人以上で全員のセンスが80%UP\nピュアタイプ2人以上で全員のスコアサポート効果25%UP",
+    leaderEffects: [
+      {kind: "stat", stat: "センス", value: 80, mode: "multiply", condition: {group: "ピュア", count: 2, text: "ピュアタイプ2人以上"}, text: "ピュアタイプ2人以上で全員のセンスが80%UP"},
+      {kind: "scoreSupport", value: 25, mode: "add", condition: {group: "ピュア", count: 2, text: "ピュアタイプ2人以上"}, text: "ピュアタイプ2人以上で全員のスコアサポート効果25%UP"}
+    ],
+    source: "https://gamerch.com/hololive-dreams/1017759", image: "assets/cool-trip/marine.png", connect: {cells: 3, multiplier: 270, range: "2zlwZe1u", offsets: [[0,1],[0,2],[0,3]]}, displayTag: "3期生"
+  },
+  {
+    id: "c186", member: "博衣こより", display: "博衣こより｜振り向きざまのaventure  [★5]", rarity: "★5", attribute: "ハッピー", tag: "holoX", tags: ["ハッピー", "holoX"],
+    p: 10433, t: 7981, s: 7668, main: "パフォーマンス",
+    passive: {condition: {group: "ハッピー", count: 2, text: "ハッピータイプ2人以上"}, targetGroup: "ハッピー", targetCount: 2, targetStat: "パフォーマンス", scope: "対象人数", value: 43, mode: "multiply", text: "ハッピータイプ2人以上でハッピータイプ2人のパフォーマンスが43%UP"},
+    active: {interval: 25, probability: "中確率", duration: 9, score: 60, maxScore: 120, condition: null, text: "25秒毎に中確率で9秒間スコアが60%UP\nライフ600以上でスコアが120%UP"},
+    special: {support: 135, rateBonus: 0, duration: 12, condition: null, text: "12秒間スコアサポート効果135%"},
+    leaderRaw: "全員のスコアサポート効果60%",
+    leaderEffects: [{kind: "scoreSupport", value: 60, mode: "add", condition: null, text: "全員のスコアサポート効果60%"}],
+    source: "https://gamerch.com/hololive-dreams/1017758", image: "assets/cool-trip/koyori.png", connect: {cells: 5, multiplier: 150, range: "wQZPenCO", offsets: [[1,0],[2,-1],[2,0],[2,1],[3,0]]}, displayTag: "holoX"
+  },
+  {
+    id: "c187", member: "こぼ・かなえる", display: "こぼ・かなえる｜波間に揺れるBody ＆ Soul  [★5]", rarity: "★5", attribute: "キュート", tag: "ID3期生", tags: ["キュート", "ID3期生"],
+    p: 6803, t: 7682, s: 11380, main: "センス",
+    passive: {condition: {group: "キュート", count: 2, text: "キュートタイプ2人以上"}, targetGroup: "キュート", targetCount: 2, targetStat: "センス", scope: "対象人数", value: 43, mode: "multiply", text: "キュートタイプ2人以上でキュートタイプ2人のセンスが43%UP"},
+    active: {interval: 29, probability: "高確率", duration: 10, score: 115, maxScore: 115, condition: null, text: "29秒毎に高確率で10秒間スコアが115%UP"},
+    special: {support: 160, rateBonus: 0, duration: 10, condition: null, text: "10秒間スコアサポート効果160%"},
+    leaderRaw: "キュートタイプ2人以上で全員のセンスが130%UP",
+    leaderEffects: [{kind: "stat", stat: "センス", value: 130, mode: "multiply", condition: {group: "キュート", count: 2, text: "キュートタイプ2人以上"}, text: "キュートタイプ2人以上で全員のセンスが130%UP"}],
+    source: "https://gamerch.com/hololive-dreams/1017757", image: "assets/blue-frontier/kobo.png", connect: {cells: 3, multiplier: 270, range: "mvEkVmVa", offsets: [[1,0],[2,0],[3,0]]}, displayTag: "ID3期生"
+  },
+  {
+    id: "c188", member: "ハコス・ベールズ", display: "ハコス・ベールズ｜これがボクのイチオシ！  [★5]", rarity: "★5", attribute: "ハッピー", tag: "Promise", tags: ["ハッピー", "Promise"],
+    p: 7221, t: 7844, s: 10909, main: "センス",
+    passive: {condition: {group: "Promise", count: 2, text: "Promiseが2人以上で自身の全パラメータが33%UP"}, targetGroup: "Promise", targetCount: 0, targetStat: "", scope: "本人", value: 33, mode: "multiply", text: "Promiseが2人以上で自身の全パラメータが33%UP"},
+    active: {interval: 22, probability: "中確率", duration: 8, score: 65, maxScore: 125, condition: {group: "Promise", count: 2, text: "Promiseが2人以上でスコアが125%UP"}, text: "22秒毎に中確率で8秒間スコアが65%UP\nPromiseが2人以上でスコアが125%UP"},
+    special: {support: 105, rateBonus: 0, duration: 15, condition: null, text: "15秒間スコアサポート効果105%"},
+    leaderRaw: "Promiseが2人以上で全員の全パラメータが50%UP",
+    leaderEffects: [{kind: "allParam", value: 50, mode: "multiply", condition: {group: "Promise", count: 2, text: "Promiseが2人以上"}, text: "Promiseが2人以上で全員の全パラメータが50%UP"}],
+    source: "https://gamerch.com/hololive-dreams/1017755", image: "https://cdn.gamerch.com/contents/wiki/6026/entry/0OlaEomY.png", connect: {cells: 8, multiplier: 135, range: "summer-splash-bae", offsets: [[-2,0],[-1,1],[0,1],[0,2],[1,0],[1,1],[2,0],[-1,0]]}, displayTag: "Promise"
+  },
+  {
+    id: "c189", member: "尾丸ポルカ", display: "尾丸ポルカ｜幸せ分け合うMeat For You  [★5]", rarity: "★5", attribute: "ピュア", tag: "5期生", tags: ["ピュア", "5期生"],
+    p: 7828, t: 11145, s: 6947, main: "テクニック",
+    passive: {condition: {group: "ピュア", count: 2, text: "ピュアタイプ2人以上"}, targetGroup: "ピュア", targetCount: 2, targetStat: "テクニック", scope: "対象人数", value: 43, mode: "multiply", text: "ピュアタイプ2人以上でピュアタイプ2人のテクニックが43%UP"},
+    active: {interval: 19, probability: "高確率", duration: 7, score: 110, maxScore: 110, condition: null, text: "19秒毎に高確率で7秒間スコアが110%UP"},
+    special: {support: 135, rateBonus: 0, duration: 12, condition: null, text: "12秒間スコアサポート効果135%"},
+    leaderRaw: "ピュアタイプ2人以上で全員のテクニックが80%UP\nピュアタイプ2人以上で全員のスコアサポート効果25%",
+    leaderEffects: [
+      {kind: "stat", stat: "テクニック", value: 80, mode: "multiply", condition: {group: "ピュア", count: 2, text: "ピュアタイプ2人以上"}, text: "ピュアタイプ2人以上で全員のテクニックが80%UP"},
+      {kind: "scoreSupport", value: 25, mode: "add", condition: {group: "ピュア", count: 2, text: "ピュアタイプ2人以上"}, text: "ピュアタイプ2人以上で全員のスコアサポート効果25%"
+      }
+    ],
+    source: "https://gamerch.com/hololive-dreams/1019899", image: "https://cdn.gamerch.com/contents/wiki/6026/entry/ac1hXnJA.jpg", connect: {cells: 5, multiplier: 200, range: "ocean-chase-polka", offsets: [[1,0],[2,-1],[2,0],[2,1],[3,0]]}, displayTag: "5期生"
+  },
+  {
+    id: "c190", member: "雪花ラミィ", display: "雪花ラミィ｜火照りを鎮める癒しの一口  [★5]", rarity: "★5", attribute: "キュート", tag: "5期生", tags: ["キュート", "5期生"],
+    p: 7668, t: 10433, s: 7981, main: "テクニック",
+    passive: {condition: {group: "キュート", count: 2, text: "キュートタイプ2人以上"}, targetGroup: "キュート", targetCount: 2, targetStat: "", scope: "対象人数", value: 15, mode: "multiply", text: "キュートタイプ2人の全パラメータが15%UP"},
+    active: {interval: 24, probability: "高確率", duration: 8, score: 65, maxScore: 130, condition: null, text: "24秒毎に高確率で8秒間スコアが65%UP\nライフ600以上でスコアが130%UP"},
+    special: {support: 115, rateBonus: 0, duration: 14, condition: null, text: "14秒間スコアサポート効果115%"},
+    leaderRaw: "全員のスコアサポート効果60%",
+    leaderEffects: [{kind: "scoreSupport", value: 60, mode: "add", condition: null, text: "全員のスコアサポート効果60%"}],
+    source: "https://gamerch.com/hololive-dreams/1019903", image: "https://cdn.gamerch.com/contents/wiki/6026/entry/Os34bqLB.jpg", connect: {cells: 8, multiplier: 135, range: "ocean-chase-lamy", offsets: [[-2,0],[-1,-1],[-1,0],[-1,1],[0,-2],[0,2],[1,0],[2,0]]}, displayTag: "5期生"
+  },
+  {
+    id: "c191", member: "一条莉々華", display: "一条莉々華｜夏夜を彩るBrilliant Smile  [★5]", rarity: "★5", attribute: "キュート", tag: "ReGLOSS", tags: ["キュート", "ReGLOSS"],
+    p: 6803, t: 11380, s: 7682, main: "テクニック",
+    passive: {condition: {group: "キュート", count: 2, text: "キュートタイプ2人以上"}, targetGroup: "キュート", targetCount: 2, targetStat: "テクニック", scope: "対象人数", value: 43, mode: "multiply", text: "キュートタイプ2人以上でキュートタイプ2人のテクニックが43%UP"},
+    active: {interval: 28, probability: "中確率", duration: 10, score: 120, maxScore: 120, condition: null, text: "28秒毎に中確率で10秒間スコアが120%UP"},
+    special: {support: 135, rateBonus: 0, duration: 12, condition: null, text: "12秒間スコアサポート効果135%"},
+    leaderRaw: "キュートタイプ2人以上で全員のテクニックが130%UP",
+    leaderEffects: [{kind: "stat", stat: "テクニック", value: 130, mode: "multiply", condition: {group: "キュート", count: 2, text: "キュートタイプ2人以上"}, text: "キュートタイプ2人以上で全員のテクニックが130%UP"}],
+    source: "https://gamerch.com/hololive-dreams/1020133", image: "https://cdn.gamerch.com/contents/wiki/6026/entry/WLu80g3m.jpg", connect: {cells: 4, multiplier: 200, range: "ocean-chase-ririka", offsets: [[1,0],[2,-1],[2,0],[2,1]]}, displayTag: "ReGLOSS"
+  },
+  {
+    id: "c192", member: "常闇トワ", display: "常闇トワ｜ゆらゆら過ごす木陰のバカンス  [★5]", rarity: "★5", attribute: "キュート", tag: "4期生", tags: ["キュート", "4期生"],
+    p: 6947, t: 11145, s: 7828, main: "テクニック",
+    passive: {condition: {group: "キュート", count: 2, text: "キュートタイプ2人以上"}, targetGroup: "キュート", targetCount: 2, targetStat: "テクニック", scope: "対象人数", value: 43, mode: "multiply", text: "キュートタイプ2人以上でキュートタイプ2人のテクニックが43%UP"},
+    active: {interval: 26, probability: "中確率", duration: 9, score: 65, maxScore: 125, condition: {group: "キュート", count: 2, text: "キュートタイプ2人以上でスコアが125%UP"}, text: "26秒毎に中確率で9秒間スコアが65%UP\nキュートタイプ2人以上でスコアが125%UP"},
+    special: {support: 120, rateBonus: 40, duration: 12, condition: null, text: "12秒間スコアサポート効果120%\nスキル発動率が40%UP"},
+    leaderRaw: "キュートタイプ2人以上で全員のテクニックが80%UP\nキュートタイプ2人以上で全員のスコアサポート効果25%",
+    leaderEffects: [
+      {kind: "stat", stat: "テクニック", value: 80, mode: "multiply", condition: {group: "キュート", count: 2, text: "キュートタイプ2人以上"}, text: "キュートタイプ2人以上で全員のテクニックが80%UP"},
+      {kind: "scoreSupport", value: 25, mode: "add", condition: {group: "キュート", count: 2, text: "キュートタイプ2人以上"}, text: "キュートタイプ2人以上で全員のスコアサポート効果25%"}
+    ],
+    source: "https://appmedia.jp/hololive-dreams/80492269", image: "https://appmedia.jp/wp-content/uploads/2026/10/181748_ox08d.webp", connect: {cells: 12, multiplier: 105, range: "seaside-towa", offsets: [[-2,0],[-1,-1],[-1,0],[-1,1],[0,-2],[0,-1],[0,1],[0,2],[1,-1],[1,0],[1,1],[2,0]]}, displayTag: "4期生"
+  },
+  {
+    id: "c193", member: "カエラ・コヴァルスキア", display: "カエラ・コヴァルスキア｜木陰で紡ぐShiny Memory  [★5]", rarity: "★5", attribute: "ハッピー", tag: "ID3期生", tags: ["ハッピー", "ID3期生"],
+    p: 7828, t: 6947, s: 11145, main: "センス",
+    passive: {condition: {group: "ID3期生", count: 2, text: "ID3期生が2人以上"}, targetGroup: "ID3期生", targetCount: 2, targetStat: "センス", scope: "対象人数", value: 43, mode: "multiply", text: "ID3期生が2人以上でID3期生2人のセンスが43%UP"},
+    active: {interval: 34, probability: "高確率", duration: 12, score: 115, maxScore: 115, condition: null, text: "34秒毎に高確率で12秒間スコアが115%UP"},
+    special: {support: 145, rateBonus: 55, duration: 10, condition: {group: "ID3期生", count: 2, text: "ID3期生が2人以上"}, text: "10秒間スコアサポート効果145%\nID3期生が2人以上でスキル発動率が55%UP"},
+    leaderRaw: "ID3期生が2人以上で全員のセンスが135%UP",
+    leaderEffects: [{kind: "stat", stat: "センス", value: 135, mode: "multiply", condition: {group: "ID3期生", count: 2, text: "ID3期生が2人以上"}, text: "ID3期生が2人以上で全員のセンスが135%UP"}],
+    source: "https://appmedia.jp/hololive-dreams/80492290", image: "https://appmedia.jp/wp-content/uploads/2026/10/182608_1lojk.webp", connect: {cells: 4, multiplier: 200, range: "seaside-kaela", offsets: [[-2,0],[-1,0],[1,0],[2,0]]}, displayTag: "ID3期生"
+  },
+  {
+    id: "c194", member: "獅白ぼたん", display: "獅白ぼたん｜一心不乱のちゅるタイム  [★5]", rarity: "★5", attribute: "キュート", tag: "5期生", tags: ["キュート", "5期生"],
+    p: 6947, t: 7828, s: 11145, main: "センス",
+    passive: {condition: {group: "キュート", count: 2, text: "キュートタイプ2人以上"}, targetGroup: "キュート", targetCount: 2, targetStat: "", scope: "対象人数", value: 11, mode: "add", text: "キュートタイプ2人以上でキュートタイプ2人のスコアサポート効果11%"},
+    active: {interval: 32, probability: "中確率", duration: 11, score: 65, maxScore: 125, condition: {group: "キュート", count: 2, text: "キュートタイプ2人以上でスコアが125%UP"}, text: "32秒毎に中確率で11秒間スコアが65%UP\nキュートタイプ2人以上でスコアが125%UP"},
+    special: {support: 120, rateBonus: 40, duration: 12, condition: null, text: "12秒間スコアサポート効果120%\nスキル発動率が40%UP"},
+    leaderRaw: "キュートタイプ2人以上で全員のセンスが80%UP\nキュートタイプ2人以上で全員のスコアサポート効果25%",
+    leaderEffects: [
+      {kind: "stat", stat: "センス", value: 80, mode: "multiply", condition: {group: "キュート", count: 2, text: "キュートタイプ2人以上"}, text: "キュートタイプ2人以上で全員のセンスが80%UP"},
+      {kind: "scoreSupport", value: 25, mode: "add", condition: {group: "キュート", count: 2, text: "キュートタイプ2人以上"}, text: "キュートタイプ2人以上で全員のスコアサポート効果25%"}
+    ],
+    source: "https://appmedia.jp/hololive-dreams/80492317", image: "https://appmedia.jp/wp-content/uploads/2026/10/183910_82qi6.webp", connect: {cells: 4, multiplier: 200, range: "seaside-botan", offsets: [[-2,0],[-1,0],[0,-2],[0,-1]]}, displayTag: "5期生"
+  },
+  {
+    id: "c195", member: "古石ビジュー", display: "古石ビジュー｜笑顔輝くSand castle  [★5]", rarity: "★5", attribute: "ハッピー", tag: "Advent", tags: ["ハッピー", "Advent"],
+    p: 11145, t: 7828, s: 6947, main: "パフォーマンス",
+    passive: {condition: {group: "Advent", count: 2, text: "Adventが2人以上"}, targetGroup: "Advent", targetCount: 2, targetStat: "", scope: "対象人数", value: 12, mode: "add", text: "Adventが2人以上でAdvent2人のスコアサポート効果12%"},
+    active: {interval: 19, probability: "高確率", duration: 7, score: 110, maxScore: 110, condition: null, text: "19秒毎に高確率で7秒間スコアが110%UP"},
+    special: {support: 120, rateBonus: 45, duration: 12, condition: {group: "Advent", count: 2, text: "Adventが2人以上"}, text: "12秒間スコアサポート効果120%\nAdventが2人以上でスキル発動率が45%UP"},
+    leaderRaw: "Adventが2人以上で全員のパフォーマンスが135%UP",
+    leaderEffects: [{kind: "stat", stat: "パフォーマンス", value: 135, mode: "multiply", condition: {group: "Advent", count: 2, text: "Adventが2人以上"}, text: "Adventが2人以上で全員のパフォーマンスが135%UP"}],
+    source: "https://appmedia.jp/hololive-dreams/80492338", image: "https://appmedia.jp/wp-content/uploads/2026/10/184917_5k4b2.webp", connect: {cells: 8, multiplier: 135, range: "seaside-bijou", offsets: [[-1,0],[-1,1],[0,-1],[0,1],[1,0],[1,1]]}, displayTag: "Advent"
   }
 ];
 rawData.cards = [...rawData.cards.filter(c => !addedCards.some(n => n.id === c.id)), ...addedCards];
@@ -204,11 +443,40 @@ const summerNoelLeader = {
   leaderEffects: [{kind: "stat", stat: "パフォーマンス", value: 135, mode: "multiply", condition: {group: "3期生", count: 2, text: "3期生が2人以上"}, text: "3期生が2人以上で全員のパフォーマンスが135%UP"}]
 };
 const normalizeLeader = value => String(value.display || "").includes("波まとうゆるふわKnight") ? {...value, ...summerNoelLeader} : value;
-const data = JSON.stringify({...rawData, version: "0.10.0", leaders: rawData.leaders.map(l => ({...normalizeLeader(l), memberImage: holomenImages[l.member] || l.memberImage || ""})), board: boardData, cards: rawData.cards.map((c,i) => {
+const localEventImages = {
+  c23: "assets/blue-frontier/bae.png",
+  c169: "https://cdn.gamerch.com/contents/wiki/6026/entry/FlK8d5v7.png",
+  c170: "https://cdn.gamerch.com/contents/wiki/6026/entry/H0K9AdE8.png",
+  c171: "https://cdn.gamerch.com/contents/wiki/6026/entry/FdjRStXh.png",
+  c172: "https://cdn.gamerch.com/contents/wiki/6026/entry/Nnmrny2l.png",
+  c173: "https://cdn.gamerch.com/contents/wiki/6026/entry/MXevTGTX.png",
+  c174: "https://cdn.gamerch.com/contents/wiki/6026/entry/wQiwIXAk.jpg",
+  c175: "https://cdn.gamerch.com/contents/wiki/6026/entry/wTCNw7GS.jpg",
+  c176: "https://cdn.gamerch.com/contents/wiki/6026/entry/QPSycSWq.jpg",
+  c177: "https://cdn.gamerch.com/contents/wiki/6026/entry/ISQfZOiS.jpg",
+  c178: "https://cdn.gamerch.com/contents/wiki/6026/entry/n5SUy4nw.png",
+  c179: "https://cdn.gamerch.com/contents/wiki/6026/entry/LwEFK9SY.png",
+  c180: "https://cdn.gamerch.com/contents/wiki/6026/entry/NucxmFa9.png",
+  c181: "assets/dream-summer-escape/aki-rosenthal.png",
+  c182: "assets/dream-summer-escape/shiori-novella.png",
+  c183: "assets/dream-summer-escape/laplus-darkness.png",
+  c184: "assets/dream-summer-escape/anya-melfissa.png",
+  c185: "assets/cool-trip/marine.png",
+  c186: "assets/cool-trip/koyori.png",
+  c187: "assets/blue-frontier/kobo.png",
+  c189: "https://cdn.gamerch.com/contents/wiki/6026/entry/ac1hXnJA.jpg",
+  c190: "https://cdn.gamerch.com/contents/wiki/6026/entry/Os34bqLB.jpg",
+  c191: "https://cdn.gamerch.com/contents/wiki/6026/entry/WLu80g3m.jpg",
+  c192: "https://appmedia.jp/wp-content/uploads/2026/10/181748_ox08d.webp",
+  c193: "https://appmedia.jp/wp-content/uploads/2026/10/182608_1lojk.webp",
+  c194: "https://appmedia.jp/wp-content/uploads/2026/10/183910_82qi6.webp",
+  c195: "https://appmedia.jp/wp-content/uploads/2026/10/184917_5k4b2.webp"
+};
+const data = JSON.stringify({...rawData, version: "0.13.5", leaders: rawData.leaders.map(l => ({...normalizeLeader(l), memberImage: holomenImages[l.member] || l.memberImage || ""})), board: boardData, cards: rawData.cards.map((c,i) => {
   const connect = connectEffects.get(cardConnectKey(c)) || c.connect || null;
   const promiseMember = c.member === "オーロ・クロニー" || c.member === "ハコス・ベールズ";
   const tags = c.member === "白上フブキ" ? ["1期生", "ゲーマーズ"] : promiseMember ? [c.attribute, "Promise"] : (Array.isArray(c.tags) ? c.tags : (c.tag ? [c.tag] : []));
-  return normalizeLeader({...c, tag: promiseMember ? "Promise" : (c.member === "白上フブキ" ? "1期生" : c.tag), tags, displayTag: c.member === "白上フブキ" ? "1期生 / GMs" : tags.filter(tag => !["キュート", "ピュア", "ハッピー"].includes(tag)).join(" / "), image: images[String(i)] || c.image || "", memberImage: holomenImages[c.member] || c.memberImage || "", connect: connect ? {...connect, cells: connect.cells} : null});
+  return normalizeLeader({...c, tag: promiseMember ? "Promise" : (c.member === "白上フブキ" ? "1期生" : c.tag), tags, displayTag: c.member === "白上フブキ" ? "1期生 / GMs" : tags.filter(tag => !["キュート", "ピュア", "ハッピー"].includes(tag)).join(" / "), image: localEventImages[c.id] || images[String(i)] || c.image || "", memberImage: holomenImages[c.member] || c.memberImage || "", connect: connect ? {...connect, cells: connect.cells} : null});
 })});
 
 const usageMarkup = String.raw`<footer class="usage"><h2>使い方</h2><p class="usage-lead">このシミュレーターは、リーダー効果と5枚のサブカードを組み合わせ、条件の成立状況・パラメータ補正・スキル発動・期待値をまとめて確認するためのツールです。数値はカードの編成順、曲設定、ボード、イベント設定に応じて更新されます。</p><div class="usage-grid">
@@ -233,7 +501,7 @@ const html = String.raw`<!doctype html>
 <style>
 *{box-sizing:border-box}body{margin:0;background:#f4f7fa;color:#182636;font-family:-apple-system,BlinkMacSystemFont,"Noto Sans JP",Meiryo,sans-serif}header{background:#17324d;color:#fff;padding:18px clamp(14px,4vw,44px)}h1{margin:0;font-size:clamp(22px,3vw,32px)}header p{margin:6px 0 0;color:#dceaf2;font-size:13px}main{max-width:1500px;margin:auto;padding:14px}.layout{display:grid;grid-template-columns:380px 1fr;gap:14px}.panel{background:#fff;border:1px solid #d7e1e8;border-radius:8px;padding:14px;margin-bottom:14px;box-shadow:0 3px 12px #17324d0b}h2{font-size:16px;margin:0 0 10px}.fixed{display:grid;grid-template-columns:46px 1fr 27px;gap:6px;align-items:center;margin:7px 0}.fixed b,.muted,.small{font-size:11px;color:#637789}select,input{font:inherit}select,input[type=number]{width:100%;padding:8px;border:1px solid #becbd4;border-radius:6px;background:#fff;color:#182636}button{border:0;border-radius:6px;padding:8px 11px;background:#1d789f;color:#fff;font-weight:700;cursor:pointer}.ghost{background:#eaf1f5;color:#1d789f}.actions{display:flex;gap:7px;margin-top:10px}.toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.toolbar label{font-size:11px;color:#637789}.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.stat{background:#f5f9fb;border:1px solid #d7e1e8;border-radius:7px;padding:8px}.stat b,.stat span{display:block}.stat span{font-size:10px;color:#637789}.stat b{font-size:15px;margin-top:3px}.chips{display:flex;gap:5px;flex-wrap:wrap}.chip{display:inline-block;border-radius:99px;padding:5px 8px;font-size:11px;background:#e8eef2}.cute{background:#fde8ec;color:#a92e49}.pure{background:#e9ebff;color:#4650a8}.happy{background:#fff0d1;color:#945907}.slot{border:1px solid #d7e1e8;border-radius:7px;padding:9px;margin:7px 0}.slot h3{font-size:12px;margin:0 0 5px}.ok{color:#147553}.warn{color:#8d5b00;background:#fff7e7;border-radius:6px;padding:7px;font-size:11px;line-height:1.5}.condition{display:grid;grid-template-columns:1fr auto auto;gap:6px;align-items:center;border-bottom:1px solid #edf1f4;padding:6px 0;font-size:11px}.condition:last-child{border-bottom:0}.badge{font-size:10px;border-radius:99px;padding:3px 6px;background:#eaf1f5;color:#637789}.badge.ok{background:#e4f4ec}.badge.ng{background:#fff0d8;color:#8d5b00}.recommend{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;border-bottom:1px solid #edf1f4;padding:8px 0}.recommend:last-child{border-bottom:0}.recname{font-size:12px;font-weight:700}.reason{font-size:10px;color:#637789;margin-top:3px;line-height:1.45}.timeline{position:relative}.timeline canvas{display:block;width:100%;height:390px;border:1px solid #d7e1e8;border-radius:7px}.events{max-height:260px;overflow:auto;font-size:11px}.event{display:grid;grid-template-columns:62px 100px 1fr;gap:6px;padding:5px 0;border-bottom:1px solid #edf1f4}.event b{color:#1d789f}.legend{display:flex;gap:10px;flex-wrap:wrap;font-size:10px;color:#637789;margin:8px 0}.dot{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:3px;vertical-align:-1px}.spdot{background:#d66b31}.actdot{background:#2e9b75}.line{background:#17324d}.help{font-size:11px;color:#637789;line-height:1.55}@media(max-width:900px){.layout{grid-template-columns:1fr}}@media(max-width:560px){main{padding:8px}.summary{grid-template-columns:repeat(2,1fr)}.event{grid-template-columns:50px 82px 1fr}}
 </style><style>.cardgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:9px}.cardtile{position:relative;border:1px solid #d7e1e8;border-radius:8px;overflow:hidden;background:#fff}.cardtile.selected{outline:3px solid #1d789f}.cardart{width:100%;aspect-ratio:1.65;object-fit:cover;background:#eaf1f5;display:block}.cardfallback{width:100%;aspect-ratio:1.65;display:grid;place-items:center;background:#17324d;color:#fff;font-size:24px;font-weight:700}.cardcaption{padding:7px;font-size:11px;line-height:1.4}.cardcaption b{display:block}.cardbuttons{display:flex;gap:5px;padding:0 7px 7px}.cardbuttons button{font-size:10px;padding:5px 6px}.detailbox{background:#f5f9fb;border:1px solid #d7e1e8;border-radius:8px;padding:11px;font-size:11px;line-height:1.55}.detailbox h3{margin:0 0 6px;font-size:14px}.detailbox pre{white-space:pre-wrap;margin:5px 0 0;font:inherit}.slotgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.slotbox{min-height:48px;border:1px dashed #b9cbd5;border-radius:6px;padding:6px;font-size:10px}.slotbox b{display:block;color:#637789}.slotbox button{padding:2px 5px;font-size:10px;float:right}.detailbox{position:fixed;z-index:30;max-width:min(360px,calc(100vw - 20px));box-shadow:0 12px 30px #17324d33}</style></head><body>
-<header><h1>ホロドリ構成シミュレーター <span class="version">v0.10.0</span></h1><p>リーダーと5枚のサブを組みながら、条件・適応先・1曲分のスキル発動を確認します。</p></header>
+<header><h1>ホロドリ構成シミュレーター <span class="version">v0.13.4</span></h1><p>リーダーと5枚のサブを組みながら、条件・適応先・1曲分のスキル発動を確認します。</p></header>
 <main><div class="layout"><aside>
 <section class="panel"><h2>構成</h2><div class="fixed"><b>リーダー</b><select id="leader"></select><span id="leaderName" class="leader-name"></span><span id="leaderPortrait"></span></div><div id="slots"></div><div id="deck" class="chips" style="margin-top:10px"></div><div id="summary" class="summary" style="margin-top:10px"></div><div class="actions"><button id="reset" class="ghost">リセット</button><div class="relation-legend" aria-label="構成カード外周の説明"><span><i class="legend-ring condition-source"></i>条件元</span><span><i class="legend-ring condition-target"></i>条件先</span><span><i class="legend-ring effect-source"></i>適応元</span><span><i class="legend-ring effect-target"></i>適応先</span></div></div><p class="help">リーダーは衣装効果だけを提供します。サブに入れたカードだけが、基礎値・SP・アクティブ・パッシブを使います。</p></section>
 <section class="panel"><h2>曲シミュレーション</h2><div class="toolbar"><label>曲時間 <input id="song" type="number" value="120" min="1" style="width:78px"> 秒</label><label>低 <input id="low" type="number" value="35" readonly style="width:55px">%</label><label>中 <input id="mid" type="number" value="45" readonly style="width:55px">%</label><label>高 <input id="high" type="number" value="55" readonly style="width:55px">%</label></div><p class="help">発動率は低35%、中45%、高55%に固定し、SP中の発動率補正を掛けます。同時に有効なスコアUPは最大値だけを表示します。</p></section><section class="panel"><h2>条件と適応先</h2><div id="conditions"></div></section>
@@ -273,7 +541,7 @@ const finalHtml=interactiveHtml.replace("function renderCards(deck){", "function
 const cardViewFunction=String.raw`function renderCards(deck){const used=new Set(deck.map(c=>c.id)),members=new Set(deck.map(c=>c.member)),missing=obligations(deck),owned=new Set(S.owned);const cards=C.filter(c=>!used.has(c.id)&&!members.has(c.member)&&((S.ownedFilter||"all")==="all"||(S.ownedFilter==="owned"&&owned.has(c.id))||(S.ownedFilter==="unowned"&&!owned.has(c.id))));$("cardGrid").innerHTML=sortCards(cards).map(c=>{const canCondition=missing.some(x=>x.type!=="target"&&x.group&&group(c,x.group)),canTarget=missing.some(x=>x.type==="target"&&x.group&&group(c,x.group)&&(!x.stat||c.main===x.stat)),image=c.image?"<img class='cardart' src='"+c.image+"' alt='"+cardTitle(c)+"'>":"<div class='cardfallback'>"+c.member.slice(0,2)+"</div>";return "<article class='cardtile "+(canCondition?"can-condition ":"")+(canTarget?"can-target ":"")+(owned.has(c.id)?"owned":"")+"'>"+image+"<div class='cardcaption'><b>"+cardTitle(c)+"</b><span>"+c.member+" / "+c.attribute+" / "+c.main+" / "+c.tag+"</span>"+(owned.has(c.id)?"<span class='ownedmark'>所持</span>":"")+(canCondition||canTarget?"<span class='ownedmark'>"+(canCondition?"条件":"")+(canCondition&&canTarget?"・":"")+(canTarget?"適応先":"")+"候補</span>":"")+"</div><div class='cardbuttons'><button data-add='"+c.id+"'>編成</button><button class='ghost' data-owned='"+c.id+"'>"+(owned.has(c.id)?"所持済":"所持")+"</button><button class='ghost' data-detail='"+c.id+"'>詳細</button></div></article>"}).join("")||"<p class='muted'>表示できるカードがありません。</p>"}`;
 const cardViewFunction2=String.raw`function renderCards(deck){const used=new Set(deck.map(c=>c.id)),members=new Set(deck.map(c=>c.member)),missing=obligations(deck),owned=new Set(S.owned),f=S.filters||{};const attrIcon=a=>"<img class='miniicon' title='"+a+"' src='https://cdn.gamerch.com/contents/wiki/6026/entry/"+(a==="キュート"?"lMotdPBQ":a==="ピュア"?"3eIYqsA7":"mmyYIWz3")+".png' alt='"+a+"'>",statIcon=s=>"<img class='miniicon' title='"+s+"' src='"+(s==="パフォーマンス"?'https://cdn.gamerch.com/contents/wiki/6026/entry/dvB0SYVG.png':s==="テクニック"?'https://cdn.gamerch.com/contents/wiki/6026/entry/kyqEKqD8.png':'https://cdn.gamerch.com/contents/wiki/6026/entry/GlMRRjrc.png')+"' alt='"+s+"'>";const cards=C.filter(c=>{if(used.has(c.id)||members.has(c.member))return false;const canCondition=missing.some(x=>x.type!=="target"&&x.group&&group(c,x.group)),canTarget=missing.some(x=>x.type==="target"&&x.group&&group(c,x.group)&&(!x.stat||c.main===x.stat));return(!f.owned||owned.has(c.id))&&(!f.rarity?.length||f.rarity.includes(c.rarity))&&(!f.type?.length||f.type.includes(c.attribute))&&(!f.main?.length||f.main.includes(c.main))&&(!f.generation?.length||f.generation.some(g=>String(c.tag).split(",").includes(g)))&&(!f.condition||canCondition)&&(!f.target||canTarget)});$("cardGrid").innerHTML=sortCards(cards).map(c=>{const canCondition=missing.some(x=>x.type!=="target"&&x.group&&group(c,x.group)),canTarget=missing.some(x=>x.type==="target"&&x.group&&group(c,x.group)&&(!x.stat||c.main===x.stat)),image=c.image?"<img class='cardart' src='"+c.image+"' alt='"+cardTitle(c)+"'>":"<div class='cardfallback'>"+c.member.slice(0,2)+"</div>";return "<article class='cardtile "+(canCondition?"can-condition ":"")+(canTarget?"can-target ":"")+(owned.has(c.id)?"owned":"")+"'>"+image+"<div class='cardcaption'><b>"+cardTitle(c)+"</b><span>"+c.member+" "+attrIcon(c.attribute)+" "+statIcon(c.main)+" "+c.tag+"</span>"+(owned.has(c.id)?"<span class='ownedmark'>所持</span>":"")+(canCondition||canTarget?"<span class='ownedmark'>"+(canCondition?"条件":"")+(canCondition&&canTarget?"・":"")+(canTarget?"適応先":"")+"候補</span>":"")+"</div><div class='cardbuttons'><button data-add='"+c.id+"'>編成</button><button class='ghost' data-owned='"+c.id+"'>"+(owned.has(c.id)?"所持済":"所持")+"</button><button class='ghost' data-detail='"+c.id+"'>詳細</button></div></article>"}).join("")||"<p class='muted'>表示できるカードがありません。</p>"}`;
 const cardViewFunction3=cardViewFunction2.replace('return "<article class=\'cardtile "','return "<article data-add=\'"+c.id+"\' class=\'cardtile "').replace('<button data-add=\'"+c.id+"\'>編成</button>','');
-const cardViewFunctionEvent=cardViewFunction2.replace('&&(!f.condition||canCondition)&&(!f.target||canTarget)', '&&(!f.event||["c162","c163","c164","c165","c166","c167","c168","c169","c170","c171","c172","c173"].includes(c.id)||["大空スバル","不知火フレア","白銀ノエル","角巻わため","音乃瀬奏","さくらみこ","星街すいせい","森カリオペ","百鬼あやめ","クレイジー・オリー","姫森ルーナ","一伊那尓栖"].includes(c.member))&&(!f.condition||canCondition)&&(!f.target||canTarget)');
+const cardViewFunctionEvent=cardViewFunction2.replace('&&(!f.condition||canCondition)&&(!f.target||canTarget)', '&&(!f.event||["c162","c163","c164","c165","c166","c167","c168","c169","c170","c171","c172","c173","c174","c175","c176","c177","c178","c179","c180","c181","c182","c183","c184","c185","c186","c187","c188","c189","c190","c191","c192","c193","c194","c195"].includes(c.id)||["大空スバル","不知火フレア","白銀ノエル","角巻わため","音乃瀬奏","さくらみこ","星街すいせい","森カリオペ","百鬼あやめ","クレイジー・オリー","姫森ルーナ","一伊那尓栖","白上フブキ","大神ミオ","猫又おかゆ","戌神ころね","鷹嶺ルイ","フワワ・アビスガード","モココ・アビスガード","アキ・ローゼンタール","シオリ・ノヴェラ","ラプラス・ダークネス","アーニャ・メルフィッサ","宝鐘マリン","博衣こより","こぼ・かなえる","ハコス・ベールズ","尾丸ポルカ","雪花ラミィ","一条莉々華","常闇トワ","カエラ・コヴァルスキア","獅白ぼたん","古石ビジュー"].includes(c.member))&&(!f.condition||canCondition)&&(!f.target||canTarget)');
 const cardViewFunction4=cardViewFunctionEvent.replace('<div class=\'cardcaption\'><b>"+cardTitle(c)+"</b><span>"+c.member+" "+attrIcon(c.attribute)+" "+statIcon(c.main)+" "+c.tag+"</span>','<div class=\'cardcaption\'><b>"+cardTitle(c)+"</b><span class=\'cardmember\'>"+c.member+"</span><span class=\'cardmeta\'>"+c.tag+" "+attrIcon(c.attribute)+" "+statIcon(c.main)+"</span>');
 const outputHtml=finalHtml.replace('const generationRank=tag=>{const m=String(tag||"").match(/(ID)?([0-6])期生/);return m?Number(m[2])*2+(m[1]?1:0):99}', 'const generationRank=tag=>{const s=String(tag||"");const order=["0期生","1期生","2期生","3期生","4期生","5期生","ゲーマーズ","holoX","ID1期生","ID2期生","ID3期生","Myth","Promise","Advent","ReGLOSS"];const i=order.findIndex(x=>s.includes(x));return i<0?99:i}')
   .replace('$("cardGrid").onclick=e=>{',cardViewFunction4.replace(/;const attrIcon[\s\S]*?;const cards=/,';const cards=')+'$("cardGrid").onclick=e=>{')
@@ -514,11 +782,11 @@ const slotLeaderSelectionRuntime=String.raw`document.addEventListener("click",e=
 const parameterHoverRuntime=String.raw`function parameterExplain(deck){const keys=[["p","P","performance"],["t","T","technique"],["s","S","sense"]],lines=[];for(const c of deck){const reasons=[],mult={p:1,t:1,s:1};for(const x of leaderState(deck)){if(!x.ok)continue;const e=x.e;if(e.kind==="allParam"){for(const [k] of keys)mult[k]*=1+e.value/100;reasons.push("リーダー: "+e.text)}else if(e.kind==="stat"){const k={パフォーマンス:"p",テクニック:"t",センス:"s"}[e.stat];if(k){mult[k]*=1+e.value/100;reasons.push("リーダー: "+e.text)}}}for(const o of deck){const p=o.passive;if(!p?.condition||!condOK(deck,p.condition)||!p.targetGroup||!group(c,p.targetGroup)||p.mode!=="multiply")continue;const k={パフォーマンス:"p",テクニック:"t",センス:"s"}[p.targetStat];if(k)mult[k]*=1+p.value/100;else for(const [key] of keys)mult[key]*=1+p.value/100;reasons.push(o.member+"のパッシブ: "+p.text)}const board=typeof boardEffects==="function"?boardEffects(deck):null,d=board?.byCard?.get(c.id),vals=keys.map(([k,label,boardKey])=>{const raw=c[k],pct=d?.pct?.[boardKey]||0,flat=d?.flat?.[boardKey]||0,after=raw*mult[k]*(1+pct/100)+flat;return label+" "+raw.toLocaleString()+" → "+Math.round(after).toLocaleString()+(after!==raw?"（"+((after/raw-1)*100).toFixed(1)+"%）":"")}).join(" / ");lines.push("<b>"+cardTitle(c)+"（"+c.member+"）</b><br>"+vals+(reasons.length?"<br><span>"+reasons.join("<br>")+"</span>":""))}return lines.join("<hr>")}document.addEventListener("mouseover",e=>{const target=e.target.closest(".parameter-stat");if(!target)return;document.querySelector(".parameter-tooltip")?.remove();const tip=document.createElement("div");tip.className="parameter-tooltip";tip.innerHTML="<b>補正内訳</b><br>"+parameterExplain(chosen());document.body.appendChild(tip);target._parameterTip=tip});document.addEventListener("mouseout",e=>{const target=e.target.closest(".parameter-stat");if(target&&target._parameterTip&&!e.relatedTarget?.closest?.(".parameter-stat")){target._parameterTip.remove();target._parameterTip=null}});`;
 const parameterHoverRuntime2=parameterHoverRuntime.replace('document.body.appendChild(tip);target._parameterTip=tip','const r=target.getBoundingClientRect();tip.style.left=Math.min(window.innerWidth-580,Math.max(8,r.left))+"px";tip.style.top=Math.min(window.innerHeight-320,Math.max(8,r.bottom+8))+"px";document.body.appendChild(tip);target._parameterTip=tip');
 const parameterHoverRuntime3=parameterHoverRuntime2.replace('!p.targetGroup||!group(c,p.targetGroup)||p.mode!=="multiply"','!p.targetGroup||!targetApplies(deck,o,c)||p.mode!=="multiply"');
-const targetSelectionRuntime=String.raw`function targetApplies(deck,source,card){const p=source?.passive||source||{};if(p.scope==="本人")return card?.id===source?.id;if(!p.targetGroup)return false;return target(deck,{...p,id:source?.id}).some(x=>x.id===card.id)}`;
+const targetSelectionRuntime=String.raw`function targetApplies(deck,source,card){const p=source?.passive||source||{};if(p.scope==="本人")return card?.id===source?.id;if(!p.targetGroup)return false;return target(deck,{...p,id:source?.id}).some(x=>x.id===card.id)}function leaderEffectApplies(deck,e,card){if(!e||e.kind!=="stat")return false;if(e.targetGroup){const targets=targetPool(deck,{targetGroup:e.targetGroup,targetCount:e.targetCount,targetStat:e.targetStat});return targets.some(x=>x.id===card?.id)}return card?.main===e.stat}`;
 const activeIntervalRuntime=String.raw`function activeInterval(card){const value=Number(card?.active?.interval||0);if(value>0)return value;const text=String(card?.active?.text||"");const match=text.match(/(\d+(?:\.\d+)?)秒(?:毎|ごと)/);return match?Number(match[1]):0}`;
 const correctedParameterRuntime=String.raw`function effectiveEffects(deck){const es=leaderState(deck).filter(x=>x.ok).map(x=>x.e),base=deck.reduce((n,c)=>n+c.p+c.t+c.s,0),board=typeof boardEffects==="function"?boardEffects(deck):{byCard:new Map(),scoreSupport:0,scoreBonus:0,frequencyBonus:0},statKey={パフォーマンス:"performance",テクニック:"technique",センス:"sense"},leaderMult={performance:1,technique:1,sense:1};for(const e of es){if(e.kind==="allParam"){for(const k of Object.keys(leaderMult))leaderMult[k]*=1+e.value/100}else if(e.kind==="stat"&&statKey[e.stat])leaderMult[statKey[e.stat]]*=1+e.value/100}const boosted=deck.reduce((n,c)=>{const mult={...leaderMult};for(const o of deck){const p=o.passive;if(!p||!p.condition||!condOK(deck,p.condition)||!p.targetGroup||!targetApplies(deck,o,c)||p.mode!=="multiply")continue;if(p.targetStat&&statKey[p.targetStat])mult[statKey[p.targetStat]]*=1+p.value/100;else for(const k of Object.keys(mult))mult[k]*=1+p.value/100}const d=board.byCard?.get(c.id)||{pct:{performance:0,technique:0,sense:0},flat:{performance:0,technique:0,sense:0}};return n+c.p*mult.performance*(1+(d.pct?.performance||0)/100)+(d.flat?.performance||0)+c.t*mult.technique*(1+(d.pct?.technique||0)/100)+(d.flat?.technique||0)+c.s*mult.sense*(1+(d.pct?.sense||0)/100)+(d.flat?.sense||0)},0);return{baseParameter:base,boostedParameter:boosted,parameterPercent:base?Math.max(0,(boosted/base-1)*100):0,parameterScoreIncrease:boosted-base,leaderScoreSupport:es.filter(e=>e.kind==="scoreSupport").reduce((n,e)=>n+e.value,0)+(board.scoreSupport||0),boardScoreBonus:board.scoreBonus||0,boardRateBonus:board.rateBonus||0,boardFrequencyBonus:board.frequencyBonus||0}}`;
-const additiveParameterRuntime=String.raw`function effectiveEffects(deck){const es=leaderState(deck).filter(x=>x.ok).map(x=>x.e),base=deck.reduce((n,c)=>n+c.p+c.t+c.s,0),board=typeof boardEffects==="function"?boardEffects(deck):{byCard:new Map(),scoreSupport:0,scoreBonus:0,frequencyBonus:0},statKey={パフォーマンス:"performance",テクニック:"technique",センス:"sense"},keys=["performance","technique","sense"];const boosted=deck.reduce((n,c)=>{const bonus={performance:0,technique:0,sense:0};for(const e of es){const value=Number(e.value)||0;if(e.kind==="allParam")for(const k of keys)bonus[k]+=value;else if(e.kind==="stat"&&statKey[e.stat])bonus[statKey[e.stat]]+=value}for(const o of deck){const p=o.passive;if(!p||p.mode!=="multiply"||!p.condition||!condOK(deck,p.condition)||!p.targetGroup||!targetApplies(deck,o,c))continue;const value=Number(p.value)||0;if(p.targetStat&&statKey[p.targetStat])bonus[statKey[p.targetStat]]+=value;else for(const k of keys)bonus[k]+=value}const d=board.byCard?.get(c.id)||{pct:{performance:0,technique:0,sense:0},flat:{performance:0,technique:0,sense:0}};return n+c.p*(1+(bonus.performance+(d.pct?.performance||0))/100)+(d.flat?.performance||0)+c.t*(1+(bonus.technique+(d.pct?.technique||0))/100)+(d.flat?.technique||0)+c.s*(1+(bonus.sense+(d.pct?.sense||0))/100)+(d.flat?.sense||0)},0);return{baseParameter:base,boostedParameter:boosted,parameterPercent:base?Math.max(0,(boosted/base-1)*100):0,parameterScoreIncrease:boosted-base,leaderScoreSupport:es.filter(e=>e.kind==="scoreSupport").reduce((n,e)=>n+e.value,0)+(board.scoreSupport||0),boardScoreBonus:board.scoreBonus||0,boardRateBonus:board.rateBonus||0,boardFrequencyBonus:board.frequencyBonus||0}}`;
-const additiveParameterHoverRuntime=String.raw`function parameterExplain(deck){const keys=[["p","P","performance"],["t","T","technique"],["s","S","sense"]],lines=[];for(const c of deck){const reasons=[],bonus={p:0,t:0,s:0};for(const x of leaderState(deck)){if(!x.ok)continue;const e=x.e,value=Number(e.value)||0;if(e.kind==="allParam"){for(const [k] of keys)bonus[k]+=value;reasons.push("リーダー: "+e.text)}else if(e.kind==="stat"){const k={パフォーマンス:"p",テクニック:"t",センス:"s"}[e.stat];if(k){bonus[k]+=value;reasons.push("リーダー: "+e.text)}}}for(const o of deck){const p=o.passive;if(!p||p.mode!=="multiply"||!p.condition||!condOK(deck,p.condition)||!p.targetGroup||!targetApplies(deck,o,c))continue;const k={パフォーマンス:"p",テクニック:"t",センス:"s"}[p.targetStat],value=Number(p.value)||0;if(k)bonus[k]+=value;else for(const [key] of keys)bonus[key]+=value;reasons.push(o.member+"のパッシブ: "+p.text)}const board=typeof boardEffects==="function"?boardEffects(deck):null,d=board?.byCard?.get(c.id),vals=keys.map(([k,label,boardKey])=>{const raw=c[k],pct=d?.pct?.[boardKey]||0,flat=d?.flat?.[boardKey]||0,after=raw*(1+(bonus[k]+pct)/100)+flat;return label+" "+raw.toLocaleString()+" → "+Math.round(after).toLocaleString()+(after!==raw?"（"+((after/raw-1)*100).toFixed(1)+"%）":"")}).join(" / ");lines.push("<b>"+cardTitle(c)+"（"+c.member+"）</b><br>"+vals+(reasons.length?"<br><span>"+reasons.join("<br>")+"</span>":""))}return lines.join("<hr>")}document.addEventListener("mouseover",e=>{const target=e.target.closest(".parameter-stat");if(!target)return;document.querySelector(".parameter-tooltip")?.remove();const tip=document.createElement("div");tip.className="parameter-tooltip";tip.innerHTML="<b>補正内訳</b><br>"+parameterExplain(chosen());const r=target.getBoundingClientRect();tip.style.left=Math.min(window.innerWidth-580,Math.max(8,r.left))+"px";tip.style.top=Math.min(window.innerHeight-320,Math.max(8,r.bottom+8))+"px";document.body.appendChild(tip);target._parameterTip=tip});document.addEventListener("mouseout",e=>{const target=e.target.closest(".parameter-stat");if(target&&target._parameterTip&&!e.relatedTarget?.closest?.(".parameter-stat")){target._parameterTip.remove();target._parameterTip=null}});`;
+const additiveParameterRuntime=String.raw`function effectiveEffects(deck){const es=leaderState(deck).filter(x=>x.ok).map(x=>x.e),base=deck.reduce((n,c)=>n+c.p+c.t+c.s,0),board=typeof boardEffects==="function"?boardEffects(deck):{byCard:new Map(),scoreSupport:0,scoreBonus:0,frequencyBonus:0},statKey={パフォーマンス:"performance",テクニック:"technique",センス:"sense"},keys=["performance","technique","sense"];const boosted=deck.reduce((n,c)=>{const bonus={performance:0,technique:0,sense:0};for(const e of es){const value=Number(e.value)||0;if(e.kind==="allParam")for(const k of keys)bonus[k]+=value;else if(e.kind==="stat"&&statKey[e.stat]&&leaderEffectApplies(deck,e,c))bonus[statKey[e.stat]]+=value}for(const o of deck){const p=o.passive;if(!p||p.mode!=="multiply"||!p.condition||!condOK(deck,p.condition)||!p.targetGroup||!targetApplies(deck,o,c))continue;const value=Number(p.value)||0;if(p.targetStat&&statKey[p.targetStat])bonus[statKey[p.targetStat]]+=value;else for(const k of keys)bonus[k]+=value}const d=board.byCard?.get(c.id)||{pct:{performance:0,technique:0,sense:0},flat:{performance:0,technique:0,sense:0}};return n+c.p*(1+(bonus.performance+(d.pct?.performance||0))/100)+(d.flat?.performance||0)+c.t*(1+(bonus.technique+(d.pct?.technique||0))/100)+(d.flat?.technique||0)+c.s*(1+(bonus.sense+(d.pct?.sense||0))/100)+(d.flat?.sense||0)},0);return{baseParameter:base,boostedParameter:boosted,parameterPercent:base?Math.max(0,(boosted/base-1)*100):0,parameterScoreIncrease:boosted-base,leaderScoreSupport:es.filter(e=>e.kind==="scoreSupport").reduce((n,e)=>n+e.value,0)+(board.scoreSupport||0),boardScoreBonus:board.scoreBonus||0,boardRateBonus:board.rateBonus||0,boardFrequencyBonus:board.frequencyBonus||0}}`;
+const additiveParameterHoverRuntime=String.raw`function parameterExplain(deck){const keys=[["p","P","performance"],["t","T","technique"],["s","S","sense"]],lines=[];for(const c of deck){const reasons=[],bonus={p:0,t:0,s:0};for(const x of leaderState(deck)){if(!x.ok)continue;const e=x.e,value=Number(e.value)||0;if(e.kind==="allParam"){for(const [k] of keys)bonus[k]+=value;reasons.push("リーダー: "+e.text)}else if(e.kind==="stat"){const k={パフォーマンス:"p",テクニック:"t",センス:"s"}[e.stat];if(k&&leaderEffectApplies(deck,e,c)){bonus[k]+=value;reasons.push("リーダー: "+e.text)}}}for(const o of deck){const p=o.passive;if(!p||p.mode!=="multiply"||!p.condition||!condOK(deck,p.condition)||!p.targetGroup||!targetApplies(deck,o,c))continue;const k={パフォーマンス:"p",テクニック:"t",センス:"s"}[p.targetStat],value=Number(p.value)||0;if(k)bonus[k]+=value;else for(const [key] of keys)bonus[key]+=value;reasons.push(o.member+"のパッシブ: "+p.text)}const board=typeof boardEffects==="function"?boardEffects(deck):null,d=board?.byCard?.get(c.id),vals=keys.map(([k,label,boardKey])=>{const raw=c[k],pct=d?.pct?.[boardKey]||0,flat=d?.flat?.[boardKey]||0,after=raw*(1+(bonus[k]+pct)/100)+flat;return label+" "+raw.toLocaleString()+" → "+Math.round(after).toLocaleString()+(after!==raw?"（"+((after/raw-1)*100).toFixed(1)+"%）":"")}).join(" / ");lines.push("<b>"+cardTitle(c)+"（"+c.member+"）</b><br>"+vals+(reasons.length?"<br><span>"+reasons.join("<br>")+"</span>":""))}return lines.join("<hr>")}document.addEventListener("mouseover",e=>{const target=e.target.closest(".parameter-stat");if(!target)return;document.querySelector(".parameter-tooltip")?.remove();const tip=document.createElement("div");tip.className="parameter-tooltip";tip.innerHTML="<b>補正内訳</b><br>"+parameterExplain(chosen());const r=target.getBoundingClientRect();tip.style.left=Math.min(window.innerWidth-580,Math.max(8,r.left))+"px";tip.style.top=Math.min(window.innerHeight-320,Math.max(8,r.bottom+8))+"px";document.body.appendChild(tip);target._parameterTip=tip});document.addEventListener("mouseout",e=>{const target=e.target.closest(".parameter-stat");if(target&&target._parameterTip&&!e.relatedTarget?.closest?.(".parameter-stat")){target._parameterTip.remove();target._parameterTip=null}});`;
 const correctedSimulationRuntime=String.raw`const legacySimulateForSummary=simulate;function simulate(deck){const sim=legacySimulateForSummary(deck),fx=effectiveEffects(deck),song=Math.max(1,+$("song").value||120),basePerSecond=fx.boostedParameter/song;sim.effects=fx;sim.expectedTotal=sim.line.reduce((sum,z)=>sum+basePerSecond*(1+z.v/100),0);return sim}`;
 const targetAwareBoardRuntime=boardControlAndSlotRuntimeWithHolomen.replaceAll('group(c,o.passive.targetGroup)&&(!o.passive.targetStat||c.main===o.passive.targetStat)','targetApplies(deck,o,c)');
 const targetAwareGraphFunctions=graphFunctions13.replaceAll('group(c,o.passive.targetGroup)&&(!o.passive.targetStat||c.main===o.passive.targetStat)','targetApplies(deck,o,c)');
@@ -673,7 +941,14 @@ const EVENT_DEFINITIONS={
   normal:{name:"通常",cardIds:[],members:[],cardRewardPercent:0,memberRewardPercent:0,scoreBonusPercent:0},
   brandNewSummer:{name:"ハロー！BrandNewSummer！",cardIds:["c162","c163","c164","c165","c166"],members:["大空スバル","不知火フレア","白銀ノエル","角巻わため","音乃瀬奏"],cardRewardPercent:30,memberRewardPercent:30,scoreBonusPercent:10},
   syncSummerSparkle:{name:"シンクロする夏のスパークル",cardIds:["c167","c168"],members:["さくらみこ","星街すいせい"],cardRewardPercent:30,memberRewardPercent:30,scoreBonusPercent:10},
-  ultimateSummerForMe:{name:"アルティメットサマー！ for Me？",cardIds:["c169","c170","c171","c172","c173"],members:["森カリオペ","百鬼あやめ","クレイジー・オリー","姫森ルーナ","一伊那尓栖"],cardRewardPercent:30,memberRewardPercent:30,scoreBonusPercent:10}
+  ultimateSummerForMe:{name:"アルティメットサマー！ for Me？",cardIds:["c169","c170","c171","c172","c173"],members:["森カリオペ","百鬼あやめ","クレイジー・オリー","姫森ルーナ","一伊那尓栖"],cardRewardPercent:30,memberRewardPercent:30,scoreBonusPercent:10},
+  uninhabitedIslandSummer:{name:"無人島ジャック！真夏のサバイバルデイズ",cardIds:["c174","c175","c176","c177"],members:["白上フブキ","大神ミオ","猫又おかゆ","戌神ころね"],cardRewardPercent:30,memberRewardPercent:30,scoreBonusPercent:10},
+  innocentTwoEyes:{name:"無邪気なふたり、見守るeyes",cardIds:["c178","c179","c180"],members:["鷹嶺ルイ","フワワ・アビスガード","モココ・アビスガード"],cardRewardPercent:30,memberRewardPercent:30,scoreBonusPercent:10},
+  summerEscape:{name:"夢幻のサマーエスケープ！？",cardIds:["c181","c182","c183","c184"],members:["アキ・ローゼンタール","シオリ・ノヴェラ","ラプラス・ダークネス","アーニャ・メルフィッサ"],cardRewardPercent:30,memberRewardPercent:30,scoreBonusPercent:10},
+  coolTrip:{name:"涼を求めるトリップ",cardIds:["c185","c186"],members:["宝鐘マリン","博衣こより"],cardRewardPercent:30,memberRewardPercent:30,scoreBonusPercent:10},
+  blueSplash:{name:"わくわくブルースプラッシュ！",cardIds:["c185","c186","c187","c188"],members:["宝鐘マリン","博衣こより","こぼ・かなえる","ハコス・ベールズ"],cardRewardPercent:30,memberRewardPercent:30,scoreBonusPercent:10},
+  oceanChase:{name:"ゆずれぬオーシャンチェイス",cardIds:["c189","c190","c191"],members:["尾丸ポルカ","雪花ラミィ","一条莉々華"],cardRewardPercent:30,memberRewardPercent:30,scoreBonusPercent:10},
+  seasideDressCode:{name:"あふれる光と、渚のドレスコード",cardIds:["c192","c193","c194","c195"],members:["常闇トワ","カエラ・コヴァルスキア","獅白ぼたん","古石ビジュー"],cardRewardPercent:30,memberRewardPercent:30,scoreBonusPercent:10}
 };
 try{S.eventMode=localStorage.getItem("holodoriEventMode")||S.eventMode||"normal"}catch{S.eventMode=S.eventMode||"normal"}
 function selectedEvent(){return EVENT_DEFINITIONS[S.eventMode]||EVENT_DEFINITIONS.normal}
@@ -715,7 +990,7 @@ function syncEventPaint(){
 }
 renderCards=function(deck){renderCardsBeforeEvent(deck);document.querySelectorAll("#cardGrid .cardcaption .ownedmark").forEach(mark=>{if(mark.textContent.trim()==="所持")mark.remove();else if(mark.textContent.includes("候補"))mark.classList.add("candidate-mark")});const event=selectedEvent();document.querySelectorAll("#cardGrid [data-board]").forEach(node=>{const card=byId(node.dataset.board),tile=node.closest(".cardtile");if(!card||!tile)return;if(event.members.includes(card.member))tile.classList.add("event-bonus-member");if(event.cardIds.includes(card.id))tile.classList.add("event-bonus-card")});syncEventPaint()};
 const renderBoardEffectsSummaryBeforeEvent=renderBoardEffectsSummary;
-renderBoardEffectsSummary=function(){renderBoardEffectsSummaryBeforeEvent();const anchor=$("boardResetAll")||$("reset");if(!anchor)return;$("eventModeWrap")?.remove();anchor.insertAdjacentHTML("afterend","<label class='event-mode' id='eventModeWrap'>イベント<select id='eventMode'><option value='normal'>通常</option><option value='brandNewSummer'>ハロー！BrandNewSummer！</option><option value='syncSummerSparkle'>シンクロする夏のスパークル</option><option value='ultimateSummerForMe'>アルティメットサマー！ for Me？</option></select></label>");const select=$("eventMode");select.value=EVENT_DEFINITIONS[S.eventMode]?S.eventMode:"normal";select.onchange=e=>{S.eventMode=e.target.value;try{localStorage.setItem("holodoriEventMode",S.eventMode)}catch{}render()}};
+renderBoardEffectsSummary=function(){renderBoardEffectsSummaryBeforeEvent();const anchor=$("boardResetAll")||$("reset");if(!anchor)return;$("eventModeWrap")?.remove();anchor.insertAdjacentHTML("afterend","<label class='event-mode' id='eventModeWrap'>イベント<select id='eventMode'><option value='normal'>通常</option><option value='brandNewSummer'>ハロー！BrandNewSummer！</option><option value='syncSummerSparkle'>シンクロする夏のスパークル</option><option value='ultimateSummerForMe'>アルティメットサマー！ for Me？</option><option value='uninhabitedIslandSummer'>無人島ジャック！真夏のサバイバルデイズ</option><option value='innocentTwoEyes'>無邪気なふたり、見守るeyes</option><option value='summerEscape'>夢幻のサマーエスケープ！？</option><option value='coolTrip'>涼を求めるトリップ</option><option value='blueSplash'>わくわくブルースプラッシュ！</option><option value='oceanChase'>ゆずれぬオーシャンチェイス</option><option value='seasideDressCode'>あふれる光と、渚のドレスコード</option></select></label>");const select=$("eventMode");select.value=EVENT_DEFINITIONS[S.eventMode]?S.eventMode:"normal";select.onchange=e=>{S.eventMode=e.target.value;try{localStorage.setItem("holodoriEventMode",S.eventMode)}catch{}render()}};
 renderCoverage=function(sim){const box=$("coverageSummary");if(!box)return;let noActive=0,spNoActive=0,spSeconds=0;for(let sec=0;sec<sim.song;sec++){const hasActive=sim.bars.some(b=>b.kind==="A"&&sec>=b.start&&sec<b.end),hasSP=sim.bars.some(b=>b.kind==="SP"&&sec>=b.start&&sec<b.end);if(!hasActive)noActive++;if(hasSP){spSeconds++;if(!hasActive)spNoActive++}}const pct=(value,total)=>total?((value/total)*100).toFixed(1)+"%":"-",fx=sim.effects||{},scoreNote=fx.eventScoreBonus?"<small>イベントスコア +"+fx.eventScoreBonus+"%</small>":"",rewardNote=fx.eventRewardPercent?"<small>Pt・バッジ +"+fx.eventRewardPercent+"%</small>":"<small>通常</small>";box.innerHTML="<div class='coverage-grid coverage-grid-event'><div class='coverage-stat'><span>Aスキルなし</span><b>"+noActive+"秒 / "+pct(noActive,sim.song)+"</b></div><div class='coverage-stat'><span>SP中にAスキルなし</span><b>"+spNoActive+"秒 / "+pct(spNoActive,spSeconds)+"</b></div><div class='coverage-stat'><span>実質スコア倍率</span><b>"+(sim.finalScoreMultiplier||1).toFixed(3)+"倍</b>"+scoreNote+"</div><div class='coverage-stat event-reward'><span>報酬倍率</span><b>×"+(fx.eventRewardMultiplier||1).toFixed(2)+"</b>"+rewardNote+"</div><div class='coverage-stat'><span>期待値合計スコア</span><b>"+(sim.expectedTotal||0).toFixed(2)+" pt</b></div></div>"};
 render();
 `;
@@ -776,7 +1051,11 @@ const renderBeforeParallelStar5=render;render=function(){renderBeforeParallelSta
 `;
 const parallelStatusFormulaOld=String.raw`let f=1;for(const e of selfData.leaderEffects||[])if((!e.condition||condOK(deck,e.condition))&&(e.kind==="allParam"||e.kind==="stat"&&c.main===e.stat))f*=1+e.value/100;for(const o of deck){const p=o.passive;if(p?.mode==="multiply"&&p.condition&&condOK(deck,p.condition)&&applies(deck,p,c))f*=1+p.value/100}base+=(c.p+c.t+c.s)*f`;
 const parallelStatusFormulaNew=String.raw`const bonus={p:0,t:0,s:0};for(const e of selfData.leaderEffects||[]){if(e.condition&&!condOK(deck,e.condition))continue;const value=Number(e.value)||0;if(e.kind==="allParam"){bonus.p+=value;bonus.t+=value;bonus.s+=value}else if(e.kind==="stat"){const key=e.stat==="パフォーマンス"?"p":e.stat==="テクニック"?"t":e.stat==="センス"?"s":"";if(key)bonus[key]+=value}}for(const o of deck){const p=o.passive;if(p?.mode!=="multiply"||!p.condition||!condOK(deck,p.condition)||!applies(deck,o,c))continue;const value=Number(p.value)||0;if(p.targetStat){const key=p.targetStat==="パフォーマンス"?"p":p.targetStat==="テクニック"?"t":p.targetStat==="センス"?"s":"";if(key)bonus[key]+=value}else{bonus.p+=value;bonus.t+=value;bonus.s+=value}}base+=c.p*(1+bonus.p/100)+c.t*(1+bonus.t/100)+c.s*(1+bonus.s/100)`;
-const parallelStar5RuntimeAdditive=parallelStar5Runtime.replace(parallelStatusFormulaOld,parallelStatusFormulaNew);
+const parallelStar5RuntimeAdditive=parallelStar5Runtime
+  .replaceAll('const condOK=(deck,c)=>!c||count(deck,c.group)>=c.count;', 'const condOK=(deck,c)=>!c||count(deck,c.group)>=c.count;const leaderEffectApplies=(deck,e,card)=>{if(!e||e.kind!=="stat")return false;if(e.targetGroup)return targets(deck,e).some(x=>x.id===card?.id);return card?.main===e.stat};')
+  .replaceAll('const condOK=(deck,c)=>!c||count(deck,c.group)>=Number(c.count||0);', 'const condOK=(deck,c)=>!c||count(deck,c.group)>=Number(c.count||0);const leaderEffectApplies=(deck,e,card)=>{if(!e||e.kind!=="stat")return false;if(e.targetGroup)return targets(deck,e).some(x=>x.id===card?.id);return card?.main===e.stat};')
+  .replaceAll('e.kind==="stat"&&c.main===e.stat', 'e.kind==="stat"&&leaderEffectApplies(deck,e,c)')
+  .replace(parallelStatusFormulaOld,parallelStatusFormulaNew);
 const star5PopoverRuntime=String.raw`
 const star5LatestKey="holodoriLatestStar5";
 function renderStoredStar5Rows(){const result=$("star5Results");if(!result)return;let rows=[];try{rows=JSON.parse(localStorage.getItem(star5LatestKey)||"[]")}catch{};if(!Array.isArray(rows)||!rows.length)return;result.innerHTML=rows.map((row,n)=>"<div class='star5-result'><b>#"+(n+1)+"</b><span>"+row.ids.map(id=>cardTitle(byId(id))).join(" / ")+"<small>期待値 "+Number(row.score||0).toFixed(2)+"</small></span><button type='button' class='star5-apply' data-star5-apply='"+row.ids.join(",")+"'>適用</button></div>").join("");result.querySelectorAll("[data-star5-apply]").forEach(button=>button.onclick=()=>{S.slots=button.dataset.star5Apply.split(",");fill();render()})}
